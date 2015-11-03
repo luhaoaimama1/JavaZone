@@ -39,7 +39,8 @@ public class Compress_Sample_Utils {
 		}
 		if (targetHeight == null) {
 			simpleScale = opts.outWidth / targetWidth;
-		} else {
+		} 
+		if(targetHeight != null&&targetWidth != null){
 			float h_scale = opts.outHeight / targetHeight;
 			float w_scale = opts.outWidth / targetWidth;
 			System.out.println("横向缩放比：h_scale:" + h_scale);

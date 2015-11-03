@@ -1,5 +1,5 @@
-package Android.Zone.Abstract_Class;
-import Android.Zone.Abstract_Class.ViewPager_CycleAdapter_Zone;
+package Android.Zone.viewPager;
+import Android.Zone.viewPager.ViewPager_CycleAdapter_Zone;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
