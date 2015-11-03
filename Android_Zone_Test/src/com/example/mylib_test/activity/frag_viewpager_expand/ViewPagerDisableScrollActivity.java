@@ -2,9 +2,7 @@ package com.example.mylib_test.activity.frag_viewpager_expand;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.example.mylib_test.R;
-
 import Android.Zone.viewPager.ViewPaperDisableScroll;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -13,12 +11,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;

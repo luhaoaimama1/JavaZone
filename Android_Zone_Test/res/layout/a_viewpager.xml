@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Android.Zone.Abstract_Class.ViewPagerCircle
+    <Android.Zone.viewPager.ViewPagerCircle
         android:id="@+id/viewpager"
         android:layout_width="fill_parent"
         android:layout_height="200dip" >
-    </Android.Zone.Abstract_Class.ViewPagerCircle>
+    </Android.Zone.viewPager.ViewPagerCircle>
 
     <LinearLayout
         android:layout_width="fill_parent"

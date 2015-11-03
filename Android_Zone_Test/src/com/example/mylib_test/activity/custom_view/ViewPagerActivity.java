@@ -1,19 +1,14 @@
 package com.example.mylib_test.activity.custom_view;
 
 import java.util.ArrayList;
-
 import com.example.mylib_test.R;
-
-import Android.Zone.Abstract_Class.ViewPagerCircle;
-import Android.Zone.Abstract_Class.ViewPager_CycleAdapter_Zone;
-import Android.Zone.Abstract_Class.ViewPager_CycleAdapter_Zone.OnPageChangeListener_Zone;
+import Android.Zone.viewPager.ViewPagerCircle;
+import Android.Zone.viewPager.ViewPager_CycleAdapter_Zone;
+import Android.Zone.viewPager.ViewPager_CycleAdapter_Zone.OnPageChangeListener_Zone;
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
