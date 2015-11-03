@@ -27,7 +27,7 @@ public class ThirdParty_MainActivity extends Activity implements OnClickListener
 			startActivity(new Intent(this, SideBarActivity.class));
 			break;
 		case R.id.pull:
-			startActivity(new Intent(this, SideBarActivity.class));
+			startActivity(new Intent(this, PullToRefreshTestActivity.class));
 			break;
 
 		default:
