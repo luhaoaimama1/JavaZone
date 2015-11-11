@@ -6,7 +6,7 @@ import com.example.mylib_test.R.layout;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import Android.Zone.Image.Compress_Sample_Utils;
-import Android.Zone.Utils.MemoryCache;
+import Android.Zone.Image.MemoryCache;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package Android.Zone.Utils;
+package Android.Zone.Image;
 
 import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
