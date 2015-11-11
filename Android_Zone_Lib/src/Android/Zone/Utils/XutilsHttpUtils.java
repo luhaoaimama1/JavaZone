@@ -12,6 +12,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 //TODO session cookie未做 下载未做
+//TODO dialog未做
 //RequestParams params = new RequestParams(); // 编码在这个类里声明了
 //查询参数　　为了更好
 //params.addQueryStringParameter("qmsg", "你好");

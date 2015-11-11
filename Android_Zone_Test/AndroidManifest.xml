@@ -184,6 +184,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.touch.TouchMainActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.UtilsActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" >

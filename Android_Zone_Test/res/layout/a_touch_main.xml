@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.mylib_test.activity.touch.view.LinearCustom xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff0000"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <com.example.mylib_test.activity.touch.view.ViewCustom
+        android:id="@+id/viewCustom1"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:background="#00ff00" />
+
+</com.example.mylib_test.activity.touch.view.LinearCustom>
