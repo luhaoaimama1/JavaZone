@@ -63,7 +63,7 @@ public class Apps extends Application{
 		Sqlite_Utils.init_listener(Apps.this, new OnCreate() {
 			@Override
 			public void onCreateTable(Sqlite_Utils instance) {
-				instance.createTableByEntity(User.class);
+				instance.createTableByClass(User.class);
 			}
 		}, new OnUpgrade() {
 			@Override

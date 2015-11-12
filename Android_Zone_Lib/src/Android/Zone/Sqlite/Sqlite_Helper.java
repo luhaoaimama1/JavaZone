@@ -322,18 +322,18 @@ public class Sqlite_Helper  extends SQLiteOpenHelper  {
 				if (field.getName().equals("id")) {
 					sb.append("  id INTEGER PRIMARY KEY AUTOINCREMENT ");
 				} else {
-					/** 判断类型是  String */
-					if(TempUtils.typeIsEquals(String.class, field.getGenericType())){
+					/** 判断类型是  String (现在不判断是什么类型了　仅仅是得到注解的名字　和　长度　)*/
+//					if(TempUtils.typeIsEquals(String.class, field.getGenericType())){
 						sb.append(AnUtils.getAnnoColumn_Name_ByField(field, t) + "  text("+AnUtils.getAnnoColumn_Length_ByField(field, t)+")");
-					}
+//					}
 				}
 			} else {
 				if (field.getName().equals("id")) {
 					sb.append(" , id INTEGER PRIMARY KEY AUTOINCREMENT ");
 				} else {
-					if(TempUtils.typeIsEquals(String.class, field.getGenericType())){
+//					if(TempUtils.typeIsEquals(String.class, field.getGenericType())){
 						sb.append(" ," + AnUtils.getAnnoColumn_Name_ByField(field, t) + "  text("+AnUtils.getAnnoColumn_Length_ByField(field, t)+")");
-					}
+//					}
 				}
 			}
 			i++;

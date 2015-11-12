@@ -128,7 +128,7 @@ public class Db_MainActivity extends Activity implements OnClickListener{
 //			Sqlite_Utils.getInstance(MainActivity.this).addColumn(DbEntity.class, "sbshibu");
 				//ÐÞ¸Ä×Ö¶Î »òÕßÉ¾³ý×Ö¶Î
 //			Sqlite_Utils.getInstance(MainActivity.this).updateOrDeleteColumn(DbEntity.class, new String[]{"he"}, new String[]{"hexihuan"});
-			Sqlite_Utils.getInstance(this).createTableByEntity(DbEntity.class);
+			Sqlite_Utils.getInstance(this).createTableByClass(DbEntity.class);
 //			Sqlite_Utils.getInstance(this).createTableByEntity(MbKb.class);
 			break;
 	

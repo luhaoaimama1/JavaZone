@@ -10,12 +10,14 @@ import android.content.Context;
 
 import com.example.mylib_test.activity.db.entity.DbEntity;
 import com.example.mylib_test.activity.db.entity.MbKb;
+import com.example.mylib_test.activity.db.entity.Parent;
 public class SqliteConfig {
 	@SuppressWarnings("rawtypes")
 	public static List<Class> classList=new ArrayList<Class>();
 	static{
-		classList.add(DbEntity.class);
-		classList.add(MbKb.class);
+//		classList.add(DbEntity.class);
+//		classList.add(MbKb.class);
+		classList.add(Parent.class);
 	}
 
 	public static void initSqlite(final Context context){

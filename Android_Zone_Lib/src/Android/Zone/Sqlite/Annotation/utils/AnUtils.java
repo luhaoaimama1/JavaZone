@@ -93,6 +93,12 @@ public class AnUtils {
 		}
 		return temp;
 	}
+	/**
+	 * 默认长度为　100
+	 * @param f
+	 * @param t
+	 * @return
+	 */
 	public static String getAnnoColumn_Length_ByField(Field f,Class<?> t){
 		String temp=null;
 		Column anno = f.getAnnotation(Column.class);

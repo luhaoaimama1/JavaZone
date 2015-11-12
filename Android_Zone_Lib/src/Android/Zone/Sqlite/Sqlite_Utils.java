@@ -4,7 +4,9 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import com.google.gson.Gson;
+
 import Android.Zone.Sqlite.Sqlite_Helper.AddColumnStatue;
 import Android.Zone.Sqlite.Annotation.utils.AnUtils;
 import Android.Zone.Sqlite.GsonEntity.GsonColumn;
@@ -15,6 +17,8 @@ import Android.Zone.Sqlite.Inner.UpdateColumn;
 import Android.Zone.Sqlite.TableEntity.TableEntity;
 import Android.Zone.Utils.SharedUtils;
 import Java.Zone.Log.PrintUtils;
+import Java.Zone.Utils.FieldTypeUtils;
+import Java.Zone.Utils.FieldTypeUtils.FieldType;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 //TODO 实体类id字段的设计   实体类中包含实体类的操作
@@ -447,7 +451,7 @@ public class Sqlite_Utils {
 		}
 
 	}
-	public  <T> void createTableByEntity(Class<T> t){
+	private  <T> void createTableByEntity(Class<T> t){
 		boolean suceess = helper.createTableByEntity(t, getTranDatabase());
 		if (printLog) {
 			System.out.println("表：" + AnUtils.getTableAnnoName(t) + "\t　创建陈功了吗"+ suceess);
@@ -467,9 +471,32 @@ public class Sqlite_Utils {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public  <T> void createTableByList(List<Class> classList){
 		for (Class class1 : classList) {
-			createTableByEntity(class1);
+			createTableByClass(class1);
 		}
 	}
+	public  <T> void createTableByClass(Class<T> t){
+		Field[] fields = t.getDeclaredFields();
+		createTableByEntity(t);
+		for (Field field2 : fields) {
+			FieldType entity = FieldTypeUtils.getFieldType(field2);
+			switch (entity.fieldProperty) {
+			case CLASS:
+			case LIST_CLASS:
+				try {
+					createTableByClass(Class.forName(entity.classStr));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		
+		
+		
+	}
+	
 	public <T> void addColumn(Class<T> t,String willAddColumnStr,String length){
 		AddColumnStatue temp = helper.addColumn(t, willAddColumnStr,length,getTranDatabase());
 		if(temp==AddColumnStatue.Success){

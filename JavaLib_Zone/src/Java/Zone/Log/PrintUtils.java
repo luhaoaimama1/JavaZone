@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
  *
  */
 public class PrintUtils {
+	//TODO 仅仅适合基础类型　如果是特殊类型例如　list包裹的等则打印不出来
 	private static boolean printLog=true; 
 	public enum PrintProperty {
 		NO_TYPE, WITH_TYPE
