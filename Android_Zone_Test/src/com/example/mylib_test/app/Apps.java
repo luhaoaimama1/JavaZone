@@ -14,21 +14,16 @@ package com.example.mylib_test.app;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-
-
-import Android.Zone.Sqlite.Sqlite_Utils;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.os.Build;
 import android.os.StrictMode;
 import com.example.mylib_test.app.config.ImageLoaderConfig;
-import com.example.mylib_test.app.config.SqliteConfig;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
 public class Apps extends Application {
-	public static Sqlite_Utils su;
 	// SDCard路径
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@SuppressWarnings("unused")
@@ -40,9 +35,6 @@ public class Apps extends Application {
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
 		}
 		//初始化 sqlite
-		Sqlite_Utils.setVersion(4);
-		SqliteConfig.initSqlite(this);
-		su=Sqlite_Utils.getInstance(this);
 		//初始化ImageLoader
 		ImageLoaderConfig.initImageLoader(getApplicationContext());
 	}

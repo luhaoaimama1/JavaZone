@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.zone.cn.Apps;
 import com.zone.cn.R;
 import com.zone.cn.entity.User;
-import com.zone.cn.sqlite.DbManager;
 import com.zone.cn.widget.LaunchDialog;
 
 public class MainActivity extends BaseActvity  implements OnClickListener{
@@ -52,11 +50,6 @@ public class MainActivity extends BaseActvity  implements OnClickListener{
 		testDb();
 	}
 	private void testDb() {
-		DbManager.setUser(dao, "sunhao", "123456");
-		List<User> list = DbManager.getUser(dao, "fuzhipeng");
-		for (User user : list) {
-			 PrintUtils.printAllField(user);
-		}
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
