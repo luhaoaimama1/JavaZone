@@ -46,6 +46,4 @@ public class Apps extends Application {
 		//≥ı ºªØImageLoader
 		ImageLoaderConfig.initImageLoader(getApplicationContext());
 	}
-
-	
 }

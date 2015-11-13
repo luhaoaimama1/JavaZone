@@ -1,6 +1,7 @@
 package com.example.mylib_test.activity.pop_dialog;
 
 import com.example.mylib_test.R;
+import com.example.mylib_test.activity.pop_dialog.pop.Pop_Bottom;
 import com.example.mylib_test.activity.pop_dialog.pop.Pop_Photo;
 
 import Zone.CustomView.DialogCustemZone;
@@ -34,6 +35,12 @@ public class Dialog_Pop_Adapter_MainActivity extends Activity implements OnClick
 //			pc.showPop();
 			Pop_Photo pop=new Pop_Photo(this, R.layout.popwindow_phone, R.id.flowLayoutZone1, R.id.ll_cancelId);
 			pop.show();
+			break;
+		case R.id.pop_bottom:
+//			PopCus pc=new PopCus(this, R.layout.poptest);
+//			pc.showPop();
+			Pop_Bottom pop_bottom=new Pop_Bottom(Dialog_Pop_Adapter_MainActivity.this,R.layout.pop_bottom,R.id.pop_bottom);
+			pop_bottom.show();
 			break;
 		case R.id.dialog:
 			//dialog◊‘∂®“Â≤‚ ‘

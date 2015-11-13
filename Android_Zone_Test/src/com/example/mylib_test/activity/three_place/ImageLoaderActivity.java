@@ -106,7 +106,7 @@ public class ImageLoaderActivity extends Activity{
 				public void onLoadingComplete(String imageUri, View view,
 						Bitmap loadedImage) {
 					super.onLoadingComplete(imageUri, view, loadedImage);
-					 fadeInDisplay((ImageView)view, loadedImage);
+//					 fadeInDisplay((ImageView)view, loadedImage);
 				}
 			
 				private void fadeInDisplay(ImageView view, Bitmap loadedImage) {

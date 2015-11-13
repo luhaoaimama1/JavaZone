@@ -11,7 +11,16 @@ import android.text.format.Formatter;
 
 public class SdSituation {
 	
-	
+	public static File getDiskCacheDir(Context context, String fileDirName) {  
+	    String cachePath;  
+	    if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())  
+	            || !Environment.isExternalStorageRemovable()) {  
+	        cachePath = context.getExternalCacheDir().getPath();  
+	    } else {  
+	        cachePath = context.getCacheDir().getPath();  
+	    }  
+	    return new File(cachePath + File.separator + fileDirName);  
+	}  
 	/**
 	 * ≈–∂œSDCard «∑Òø…”√
 	 * 

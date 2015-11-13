@@ -11,6 +11,13 @@
         android:layout_margin="4dp"
         android:onClick="onClick"
         android:text="pop" />
+    <Button
+        android:id="@+id/pop_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="pop在此按钮之下" />
 
     <Button
         android:id="@+id/dialog"

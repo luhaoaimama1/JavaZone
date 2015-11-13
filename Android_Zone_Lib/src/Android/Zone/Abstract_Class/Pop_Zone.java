@@ -66,28 +66,29 @@ public abstract class Pop_Zone extends PopupWindow {
 			//这样能让 pop 返回键 dimiss
 			setBackgroundDrawable(new BitmapDrawable()); 
 		}
-		// mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
-		mMenuView.setOnTouchListener(new OnTouchListener() {
+		if(dismissViewId==-1){
+			// mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
+			mMenuView.setOnTouchListener(new OnTouchListener() {
 
-			public boolean onTouch(View v, MotionEvent event) {
-				
-				if(event.getAction() == MotionEvent.ACTION_DOWN){
-					int x = (int) event.getX();
-					int y = (int) event.getY();
-					View view=mMenuView.findViewById(dismissViewId);
-						int left=view.getLeft();
-						int right=view.getRight();
-						int top=view.getTop();
-						int bottom=view.getBottom();
-						Rect rect=new Rect(left,top,right,bottom);
-						if(!rect.contains(x, y)){
-							dismiss();
-						}
+				public boolean onTouch(View v, MotionEvent event) {
+					
+					if(event.getAction() == MotionEvent.ACTION_DOWN){
+						int x = (int) event.getX();
+						int y = (int) event.getY();
+						View view=mMenuView.findViewById(dismissViewId);
+							int left=view.getLeft();
+							int right=view.getRight();
+							int top=view.getTop();
+							int bottom=view.getBottom();
+							Rect rect=new Rect(left,top,right,bottom);
+							if(!rect.contains(x, y)){
+								dismiss();
+							}
+					}
+					return true;
 				}
-				return true;
-			}
-		});
-
+			});
+		}
 	}
 	/**
 	 * 这样就制定规范了

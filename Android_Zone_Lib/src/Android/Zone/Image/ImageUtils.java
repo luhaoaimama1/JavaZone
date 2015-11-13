@@ -1,8 +1,7 @@
-package Android.Zone.Utils;
+package Android.Zone.Image;
 
 import java.io.File;
 
-import Android.Zone.Image.Compress_Sample_Utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -151,7 +150,9 @@ public class ImageUtils {
 		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
 
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		//设置两张图片相交时的模式,参考http://trylovecatch.iteye.com/blog/1189452  
 		canvas.drawBitmap(bitmap, src, dst, paint);
+		 //以Mode.SRC_IN模式合并bitmap和已经draw了的Circle  
 		return output;
 	}
 
