@@ -4,28 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-
 import Android.Zone.Http.DownFile.Entity.ProgressEntity;
 import Android.Zone.Http.DownFile.Entity.ProgressEntity.RangeStaue;
-import Android.Zone.Http.DownFile.Entity.ThreadTable;
-import Android.Zone.Http.DownFile.Entity.UrlPath;
-import Android.Zone.Sqlite.Sqlite_Utils;
-import Android.Zone.Sqlite.Sqlite_Utils.OnCreate;
-import Android.Zone.Sqlite.Sqlite_Utils.OnUpgrade;
-import android.content.Context;
 import android.os.Handler;
 
 /**

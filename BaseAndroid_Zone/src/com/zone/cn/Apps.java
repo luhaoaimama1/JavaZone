@@ -12,9 +12,6 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.zone.cn.cache.FileCache;
 import com.zone.cn.entity.User;
-import Android.Zone.Sqlite.Sqlite_Utils;
-import Android.Zone.Sqlite.Sqlite_Utils.OnCreate;
-import Android.Zone.Sqlite.Sqlite_Utils.OnUpgrade;
 import Android.Zone.Utils.SharedUtils;
 import Android.Zone.Utils.TypefaceUtils;
 import android.app.Application;
@@ -59,27 +56,6 @@ public class Apps extends Application{
 	 * 配置 sqlite
 	 */
 	private void configureSqlit() {
-		Sqlite_Utils.setPrintLog(false);
-		Sqlite_Utils.init_listener(Apps.this, new OnCreate() {
-			@Override
-			public void onCreateTable(Sqlite_Utils instance) {
-				instance.createTableByEntity(User.class);
-			}
-		}, new OnUpgrade() {
-			@Override
-			public void annoColumn_DeleOrUpdate(Sqlite_Utils instance2) {
-
-			}
-
-			@Override
-			public void onUpgrade(int oldVersion, int newVersion,
-					Sqlite_Utils instance2) {
-				// System.err.println("oldVersion:" + oldVersion);
-				// System.err.println("newVersion:" + newVersion);
-				// instance2.dropTableByClass(DbEntity.class);
-
-			}
-		});	
 	}
 	/**
 	 * 记录打开次数

@@ -1,8 +1,6 @@
 package com.zone.cn.ui;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-
-import Android.Zone.Sqlite.Sqlite_Utils;
 import Android.Zone.Utils.ScreenUtils;
 import android.os.Bundle;
 import android.os.Message;
@@ -13,13 +11,11 @@ public abstract class BaseActvity extends FragmentActivity implements Callback{
 	public static int screenW;
 	public static int screenH;
 	protected ImageLoader imageLoader;
-	protected Sqlite_Utils dao;
 	@Override
 	protected void onCreate(Bundle arg0) {
 		long time = System.currentTimeMillis();
 		super.onCreate(arg0);
 		getScreenPix();
-		dao=Sqlite_Utils.getInstance(this);
 		imageLoader = ImageLoader.getInstance();
 		setContentView();
 		findIDs();
