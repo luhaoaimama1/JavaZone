@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import Android.Zone.Image.DiskLruUtils;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -28,6 +29,7 @@ public class ImageLoaderActivity extends Activity{
 	private ListView lv;
 	private String[] imageThumbUrls;
 	private DisplayImageOptions options;
+	private DiskLruUtils diskLru;
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.imageloader);
@@ -37,6 +39,7 @@ public class ImageLoaderActivity extends Activity{
 		// 使用DisplayImageOptions.Builder()创建DisplayImageOptions
 		
 //		options = new DisplayImageOptions.Builder().build();
+		diskLru=DiskLruUtils.openLru(this);
 		options = new DisplayImageOptions.Builder()
 				// 设置图片下载期间显示的图片  可以不设置就是空白被
 //				.showImageOnLoading(R.drawable.ic_stub)
@@ -74,13 +77,11 @@ public class ImageLoaderActivity extends Activity{
 		
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return imageThumbUrls.length;
 		}
 
 		@Override
 		public Object getItem(int position) {
-			// TODO Auto-generated method stub
 			return imageThumbUrls[position];
 		}
 
@@ -101,30 +102,46 @@ public class ImageLoaderActivity extends Activity{
 			}else{
 				vh=(ViewHolder) convertView.getTag();
 			}
-			ImageLoader.getInstance().displayImage(imageThumbUrls[position], vh.iv, options,new SimpleImageLoadingListener(){
-				@Override
-				public void onLoadingComplete(String imageUri, View view,
-						Bitmap loadedImage) {
-					super.onLoadingComplete(imageUri, view, loadedImage);
-//					 fadeInDisplay((ImageView)view, loadedImage);
-				}
-			
-				private void fadeInDisplay(ImageView view, Bitmap loadedImage) {
-					final ColorDrawable TRANSPARENT_DRAWABLE = new ColorDrawable(android.R.color.transparent);
-					final TransitionDrawable transitionDrawable =
-			                new TransitionDrawable(new Drawable[]{
-			                        TRANSPARENT_DRAWABLE,
-			                        new BitmapDrawable(view.getResources(), loadedImage)
-			                });
-					view.setImageDrawable(transitionDrawable);
-			        transitionDrawable.startTransition(500);
-				}
-			});
+//			Bitmap bitMapTemp = diskLru.getBitmapByUrl(imageThumbUrls[position]);
+//			if(bitMapTemp!=null){
+//				vh.iv.setImageBitmap(bitMapTemp);
+//			}else{
+				ImageLoader.getInstance().displayImage(imageThumbUrls[position], vh.iv, options,new SimpleImageLoadingListener(){
+					@Override
+					public void onLoadingComplete(String imageUri, View view,
+							Bitmap loadedImage) {
+						super.onLoadingComplete(imageUri, view, loadedImage);
+//						 fadeInDisplay((ImageView)view, loadedImage);
+//						diskLru.addUrl(imageUri, loadedImage);
+						((ImageView)view).setImageBitmap(loadedImage);
+//						diskLru.addUrl(url, imageUri);
+					}
+				
+					private void fadeInDisplay(ImageView view, Bitmap loadedImage) {
+						final ColorDrawable TRANSPARENT_DRAWABLE = new ColorDrawable(android.R.color.transparent);
+						final TransitionDrawable transitionDrawable =
+				                new TransitionDrawable(new Drawable[]{
+				                        TRANSPARENT_DRAWABLE,
+				                        new BitmapDrawable(view.getResources(), loadedImage)
+				                });
+						view.setImageDrawable(transitionDrawable);
+				        transitionDrawable.startTransition(500);
+					}
+				});
+//			}
 //			ImageLoader.getInstance().displayImage(imageThumbUrls[position], vh.iv);
 			return convertView;
 		}
 		public class ViewHolder{
 			ImageView iv;
 		}
+	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		System.err.println("大小bytes："+diskLru.size());
+		diskLru.flush();
+		diskLru.delete();
+		diskLru.close();
 	}
 }

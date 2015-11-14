@@ -23,6 +23,9 @@ public class ThirdParty_MainActivity extends Activity implements OnClickListener
 		case R.id.imageLoader:
 			startActivity(new Intent(this, ImageLoaderActivity.class));
 			break;
+		case R.id.imageLoaderGrid:
+			startActivity(new Intent(this, ImageLoaderGridActivity.class));
+			break;
 		case R.id.sideBar:
 			startActivity(new Intent(this, SideBarActivity.class));
 			break;
