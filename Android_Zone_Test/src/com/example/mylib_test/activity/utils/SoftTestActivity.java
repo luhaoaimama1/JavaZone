@@ -3,11 +3,8 @@ package com.example.mylib_test.activity.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import com.example.mylib_test.R;
-
 import Android.Zone.Abstract_Class.Adapter_Zone;
-import Android.Zone.Image.MemoryCache;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -20,8 +17,6 @@ public class SoftTestActivity extends Activity{
 	private List<Integer> list=new ArrayList<Integer>();
 	Integer[] a=new Integer[]{ R.drawable.t0, R.drawable.t0,R.drawable.t0,R.drawable.t0, R.drawable.t0};
 //	,R.drawable.t5, R.drawable.t6,R.drawable.t7, R.drawable.t8};
-
-	private MemoryCache cache=new MemoryCache();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,8 +55,7 @@ public class SoftTestActivity extends Activity{
 		public void setData(Map<Integer, View> viewMap, Integer data,
 				int position) {
 			ImageView ivD=(ImageView) viewMap.get(R.id.iv);
-			cache.put(position+"", BitmapFactory.decodeResource(getResources(),data));
-			ivD.setImageBitmap(cache.get(position+""));
+			ivD.setImageBitmap(BitmapFactory.decodeResource(getResources(),data));
 		}
 		
 	}

@@ -11,6 +11,7 @@
         android:layout_margin="4dp"
         android:onClick="onClick"
         android:text="handler测试" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -89,5 +90,20 @@
         android:background="#ff0000"
         android:onClick="onClick"
         android:text="服务器端在测试一遍" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#00ff00"
+        android:gravity="center"
+        android:text="Thread测试" />
+
+    <Button
+        android:id="@+id/asyncTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="AsyncTask测试" />
 
 </view.FlowLayout_Zone>

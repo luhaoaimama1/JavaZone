@@ -45,18 +45,19 @@ public class ImageLoaderGridActivity extends Activity{
 		public void setData(Map<Integer, View> viewMap, String data,
 				int position) {
 			ImageView iv=(ImageView) viewMap.get(R.id.iv);
-			Bitmap bm = diskLru.getBitmapByUrl(data);
-			if (bm==null) {
-				ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
-					@Override
-					public void onLoadingComplete(String imageUri, View view,
-							Bitmap loadedImage) {
-						super.onLoadingComplete(imageUri, view, loadedImage);
-						diskLru.addUrl(imageUri, loadedImage);
-					}
-				});
-			} else
-				iv.setImageBitmap(bm);
+			ImageLoader.getInstance().displayImage(data, iv);
+//			Bitmap bm = diskLru.getBitmapByUrl(data);
+//			if (bm==null) {
+//				ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
+//					@Override
+//					public void onLoadingComplete(String imageUri, View view,
+//							Bitmap loadedImage) {
+//						super.onLoadingComplete(imageUri, view, loadedImage);
+//						diskLru.addUrl(imageUri, loadedImage);
+//					}
+//				});
+//			} else
+//				iv.setImageBitmap(bm);
 		}
 		
 	} 

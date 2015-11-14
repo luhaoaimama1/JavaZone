@@ -33,7 +33,6 @@ public class DiskLruUtils {
 	
 	private static final String TAG="DiskLruUtils";
 	private static boolean writeLog=true;
-	private static MemoryCache cache=new MemoryCache();
 	public static void log(String str){
 		if (writeLog) {
 			Log.d(TAG, str);
@@ -147,13 +146,12 @@ public class DiskLruUtils {
 			DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);
 			if(snapShot != null){
 				bitmap = BitmapFactory.decodeStream(snapShot.getInputStream(0));
-				cache.put(key, bitmap);
 				log("getBitmapByUrl:"+url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return cache.get(key);
+		return bitmap;
 	}
 
 	/**

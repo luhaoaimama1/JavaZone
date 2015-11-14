@@ -24,7 +24,7 @@ public class MainMenu {
 		menu.add(new MenuEntity("手机 文件/IO 测试", FileTestActivity.class)) ;
 		menu.add(new MenuEntity("wifi 3g测试", Wifi3g_MainActivity.class)) ;
 		menu.add(new MenuEntity("db测试", Db_MainActivity.class)) ;
-		menu.add(new MenuEntity("http测试(和handle的测试)", Http_MainActivity.class)) ;
+		menu.add(new MenuEntity("http测试Thread测试(和handle的测试)", Http_MainActivity.class)) ;
 		menu.add(new MenuEntity("pop dialog测试(还有 文字高亮 链接等效果)", Dialog_Pop_Adapter_MainActivity.class)) ;
 		menu.add(new MenuEntity("照片和拍摄(图片裁剪等辅助测试)", Photo_Shot_MainActivity.class)) ;
 		menu.add(new MenuEntity("第三方 （ImageLoader等）", ThirdParty_MainActivity.class)) ;

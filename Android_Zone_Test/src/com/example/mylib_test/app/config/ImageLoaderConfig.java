@@ -35,16 +35,16 @@ public class ImageLoaderConfig {
 		//设置用于加载和显示图像的任务的队列处理类型。
 		config.tasksProcessingOrder(QueueProcessingType.LIFO);
 		/** ==========================内存缓存  =========================*/
-//		//图片解码期间  中bitmap的宽高 默认是  手机宽高  
-//		config.memoryCacheExtraOptions(480, 800);
-//		// 设定内存缓存 
-//		config.memoryCache(new LruMemoryCache(2 * 1024 * 1024));
-//		//缓存到内存的最大数据
+		//图片解码期间  中bitmap的宽高 默认是  手机宽高  
+		config.memoryCacheExtraOptions(480, 800);
+		// 设定内存缓存 
+		config.memoryCache(new LruMemoryCache(4 * 1024 * 1024));
+		//缓存到内存的最大数据
 //		config.memoryCacheSize(2 * 1024 * 1024); 
-//		//文件数量
-//		config.diskCacheFileCount(1000); 
-//		// 设定只保存同一尺寸的图片在内存
-//		config.denyCacheImageMultipleSizesInMemory();
+		//文件数量
+		config.diskCacheFileCount(1000); 
+		// 设定只保存同一尺寸的图片在内存
+		config.denyCacheImageMultipleSizesInMemory();
 		/** ==========================文件缓存  =========================*/
 		//下载图片后 compress保存到文件中的 宽高
 		config.diskCacheExtraOptions(480, 800, null);

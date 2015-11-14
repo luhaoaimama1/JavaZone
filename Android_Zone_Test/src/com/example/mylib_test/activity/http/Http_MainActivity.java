@@ -19,6 +19,7 @@ import Android.Zone.Http.MyConn_Utils.CallBack;
 import Android.Zone.Http.MyConn_Utils.FileUpLoad_CallBack;
 import Android.Zone.SD.FileUtils_SD;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,11 +41,22 @@ public class Http_MainActivity extends Activity implements OnClickListener{
 		params.clear();
 		client(v);
 		conn(v);
+		tread(v);
 		switch (v.getId()) {
 		case R.id.handle:
 			Button hand=(Button) findViewById(R.id.handle);
 			HandlerTest ht=new HandlerTest();
 			ht.updateView(hand);
+			break;
+
+		default:
+			break;
+		}
+	}
+	private void tread(View v) {
+		switch (v.getId()) {
+		case  R.id.asyncTask:
+			startActivity(new Intent(this, AsyncTask_TestActivity.class));
 			break;
 
 		default:
