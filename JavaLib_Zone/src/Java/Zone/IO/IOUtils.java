@@ -3,7 +3,6 @@ package Java.Zone.IO;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,22 +21,6 @@ import Java.Zone.Setting.MyJava_Preferences;
  *
  */
 public class IOUtils {
-	public static final String NEW_LINE_STRING ="\r\n";
-//	public static void main(String[] args) {
-////		String gaga="Œ“\\œ≤ª∂ƒ„  \r\n’¶∞Ïabkbkakak ";
-//		File f = new File("D:/json8.txt");
-////		write(f, gaga,"gbk");
-//		
-//		System.out.println(read(f, "gbk").replace("\\", "/"));
-//	}
-	//
-	public  static void openFolder(String folderPath){
-		try {
-			Runtime.getRuntime().exec("cmd /c start "+folderPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	// -----------------------------------------------------------InputStream---------------------------------------------------------------
 	/**
 	 * 
@@ -122,16 +105,6 @@ public class IOUtils {
 	}
 
 	// -----------------------------------------------------------OutStream---------------------------------------------------------------
-	public static boolean write(File outFile, String str,String encoded) {
-		ByteArrayInputStream in=null;
-		try {
-			in=new ByteArrayInputStream(str.getBytes(encoded));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return write(outFile, in);
-	}
 	/**
 	 * 
 	 * @param file

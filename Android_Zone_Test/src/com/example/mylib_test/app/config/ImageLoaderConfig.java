@@ -10,7 +10,6 @@ import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 public class ImageLoaderConfig {
@@ -35,16 +34,16 @@ public class ImageLoaderConfig {
 		//设置用于加载和显示图像的任务的队列处理类型。
 		config.tasksProcessingOrder(QueueProcessingType.LIFO);
 		/** ==========================内存缓存  =========================*/
-//		//图片解码期间  中bitmap的宽高 默认是  手机宽高  
-//		config.memoryCacheExtraOptions(480, 800);
-//		// 设定内存缓存 
-//		config.memoryCache(new LruMemoryCache(2 * 1024 * 1024));
-//		//缓存到内存的最大数据
-//		config.memoryCacheSize(2 * 1024 * 1024); 
-//		//文件数量
-//		config.diskCacheFileCount(1000); 
-//		// 设定只保存同一尺寸的图片在内存
-//		config.denyCacheImageMultipleSizesInMemory();
+		//图片解码期间  中bitmap的宽高 默认是  手机宽高  
+		config.memoryCacheExtraOptions(480, 800);
+		// 设定内存缓存 
+		config.memoryCache(new LruMemoryCache(2 * 1024 * 1024));
+		//缓存到内存的最大数据
+		config.memoryCacheSize(2 * 1024 * 1024); 
+		//文件数量
+		config.diskCacheFileCount(1000); 
+		// 设定只保存同一尺寸的图片在内存
+		config.denyCacheImageMultipleSizesInMemory();
 		/** ==========================文件缓存  =========================*/
 		//下载图片后 compress保存到文件中的 宽高
 		config.diskCacheExtraOptions(480, 800, null);
@@ -54,8 +53,6 @@ public class ImageLoaderConfig {
 		config.diskCacheFileNameGenerator(new HashCodeFileNameGenerator()); 
 		//缓存到文件的最大数据   50 MiB
 		config.diskCacheSize(50 * 1024 * 1024); 
-		//BaseImageDecoder  true:打印log  false:你懂的
-		config.imageDecoder(new BaseImageDecoder(true));
 		
 		/** ==========================超时 与log打印  =========================*/
 		// 设定网络连接超时 timeout: 10s 读取网络连接超时read timeout: 60s

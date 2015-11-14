@@ -1,25 +1,15 @@
 package Android.Zone.Image;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.SD.SdSituation;
 import Android.Zone.Utils.AppUtils;
 import Android.Zone.Utils.MD5Utils;
-import Java.Zone.CustomException.OperationFailException;
-import Java.Zone.IO.IOUtils;
-import Java.Zone.Utils.FileUtils;
 
 public class DiskLruUtils {
 	private static DiskLruUtils diskLru = new DiskLruUtils();
@@ -33,7 +23,6 @@ public class DiskLruUtils {
 	
 	private static final String TAG="DiskLruUtils";
 	private static boolean writeLog=true;
-	private static MemoryCache cache=new MemoryCache();
 	public static void log(String str){
 		if (writeLog) {
 			Log.d(TAG, str);
@@ -42,21 +31,23 @@ public class DiskLruUtils {
 
 	private DiskLruUtils() {
 	}
+	public static DiskLruUtils getInstance(){
+		return diskLru;
+	}
 
 	/**
 	 * 版本号改变 则自动清除
 	 * @param context
 	 * @return
 	 */
-	public  static   DiskLruUtils  openLru(Context context) {
+	public   void  openLru(Context context) {
 		try {
 			/**
 			 * open()方法接收四个参数，第一个参数指定的是数据的缓存地址，
 			 * 第二个参数指定当前应用程序的版本号，
 			 * 第三个参数指定同一个key可以对应多少个缓存文件，基本都是传1，第四个参数指定最多可以缓存多少字节的数据。
 			 */
-//			File cacheDir = SdSituation.getDiskCacheDir(context, DirName);
-			File cacheDir = FileUtils_SD.FolderCreateOrGet("Love",DirName);
+			File cacheDir = SdSituation.getDiskCacheDir(context, DirName);
 			if (!cacheDir.exists()) {
 				cacheDir.mkdirs();
 			}
@@ -64,7 +55,6 @@ public class DiskLruUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return diskLru;
 	}
 
 	/**
@@ -72,42 +62,7 @@ public class DiskLruUtils {
 	 * 
 	 * @param url
 	 */
-	public void addUrl(String url,String path) {
-		addUrl(url, Compress_Sample_Utils.getRawBitmap(path));
-	}
-	private static ByteArrayInputStream bitmapToOs(Bitmap bt){
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		bt.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
-		return isBm;
-	}
-	// -----------------------------------------------------------readToOutStream---------------------------------------------------------------
-	private static boolean readToOutStream(Bitmap bt,OutputStream os){
-		InputStream in=bitmapToOs(bt);
-		byte[] buffer = new byte[1024];
-		int len = 0;
-		try {
-			while ((len = in.read(buffer)) != -1) {
-				os.write(buffer, 0, len);
-			}
-		} catch (IOException e) {
-			throw new OperationFailException("流读取发生IOException！！！");
-		} finally {
-			try {
-				in.close();
-				os.close();
-			} catch (IOException e) {
-				throw new OperationFailException("流关闭发生异常！");
-			}
-		}
-		return true;
-	}
-	/**
-	 * 所以只有成功才调用这个方法
-	 * 
-	 * @param url
-	 */
-	public void addUrl(String url, Bitmap bm) {
+	public void addUrl(String url) {
 		// if (downloadUrlToStream(imageUrl, outputStream)) {
 		// editor.commit();
 		// } else {
@@ -116,13 +71,8 @@ public class DiskLruUtils {
 		String key = MD5Utils.hashKeyForDisk(url);
 		try {
 			DiskLruCache.Editor editor = mDiskLruCache.edit(key);
-			OutputStream outputStream = editor.newOutputStream(0);  
-			if(readToOutStream(bm, outputStream)){
-				editor.commit();
-				log("addUrl:"+url);
-			}else {  
-				editor.abort();  
-			}  
+			editor.commit();
+			log("addUrl:"+url);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -145,15 +95,11 @@ public class DiskLruUtils {
 		Bitmap bitmap = null;
 		try {
 			DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);
-			if(snapShot != null){
-				bitmap = BitmapFactory.decodeStream(snapShot.getInputStream(0));
-				cache.put(key, bitmap);
-				log("getBitmapByUrl:"+url);
-			}
+			bitmap = BitmapFactory.decodeStream(snapShot.getInputStream(0));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return cache.get(key);
+		return bitmap;
 	}
 
 	/**
@@ -173,9 +119,7 @@ public class DiskLruUtils {
 	 */
 	public void close() {
 		try {
-			if (!mDiskLruCache.isClosed()) {
-				mDiskLruCache.close();
-			}
+			mDiskLruCache.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -185,9 +129,7 @@ public class DiskLruUtils {
 	 */
 	public void delete() {
 		try {
-			if (!mDiskLruCache.isClosed()) {
-				mDiskLruCache.delete();
-			}
+			mDiskLruCache.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

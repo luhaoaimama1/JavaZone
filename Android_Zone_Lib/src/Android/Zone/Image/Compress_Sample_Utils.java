@@ -77,9 +77,6 @@ public class Compress_Sample_Utils {
 		options.inJustDecodeBounds = false;
 		return BitmapFactory.decodeFile(filePath, options);
 	}
-	public static Bitmap getRawBitmap(String filePath){
-		return BitmapFactory.decodeFile(filePath);
-	}
 
 	/**
 	 * 

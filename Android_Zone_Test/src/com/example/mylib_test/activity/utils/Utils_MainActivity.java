@@ -66,9 +66,6 @@ public class Utils_MainActivity extends Activity implements OnClickListener{
 		case R.id.frammentSwitch:
 			startActivity(new Intent(this,FramentSwitchAcitiviy.class));
 			break;
-		case R.id.bitmapTest:
-			startActivity(new Intent(this,SoftTestActivity.class));
-			break;
 
 		default:
 			break;
