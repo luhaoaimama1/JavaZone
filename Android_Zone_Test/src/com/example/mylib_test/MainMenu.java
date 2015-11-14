@@ -11,6 +11,7 @@ import com.example.mylib_test.activity.file.FileTestActivity;
 import com.example.mylib_test.activity.http.Http_MainActivity;
 import com.example.mylib_test.activity.photo_shot.Photo_Shot_MainActivity;
 import com.example.mylib_test.activity.pop_dialog.Dialog_Pop_Adapter_MainActivity;
+import com.example.mylib_test.activity.system.SystemMainActivity;
 import com.example.mylib_test.activity.three_place.ThirdParty_MainActivity;
 import com.example.mylib_test.activity.touch.TouchMainActivity;
 import com.example.mylib_test.activity.utils.Utils_MainActivity;
@@ -31,6 +32,7 @@ public class MainMenu {
 		menu.add(new MenuEntity("自定义控件", CustomView_MainActivity.class)) ;
 		menu.add(new MenuEntity("工具箱Utils的测试", Utils_MainActivity.class)) ;
 		menu.add(new MenuEntity("onTouch等触摸的研究", TouchMainActivity.class)) ;
+		menu.add(new MenuEntity("系统控件等的研究", SystemMainActivity.class)) ;
 	}
 
 }

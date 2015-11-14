@@ -11,9 +11,10 @@ public class Pop_Bottom extends Pop_Zone implements OnClickListener{
 	private Button bt_how,bt_are,bt_you;
 	private Activity context;
 
-	public Pop_Bottom(Activity activity, int layoutId,int showAtLocationViewId) {
-		super(activity, layoutId, showAtLocationViewId, -1);
+	public Pop_Bottom(Activity activity,int showAtLocationViewId) {
+		super(activity,  showAtLocationViewId);
 		this.context=activity;
+		setPopContentView(R.layout.pop_bottom, Mode.Wrap, -1);
 	}
 
 	@Override
@@ -36,15 +37,14 @@ public class Pop_Bottom extends Pop_Zone implements OnClickListener{
 	}
 
 	@Override
-	protected void showPop(int showAtLocationViewId) {
-		setBackground_Visibility(false);
-		this.showAsDropDown(context.findViewById(R.id.pop_bottom),0, 0);
+	protected void setLocation(View view) {
+		this.showAsDropDown(view,0, 0);
 	}
 
 	@Override
 	public void onClick(View v) {
 		ToastUtils.showLong(context, "ºÙºÙ");
-		
+		dismiss();
 	}
 
 }

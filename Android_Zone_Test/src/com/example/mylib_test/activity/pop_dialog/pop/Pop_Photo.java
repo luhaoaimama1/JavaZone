@@ -3,6 +3,7 @@ package com.example.mylib_test.activity.pop_dialog.pop;
 import com.example.mylib_test.R;
 
 import Android.Zone.Abstract_Class.Pop_Zone;
+import Android.Zone.Abstract_Class.Pop_Zone.Mode;
 import Android.Zone.Log.ToastUtils;
 import android.app.Activity;
 import android.graphics.Color;
@@ -16,12 +17,10 @@ public class Pop_Photo extends Pop_Zone implements OnClickListener{
 	private TextView tv_goodsNumber;
 	private TextView tv_call;
 	private TextView tv_cancel;
-	public Pop_Photo(Activity activity,int layoutId, int showAtLocationViewId,int dismissViewId) {
-		super(activity, layoutId, showAtLocationViewId, dismissViewId);
-//		setBackground_Visibility(false);
-//		setBackgroundColor(Color.CYAN);
+	public Pop_Photo(Activity activity,int showAtLocationViewId) {
+		super(activity, showAtLocationViewId);
+		setPopContentView( R.layout.popwindow_phone, Mode.Fill , R.id.ll_cancelId);
 	}
-
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -56,9 +55,9 @@ public class Pop_Photo extends Pop_Zone implements OnClickListener{
 	}
 
 	@Override
-	protected void showPop(int showAtLocationViewId) {
+	protected void setLocation(View view) {
 		this.setAnimationStyle(R.style.PopSelectPicAnimation);
-		this.showAtLocation(activity.findViewById(showAtLocationViewId),Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);	
+		this.showAtLocation(view,Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);	
 	}
 
 

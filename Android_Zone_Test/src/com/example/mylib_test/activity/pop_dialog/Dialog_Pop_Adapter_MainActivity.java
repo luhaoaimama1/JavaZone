@@ -33,13 +33,13 @@ public class Dialog_Pop_Adapter_MainActivity extends Activity implements OnClick
 		case R.id.pop:
 //			PopCus pc=new PopCus(this, R.layout.poptest);
 //			pc.showPop();
-			Pop_Photo pop=new Pop_Photo(this, R.layout.popwindow_phone, R.id.flowLayoutZone1, R.id.ll_cancelId);
+			Pop_Photo pop=new Pop_Photo(this, R.id.flowLayoutZone1);
 			pop.show();
 			break;
 		case R.id.pop_bottom:
 //			PopCus pc=new PopCus(this, R.layout.poptest);
 //			pc.showPop();
-			Pop_Bottom pop_bottom=new Pop_Bottom(Dialog_Pop_Adapter_MainActivity.this,R.layout.pop_bottom,R.id.pop_bottom);
+			Pop_Bottom pop_bottom=new Pop_Bottom(Dialog_Pop_Adapter_MainActivity.this,R.id.pop_bottom);
 			pop_bottom.show();
 			break;
 		case R.id.dialog:
