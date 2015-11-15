@@ -3,48 +3,37 @@ package Java.Zone.Utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import Java.Zone.Log.PrintUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FieldTypeUtils {
 
-	public static FieldType getFieldType(Field field) {
-		FieldType fieldType=new FieldType();
+	public static FieldTypeInfo getFieldTypeInfo(Field field) {
+		FieldTypeInfo fieldType=new FieldTypeInfo();
 		try {
 			ParameterizedType type = (ParameterizedType) field.getGenericType();
-			Type temp = type.getActualTypeArguments()[0];
-//			System.out.println(field.getName() + " ___ParameterizedType___ \t "
-//					+ type.getActualTypeArguments()[0]);
-			fieldType.fieldProperty=FieldProperty.LIST_CLASS;
-			fieldType.classStr=temp.toString();
-			if(String.class.toString().equals(temp.toString())){
-				fieldType.fieldProperty=FieldProperty.LIST_STRING;
-			}
-			// 好使
-			// Class<?> lin =
-			// Class.forName(type.getActualTypeArguments()[0].toString());
-			// Parent a = (Parent) lin.newInstance();
+//			解析后的结果
+//			List<Top_data> data [0]Top_data
+//			Map<String,Top_data> [0]String[1]Top_data
+			Type rawType = type.getRawType();
+			fieldType.rawType=rawType;
+			fieldType.erasureTypes=Arrays.asList(type.getActualTypeArguments()) ;
+			fieldType.isErasureType=true;
 		} catch (Exception e) {
 			Type type = field.getGenericType();
-			fieldType.classStr=type.toString();
-			fieldType.fieldProperty=FieldProperty.CLASS;
-//			System.out.println(field.getName() + "\t " + type);
-			if(String.class.toString().equals(type.toString())){
-				fieldType.fieldProperty=FieldProperty.STRING;
-			}
+			fieldType.rawType=type;
 		}
 		return fieldType;
 	}
 
-	public static class FieldType {
-		public String classStr;
-		public FieldProperty fieldProperty;
+	public static class FieldTypeInfo {
+		public boolean isErasureType=false;
+		public Type rawType;
+		public List<Type> erasureTypes=new ArrayList<Type>();
 		@Override
 		public String toString() {
-			PrintUtils.printAllField(this);
 			return super.toString();
 		}
-	}
-	public enum FieldProperty{
-		STRING,CLASS,LIST_STRING,LIST_CLASS;
 	}
 }

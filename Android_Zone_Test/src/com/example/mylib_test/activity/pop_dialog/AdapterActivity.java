@@ -4,14 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONObject;
-
 import com.example.mylib_test.R;
-import com.example.mylib_test.R.id;
-import com.example.mylib_test.R.layout;
 import com.example.mylib_test.activity.pop_dialog.entity.Item;
 import com.google.gson.Gson;
-
 import Android.Zone.Abstract_Class.Adapter_Zone;
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,6 +19,7 @@ public class AdapterActivity extends Activity {
 	private int[] idArray;
 	private List<Item> data=new ArrayList<Item>();
 	private ListView listView ;
+	private Gson g=new Gson();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
