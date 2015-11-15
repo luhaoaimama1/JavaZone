@@ -17,6 +17,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -28,7 +29,13 @@ public class ImageLoaderGridActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 diskLru=DiskLruUtils.openLru(this);
+		LruCache<String, Bitmap> a = new LruCache<String, Bitmap>(100){
+			@Override
+			protected int sizeOf(String key, Bitmap value) {
+				return super.sizeOf(key, value);
+			}
+		};
+		diskLru=DiskLruUtils.openLru(this);
 		setContentView(R.layout.a_thirdparty_imageloader_grid);
 		gridView1=(GridView) findViewById(R.id.gridView1);
 //		Images.imageThumbUrls

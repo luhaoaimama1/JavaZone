@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import android.graphics.Bitmap;
 
-public class MemoryCache {
+public class SoftMemoryCache {
 	// 将HashMap封装成一个线程安全的集合，并且使用软引用的方式防止OOM（内存不足）...
 	// 用于在ListView中会加载大量的图片.那么为了有效的防止OOM导致程序终止的情况...
 	private Map<String, SoftReference<Bitmap>> cache = Collections.synchronizedMap(new HashMap<String, SoftReference<Bitmap>>());

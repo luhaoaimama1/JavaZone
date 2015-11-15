@@ -42,6 +42,7 @@ public class AsyncTask_TestActivity extends Activity {
                 //注意每次需new一个实例,新建的任务只能执行一次,否则会出现异常  
                 mTask = new MyTask();  
                 mTask.execute("http://img.my.csdn.net/uploads/201407/26/1406383264_3954.jpg");  
+                mTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://img.my.csdn.net/uploads/201407/26/1406383264_3954.jpg");
                 execute.setEnabled(false);  
                 cancel.setEnabled(true);  
             }  
@@ -93,7 +94,7 @@ public class AsyncTask_TestActivity extends Activity {
                         //调用publishProgress公布进度,最后onProgressUpdate方法将被执行  
                         publishProgress((int) (((float)count / total) * 100)); //Notify your activity that you had canceled the task
                         //为了演示进度,休眠500毫秒  
-                        Thread.sleep(500);  
+						Thread.sleep(500);  
                     }  
                     String temp = new String(baos.toByteArray(), "gb2312");
                     return temp;  
