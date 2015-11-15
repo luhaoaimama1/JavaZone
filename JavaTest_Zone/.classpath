@@ -9,6 +9,9 @@
 	<classpathentry kind="lib" path="lib/ezmorph-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/json-lib-1.1-jdk13.jar"/>
 	<classpathentry kind="lib" path="lib/xom-1.0d10.jar"/>
-	<classpathentry kind="lib" path="lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.3.1.jar" sourcepath="lib/gson-2.3.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.3.1-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JavaLib_Zone"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
