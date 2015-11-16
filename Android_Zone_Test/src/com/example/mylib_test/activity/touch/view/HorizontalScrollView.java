@@ -1,9 +1,6 @@
 package com.example.mylib_test.activity.touch.view;
 
-import com.example.mylib_test.activity.touch.view.ScrollerView.CustomGestureListener;
-
 import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Event;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -31,6 +28,23 @@ public class HorizontalScrollView extends LinearLayout{
 	private int downx,downy;
 	private boolean first;
 	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		switch (ev.getAction()) {
+		case MotionEvent.ACTION_DOWN :
+			Log.i(TAG, "dispatchTouchEvent ACTION_DOWN");
+			break;
+		case MotionEvent.ACTION_MOVE:
+			Log.i(TAG, "dispatchTouchEvent ACTION_MOVE");
+			break;
+		case MotionEvent.ACTION_UP:
+			break;
+
+		default:
+			break;
+		}
+		return super.dispatchTouchEvent(ev);
+	}
+	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		boolean intercepter=false;
 		switch (ev.getAction()) {
@@ -43,13 +57,12 @@ public class HorizontalScrollView extends LinearLayout{
 			int deltaX=(int)ev.getX()-downx;
 			int deltaY=(int)ev.getY()-downy;
 			if(Math.abs(deltaX)>Math.abs(deltaY)){
-				Log.i(TAG, "intercepter   true \tX:"+ev.getX()+"  \ty:"+ev.getY());
+				Log.i(TAG, "ACTION_MOVE intercepter   true \tX:"+ev.getX()+"  \ty:"+ev.getY());
 				intercepter=true;
-				mGestureDetector = new GestureDetector(context, new CustomGestureListener());
-				first=true;
+				initGesture();
 			}else{
 				intercepter=false;
-				Log.i(TAG, "intercepter   false");
+				Log.i(TAG, " ACTION_MOVE intercepter   false");
 			}
 			break;
 		case MotionEvent.ACTION_UP:
@@ -60,6 +73,11 @@ public class HorizontalScrollView extends LinearLayout{
 			break;
 		}
 		return intercepter;
+	}
+	private void initGesture() {
+		mGestureDetector = new GestureDetector(context, new CustomGestureListener());
+		first=true;
+		
 	}
 	public HorizontalScrollView(Context context, AttributeSet attrs) {
 		this(context, attrs,0);
@@ -104,7 +122,7 @@ public class HorizontalScrollView extends LinearLayout{
 //				Log.i(TAG, "get Sy" + getScrollY());
 				break;
 			default:
-				Log.i(TAG, "mGestureDetector\tX:"+event.getX()+"  \ty:"+event.getY());
+				Log.i(TAG, "ACTION_Move mGestureDetector\tX:"+event.getX()+"  \ty:"+event.getY());
 				return mGestureDetector.onTouchEvent(event);
 			}
 			return super.onTouchEvent(event);
@@ -118,7 +136,6 @@ public class HorizontalScrollView extends LinearLayout{
 
 			@Override
 			public void onShowPress(MotionEvent e) {
-				
 			}
 
 			@Override
