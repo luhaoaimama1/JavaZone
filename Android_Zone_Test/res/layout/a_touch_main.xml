@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.mylib_test.activity.touch.view.LinearCustom xmlns:android="http://schemas.android.com/apk/res/android"
+<view.FlowLayout_Zone xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flowLayoutZone1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ff0000"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content" >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+    <Button
+        android:id="@+id/veclocityTracker"
+        android:onClick="onClick"
+        android:layout_margin="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VeclocityTracker学习" />
+    <Button
+        android:id="@+id/gestureDetectorActivity"
+        android:onClick="onClick"
+        android:layout_margin="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GestureDetector学习" />
+    <Button
+        android:id="@+id/scrollerView"
+        android:onClick="onClick"
+        android:layout_margin="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ScrollerView学习" />
+    <Button
+        android:id="@+id/conflict1"
+        android:onClick="onClick"
+        android:layout_margin="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="横竖滑动冲突解决尝试" />
 
-    <com.example.mylib_test.activity.touch.view.ViewCustom
-        android:id="@+id/viewCustom1"
-        android:layout_width="fill_parent"
-        android:layout_height="400dp"
-        android:background="#00ff00" />
 
-</com.example.mylib_test.activity.touch.view.LinearCustom>
+</view.FlowLayout_Zone>
