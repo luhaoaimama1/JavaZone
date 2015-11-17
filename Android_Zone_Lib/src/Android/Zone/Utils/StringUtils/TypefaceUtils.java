@@ -1,4 +1,4 @@
-package Android.Zone.Utils;
+package Android.Zone.Utils.StringUtils;
 
 import android.content.Context;
 import android.graphics.Typeface;

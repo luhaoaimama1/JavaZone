@@ -1,6 +1,7 @@
 package com.zone.cn;
 
 import java.io.File;
+
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -12,8 +13,9 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.zone.cn.cache.FileCache;
 import com.zone.cn.entity.User;
+
 import Android.Zone.Utils.SharedUtils;
-import Android.Zone.Utils.TypefaceUtils;
+import Android.Zone.Utils.StringUtils.TypefaceUtils;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;

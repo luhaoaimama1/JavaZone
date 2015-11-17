@@ -1,7 +1,7 @@
 package com.zone.cn.ui;
 import java.util.List;
 
-import Android.Zone.Utils.TypefaceUtils;
+import Android.Zone.Utils.StringUtils.TypefaceUtils;
 import Java.Zone.Log.PrintUtils;
 import android.os.Message;
 import android.view.MotionEvent;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import com.zone.cn.Apps;
 import com.zone.cn.R;
 import com.zone.cn.entity.User;
