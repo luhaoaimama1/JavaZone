@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import Android.Zone.Features.FeaturesActivity;
 import Android.Zone.Features.Feature_Pic;
 public class Photo_Shot_MainActivity extends FeaturesActivity{
 	private Feature_Pic feature_Pic;
-
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);

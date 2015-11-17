@@ -2,6 +2,8 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.mylib_test.R;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
@@ -11,12 +13,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class FlowLayout_Zone extends LinearLayout{
-	private boolean log=false;
+	private boolean log=true;
 	private static final String TAG="FlowLayout_Zone";
 	public FlowLayout_Zone(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-		
 	//line属性： lineWidthlist lineHeightList
 	private List<Integer> lineWidthlist;
 	private List<Integer> lineHeightList;
@@ -45,7 +46,6 @@ public class FlowLayout_Zone extends LinearLayout{
 		int widthSize=MeasureSpec.getSize(widthMeasureSpec);
 		int heightSize=MeasureSpec.getMode(heightMeasureSpec);
 		measureChildren(widthMeasureSpec, heightMeasureSpec);
-		
 		//自己测量的宽高   主要用于 AT_MOST
 		int width=0;
 		int height=0;
@@ -127,7 +127,6 @@ public class FlowLayout_Zone extends LinearLayout{
 		for (Integer item : lineWidthlist) {
 			width=Math.max(width, item);
 		}
-
 		/**
 		 * 如果是wrap_content设置为我们计算的值
 		 * 否则：直接设置为父容器计算的值
