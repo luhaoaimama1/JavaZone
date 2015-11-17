@@ -30,8 +30,17 @@ public class TouchMainActivity extends Activity implements OnClickListener{
 		case R.id.scrollerView:
 			startActivity(new Intent(this,ScrollerActivity.class));
 			break;
-		case R.id.conflict1:
-			startActivity(new Intent(this,Conflict1Activity.class));
+		case R.id.outConflict1:
+			startActivity(new Intent(this,Conflict1Activity.class).putExtra("type", "out"));
+			break;
+		case R.id.innerConflict1:
+			startActivity(new Intent(this,Conflict1Activity.class).putExtra("type", "inner"));
+			break;
+		case R.id.onTouchConflict1:
+			startActivity(new Intent(this,Conflict1Activity.class).putExtra("type", "innerOntouch"));
+			break;
+		case R.id.frameConflict1:
+			startActivity(new Intent(this,Conflict1Activity.class).putExtra("type", "frame"));
 			break;
 
 		default:

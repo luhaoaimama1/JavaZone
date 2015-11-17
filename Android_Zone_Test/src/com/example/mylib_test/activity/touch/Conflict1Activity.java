@@ -15,15 +15,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class Conflict1Activity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.a_touch_confict1);
+		String type = getIntent().getStringExtra("type");
+		if ("out".equals(type)) {
+			setContentView(R.layout.a_touch_confict1);
+		} else if ("frame".equals(type)) {
+			setContentView(R.layout.a_touch_confict1_frame);
+		}else if("innerOntouch".equals(type)){
+			setContentView(R.layout.a_touch_confict1_ontouch);
+		} else {
+			setContentView(R.layout.a_touch_confict1_inner);
+		}
+		
 		ListView lv=(ListView) findViewById(R.id.lv);
 		List<String> temp = Arrays.asList(Images.imageThumbUrls);
-		lv.setAdapter(new Adapter(this, temp, R.layout.imageitem));
+		lv.setAdapter(new Adapter(this, temp, R.layout.item_textview));
 	}
 	public class Adapter extends Adapter_Zone<String>{
 
@@ -34,8 +45,8 @@ public class Conflict1Activity extends Activity{
 		@Override
 		public void setData(Map<Integer, View> viewMap, String data,
 				int position) {
-			ImageView iv=(ImageView) viewMap.get(R.id.iv);
-			ImageLoader.getInstance().displayImage(data, iv);
+			TextView tv=(TextView) viewMap.get(R.id.tv);
+			tv.setText(data);
 		}
 		
 	} 

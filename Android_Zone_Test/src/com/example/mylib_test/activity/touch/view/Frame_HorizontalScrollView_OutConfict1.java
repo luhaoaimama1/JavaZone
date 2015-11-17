@@ -9,28 +9,26 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 
 
-public class HorizontalScrollView extends LinearLayout{
-	private static final String TAG = "HorizontalScrollView";
+public class Frame_HorizontalScrollView_OutConfict1 extends LinearLayout{
+	private static final String TAG = "Frame_HorizontalScrollView_OutConfict1";
 	private Scroller mScroller;
 	private GestureDetector mGestureDetector;
 	private Context context;
 	
 	
 
-	public HorizontalScrollView(Context context, AttributeSet attrs,
+	public Frame_HorizontalScrollView_OutConfict1(Context context, AttributeSet attrs,
 			int defStyle) {
 		super(context, attrs, defStyle);
 		mScroller = new Scroller(context);
 		this.context=context;
 	}
 
-	private int mLastX,mLastY;
-	private int downx,downy;
-	private boolean first;
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN :
+			resetGesture();
 			Log.i(TAG, "dispatchTouchEvent ACTION_DOWN");
 			break;
 		case MotionEvent.ACTION_MOVE:
@@ -44,6 +42,14 @@ public class HorizontalScrollView extends LinearLayout{
 		}
 		return super.dispatchTouchEvent(ev);
 	}
+	
+	private void resetGesture() {
+		mGestureDetector = new GestureDetector(context,	new CustomGestureListener());
+		first = true;
+	}
+
+	private int downx,downy;
+	private boolean first;
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		boolean intercepter=false;
@@ -59,7 +65,6 @@ public class HorizontalScrollView extends LinearLayout{
 			if(Math.abs(deltaX)>Math.abs(deltaY)){
 				Log.i(TAG, "ACTION_MOVE intercepter   true \tX:"+ev.getX()+"  \ty:"+ev.getY());
 				intercepter=true;
-				initGesture();
 			}else{
 				intercepter=false;
 				Log.i(TAG, " ACTION_MOVE intercepter   false");
@@ -74,16 +79,12 @@ public class HorizontalScrollView extends LinearLayout{
 		}
 		return intercepter;
 	}
-	private void initGesture() {
-		mGestureDetector = new GestureDetector(context, new CustomGestureListener());
-		first=true;
-		
-	}
-	public HorizontalScrollView(Context context, AttributeSet attrs) {
+
+	public Frame_HorizontalScrollView_OutConfict1(Context context, AttributeSet attrs) {
 		this(context, attrs,0);
 	}
 
-	public HorizontalScrollView(Context context) {
+	public Frame_HorizontalScrollView_OutConfict1(Context context) {
 		this(context,null);
 	}
 	//调用此方法滚动到目标位置

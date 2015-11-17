@@ -52,6 +52,13 @@
             android:layout_margin="4dp"
             android:text="位图软缓存工具类测试"
             android:onClick="onClick" />
+        <Button
+            android:id="@+id/getPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="正则提取手机号"
+            android:onClick="onClick" />
 
     </view.FlowLayout_Zone>
 

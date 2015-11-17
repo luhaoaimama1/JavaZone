@@ -69,6 +69,9 @@ public class Utils_MainActivity extends Activity implements OnClickListener{
 		case R.id.bitmapTest:
 			startActivity(new Intent(this,SoftTestActivity.class));
 			break;
+		case R.id.getPhone:
+			startActivity(new Intent(this,GetPhoneTest.class));
+			break;
 
 		default:
 			break;
