@@ -18,15 +18,21 @@ import Android.Zone.Http.DownFile.DownLoader.ProgressListener;
 import Android.Zone.Http.MyConn_Utils.CallBack;
 import Android.Zone.Http.MyConn_Utils.FileUpLoad_CallBack;
 import Android.Zone.SD.FileUtils_SD;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class Http_MainActivity extends Activity implements OnClickListener{
+public class Http_MainActivity extends Activity implements OnClickListener {
 	 final	String UrlPath = "http://192.168.1.102:8008/Test/log";
 	Map<String,Object> map= new HashMap<String, Object>();
 	Map<String, String> params = new HashMap<String, String>();
@@ -34,6 +40,24 @@ public class Http_MainActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_http_test);
+		//这段　只是学习下handler～　
+		new Thread(){
+			@SuppressLint("NewApi")
+			public void run() {
+				Looper.prepare();
+				//Handler.Callback 还必须这么写　
+				Handler abc=new Handler(new Handler.Callback() {
+					
+					@Override
+					public boolean handleMessage(Message msg) {
+						return false;
+					}
+				});
+				Looper.loop();
+				Looper.myLooper().quitSafely();
+			};
+		}.start();
+		
 	}
 	@Override
 	public void onClick(View v) {
