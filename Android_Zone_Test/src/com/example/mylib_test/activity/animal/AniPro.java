@@ -3,15 +3,19 @@ package com.example.mylib_test.activity.animal;
 import com.example.mylib_test.R;
 
 import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
 public class AniPro extends Activity {
@@ -41,6 +45,7 @@ public class AniPro extends Activity {
         animSet.setInterpolator(new LinearInterpolator());  
         //两个动画同时执行  
         animSet.playTogether(anim1, anim2);  
+//        animSet.playSequentially(anim1, anim2); 序列播放
         animSet.start();  
     }  
   
@@ -50,7 +55,6 @@ public class AniPro extends Activity {
      */  
     public void paowuxian(View view)  
     {  
-  
         ValueAnimator valueAnimator = new ValueAnimator();  
         valueAnimator.setDuration(3000);  
         valueAnimator.setObjectValues(new PointF(0, 0));  
