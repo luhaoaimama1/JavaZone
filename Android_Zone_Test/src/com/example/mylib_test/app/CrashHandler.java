@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -30,6 +31,8 @@ import android.widget.Toast;
 
 public class CrashHandler implements UncaughtExceptionHandler {
 	private static final String TAG = "aaa";
+	private static final String Dirpath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "crash";
+	
 	private Thread.UncaughtExceptionHandler mDefaultHandler;// 系统默认的UncaughtException处理类
 	private static CrashHandler INSTANCE = new CrashHandler();// CrashHandler2实例
 	private Context mContext;// 程序的Context对象
@@ -37,6 +40,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	private Map<String, String> info = new HashMap<String, String>();// 用来存储设备信息和异常信息
 	private SimpleDateFormat format = new SimpleDateFormat(
 			"yyyy-MM-dd-HH-mm-ss");// 用于格式化日期,作为日志文件名的一部分
+	private SimpleDateFormat format2 = new SimpleDateFormat(
+			"yyyy-MM-dd HH-mm-ss");// 用于格式化日期,作为日志文件名的一部分
 
 	/** 保证只有一个CrashHandler2实例 */
 	private CrashHandler() {
@@ -72,19 +77,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
-			// 设置1s之后重新启动程序
-		//TODO 注释了
-//			Intent intent = new Intent(mContext, WelcomeActivity.class);
-//			PendingIntent restartIntent = PendingIntent.getActivity(mContext,
-//					0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
-//			AlarmManager mgr = (AlarmManager) mContext
-//					.getSystemService(Context.ALARM_SERVICE);
-//			mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,
-//					restartIntent);
-
-			// 退出程序
-//			Apis.getInstance().exitApp();
+			 // 退出程序
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
 		}
 	}
 
@@ -110,7 +105,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		collectDeviceInfo(mContext);
 		// 保存日志文件
 		saveCrashInfo2File(ex);
-		// 上传日志
+		// TODO 上传日志 可以在外边做
 
 		return true;
 	}
@@ -152,10 +147,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
 	private String saveCrashInfo2File(Throwable ex) {
 		StringBuffer sb = new StringBuffer();
+		Date date=new Date();
+		sb.append("DATE"+ "=" + format2.format(date) + "\r\n");
 		for (Map.Entry<String, String> entry : info.entrySet()) {
 			String key = entry.getKey();
 			String value = entry.getValue();
-			sb.append(key + "=" + value + "\r\n");
+			if("TIME".equals(key))
+				sb.append(key + "=" + value + "\r\n");
+			else
+				sb.append(key + "=" + value + "\r\n");
 		}
 		Writer writer = new StringWriter();
 		PrintWriter pw = new PrintWriter(writer);
@@ -177,16 +177,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
 			try {
-				File dir = new File(Environment.getExternalStorageDirectory()
-						.getAbsolutePath() + File.separator + "crash");
-				Log.i("aaa", dir.toString());
+				File dir = new File(Dirpath);
+				Log.i(TAG, dir.toString());
 				if (!dir.exists())
 					dir.mkdir();
 				FileOutputStream fos = new FileOutputStream(new File(dir,
 						fileName));
 				fos.write(sb.toString().getBytes());
 				fos.close();
-				Log.i("aaa", "fileName = " + fileName);
+				Log.i(TAG, "fileName = " + fileName);
 				return fileName;
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

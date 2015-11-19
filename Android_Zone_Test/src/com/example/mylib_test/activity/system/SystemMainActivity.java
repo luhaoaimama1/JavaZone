@@ -7,8 +7,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class SystemMainActivity extends Activity{
+public class SystemMainActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +36,16 @@ public class SystemMainActivity extends Activity{
 		}
 		ToastUtils.showLong(this, "∏……∂∞°±≈ˆŒ“");
 		return super.onOptionsItemSelected(item);
+	}
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.crash:
+			throw new NullPointerException("crash test");
+
+		default:
+			break;
+		}
 	}
 
 }
