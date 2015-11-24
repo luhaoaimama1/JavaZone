@@ -94,10 +94,19 @@
         android:layout_margin="4dp"
         android:onClick="onClick"
         android:text="弧线自定义" />
-    <view.testIng.CircleProgressView
+    <Button
+        android:id="@+id/bt_hero2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:text="音向" />
+    <Button
+        android:id="@+id/bt_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="scroll" />
 
 </view.FlowLayout_Zone>
