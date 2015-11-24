@@ -108,6 +108,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.custom_view.AndroidHeroActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.photo_shot.ClipTest"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

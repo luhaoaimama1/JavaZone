@@ -36,6 +36,9 @@ public class CustomView_MainActivity  extends Activity implements OnClickListene
 		case R.id.square_test:
 			startActivity(new Intent(this,SquareTestActivity.class));
 			break;
+		case R.id.bt_hero1:
+			
+			break;
 
 		default:
 			break;

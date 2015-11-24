@@ -1,7 +1,9 @@
 package view;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
@@ -50,7 +52,6 @@ public abstract class ViewGroup_Standard extends LinearLayout {
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
 		onMeasureReset();
 
 		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -122,6 +123,12 @@ public abstract class ViewGroup_Standard extends LinearLayout {
 		for (ViewAttr item : childList) {
 			item.layoutSupporVisibilty();
 		}
+	}
+	@Override
+	protected void onDraw(Canvas canvas) {
+		//在回调父类方法之前    实现自己的逻辑
+		super.onDraw(canvas);//此方法来实现原生控件的功能
+		//在回调父类方法之后    实现自己的逻辑
 	}
 
 }
