@@ -132,6 +132,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.animal.CanvasTest"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.wifi.Wifi3g_MainActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

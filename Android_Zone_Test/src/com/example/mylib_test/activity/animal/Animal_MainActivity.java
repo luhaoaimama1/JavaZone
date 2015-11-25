@@ -23,6 +23,9 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 		case R.id.color:
 			startActivity(new Intent(this,ColorTry.class));
 			break;
+		case R.id.bt_canvas:
+			startActivity(new Intent(this,CanvasTest.class));
+			break;
 
 		default:
 			break;

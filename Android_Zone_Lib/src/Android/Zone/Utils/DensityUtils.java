@@ -5,7 +5,8 @@ import android.util.TypedValue;
 
 /**
  * 常用单位转换的辅助类
- * 
+ * <br>1dp 在个个分辨率的换算比例
+ * <br>ldpi:mdpi:hdpi:xdpi:xxdpi=3:4:6:8:12
  * @author zhy
  * 
  */
