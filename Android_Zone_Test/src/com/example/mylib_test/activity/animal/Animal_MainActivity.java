@@ -24,7 +24,13 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 			startActivity(new Intent(this,ColorTry.class));
 			break;
 		case R.id.bt_canvas:
-			startActivity(new Intent(this,CanvasTest.class));
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "layer"));
+			break;
+		case R.id.bt_PorterDuff:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "porterDuff"));
+			break;
+		case R.id.bt_shader:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "shader"));
 			break;
 
 		default:
