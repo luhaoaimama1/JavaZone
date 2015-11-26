@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:onClick="onClick"
-        android:text="colorReplace" />
+        android:text="ColorMarix研究" />
     <Button
         android:id="@+id/bt_canvas"
         android:layout_width="wrap_content"
@@ -40,5 +40,33 @@
         android:layout_margin="4dp"
         android:onClick="onClick"
         android:text="shader研究" />
+    <Button
+        android:id="@+id/bt_surfaceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="SurfaceView研究" />
+    <Button
+        android:id="@+id/bt_surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="SurfaceView_绘图版" />
+    <Button
+        android:id="@+id/bt_Pixels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="Pixels研究" />
+    <Button
+        android:id="@+id/bt_MatrixPre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="Matrix(MapPoint 、逆向矩阵invert)研究" />
 
 </view.FlowLayout_Zone>

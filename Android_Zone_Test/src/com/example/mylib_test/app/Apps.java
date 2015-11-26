@@ -37,6 +37,6 @@ public class Apps extends Application {
 		//初始化 sqlite
 		//初始化ImageLoader
 		ImageLoaderConfig.initImageLoader(getApplicationContext());
-		CrashHandler.getInstance().init(this);
+//		CrashHandler.getInstance().init(this);
 	}
 }

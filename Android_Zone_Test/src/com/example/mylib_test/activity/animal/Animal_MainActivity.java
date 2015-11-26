@@ -21,7 +21,7 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 			startActivity(new Intent(this,AniPro.class));
 			break;
 		case R.id.color:
-			startActivity(new Intent(this,ColorTry.class));
+			startActivity(new Intent(this,ColorMarixTry.class));
 			break;
 		case R.id.bt_canvas:
 			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "layer"));
@@ -31,6 +31,18 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.bt_shader:
 			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "shader"));
+			break;
+		case R.id.bt_surfaceView:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "surfaceView"));
+			break;
+		case R.id.bt_surface:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_surface"));
+			break;
+		case R.id.bt_MatrixPre:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_MatrixPre"));
+			break;
+		case R.id.bt_Pixels:
+			startActivity(new Intent(this,PixelsAcitivity.class));
 			break;
 
 		default:
