@@ -38,5 +38,11 @@ public class Apps extends Application {
 		//初始化ImageLoader
 		ImageLoaderConfig.initImageLoader(getApplicationContext());
 //		CrashHandler.getInstance().init(this);
+
+//		每次loading页 发送bug日志  如果发送成功就删除
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(
+//				this));
+
+
 	}
 }

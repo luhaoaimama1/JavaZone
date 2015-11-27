@@ -91,12 +91,13 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	 *            href="\"http://www.eoeandroid.com/home.php?mod=space&uid=7300\""
 	 *            target="\"_blank\"">@return</a> true 如果处理了该异常信息;否则返回false.
 	 */
-	public boolean handleException(Throwable ex) {
+	public boolean handleException(final Throwable ex) {
 		if (ex == null)
 			return false;
 		new Thread() {
 			public void run() {
 				Looper.prepare();
+				ex.printStackTrace();
 				Toast.makeText(mContext, "很抱歉,程序出现异常,即将退出", 0).show();
 				Looper.loop();
 			}

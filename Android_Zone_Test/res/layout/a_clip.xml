@@ -7,7 +7,7 @@
         android:id="@+id/iv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="center" />
 
     <Button
         android:id="@+id/bt1"

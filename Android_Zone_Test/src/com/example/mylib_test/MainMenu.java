@@ -21,18 +21,19 @@ public class MainMenu {
 	public static List<MenuEntity> menu=new ArrayList<MenuEntity>();
 	
 	static{
-		menu.add(new MenuEntity("手机 文件/IO 测试", FileTestActivity.class)) ;
-		menu.add(new MenuEntity("wifi 3g测试", Wifi3g_MainActivity.class)) ;
-		menu.add(new MenuEntity("db测试", Db_MainActivity.class)) ;
 		menu.add(new MenuEntity("http测试Thread测试(和handle的测试)", Http_MainActivity.class)) ;
 		menu.add(new MenuEntity("pop dialog测试(还有 文字高亮 链接等效果)", Dialog_Pop_Adapter_MainActivity.class)) ;
-		menu.add(new MenuEntity("照片和拍摄(图片裁剪等辅助测试)", Photo_Shot_MainActivity.class)) ;
-		menu.add(new MenuEntity("第三方 （ImageLoader等）", ThirdParty_MainActivity.class)) ;
-		menu.add(new MenuEntity("动画(属性动画 和 正常动画(颜色过滤、画布等测试))", Animal_MainActivity.class)) ;
+		menu.add(new MenuEntity("动画、surfaceView、绘图方面的研究", Animal_MainActivity.class)) ;
+		menu.add(new MenuEntity("onTouch事件传递与其辅助类的研究", TouchMainActivity.class)) ;
 		menu.add(new MenuEntity("自定义控件", CustomView_MainActivity.class)) ;
+		menu.add(new MenuEntity("第三方 （ImageLoader等）", ThirdParty_MainActivity.class)) ;
 		menu.add(new MenuEntity("工具箱Utils的测试", Utils_MainActivity.class)) ;
-		menu.add(new MenuEntity("onTouch等触摸的研究", TouchMainActivity.class)) ;
+//		menu.add(new MenuEntity("db测试", Db_MainActivity.class)) ;
+		menu.add(new MenuEntity("手机 文件/IO 测试", FileTestActivity.class)) ;
+		menu.add(new MenuEntity("wifi 3g 监听网络情况测试", Wifi3g_MainActivity.class)) ;
+		menu.add(new MenuEntity("照片和拍摄(图片裁剪等辅助测试)", Photo_Shot_MainActivity.class)) ;
 		menu.add(new MenuEntity("系统控件等的研究", SystemMainActivity.class)) ;
+
 	}
 
 }

@@ -7,6 +7,9 @@ import com.example.mylib_test.R;
 
 import Android.Zone.Image.Compress_Sample_Utils;
 import Android.Zone.SD.FileUtils_SD;
+import Android.Zone.Utils.MeasureUtils;
+import Android.Zone.Utils.MeasureUtils.GlobalState;
+import Android.Zone.Utils.MeasureUtils.OnMeasureListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,6 +19,9 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -27,12 +33,23 @@ public class ClipTest extends Activity implements OnClickListener{
 	private static final int CHOOSE_BIG_PICTURE=2;
 	private File imgFile;
 	private ImageView imageView;
+	private Bitmap bitmap;
+	private Bitmap chipSmallBt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_clip);
-		 imgFile=FileUtils_SD.FolderCreateOrGet("","abc.jpg");
-		 imageView=(ImageView) findViewById(R.id.iv);
+		imgFile = FileUtils_SD.FolderCreateOrGet("", "abc.jpg");
+		imageView = (ImageView) findViewById(R.id.iv);
+		MeasureUtils.measureView_addGlobal(imageView, GlobalState.MEASURE_REMOVE_LISNTER, new OnMeasureListener() {
+			
+			@Override
+			public void measureResult(View v, int view_width, int view_height) {
+				bitmap = Compress_Sample_Utils.getSampleBitmap(imgFile.getPath(),imageView.getWidth(), null);
+				imageView.setImageBitmap(bitmap);
+			}
+		});
+		
 	}
 	@Override
 	public void onClick(View v) {
@@ -51,37 +68,19 @@ public class ClipTest extends Activity implements OnClickListener{
 		}
 	}
 
+	private void saveSmall() {
+		chipSmallBt = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth()/2,  bitmap.getHeight());
+		imageView.setImageBitmap(chipSmallBt);
+	}
 	private void saveBig() {
 		cropImageUri( Uri.parse(imgFile.getPath()), 100, 100, CHOOSE_BIG_PICTURE);
-	}
-
-	private void saveSmall() {
-		Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getPath());
-		Bitmap btemp=bitmap.copy(Config.ARGB_4444, true);
-		Canvas can=new Canvas(btemp);
-		can.clipRect(new Rect(0, 0, 100, 100));
-		can.save();
-		imageView.setImageBitmap(btemp);
-		
-//		Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
-//		intent.setType("image/*");
-//		intent.putExtra("crop", "true");
-//		intent.putExtra("aspectX", 2);
-//		intent.putExtra("aspectY", 1);
-//		intent.putExtra("outputX", 200);
-//		intent.putExtra("outputY", 100);
-//		intent.putExtra("scale", true);
-//		intent.putExtra("return-data", true);
-//		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-//		intent.putExtra("noFaceDetection", true); // no face detection
-//		startActivityForResult(intent, CHOOSE_SMALL_PICTURE);
 	}
 	
 	private void cropImageUri(Uri uri, int outputX, int outputY, int requestCode){
 		 Intent intent = new Intent("com.android.camera.action.CROP");
 		 intent.setDataAndType(uri, "image/*");
-		 intent.putExtra("crop", "true");
-		 intent.putExtra("aspectX", 2);
+		 intent.putExtra("crop", "true"); // crop=true 有这句才能出来最后的裁剪页面.  
+		 intent.putExtra("aspectX", 2);// 这两项为裁剪框的比例.  
 		 intent.putExtra("aspectY", 1);
 		 intent.putExtra("outputX", outputX);
 		 intent.putExtra("outputY", outputY);
@@ -89,6 +88,7 @@ public class ClipTest extends Activity implements OnClickListener{
 		 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 		 intent.putExtra("return-data", false);
 		 intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+		 intent.putExtra("output", Uri.fromFile(new File("SDCard/1.jpg")));//输出地址  
 		 intent.putExtra("noFaceDetection", true); // no face detection
 		 startActivityForResult(intent, requestCode);
 		}

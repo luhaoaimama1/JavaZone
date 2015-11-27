@@ -41,8 +41,14 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 		case R.id.bt_MatrixPre:
 			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_MatrixPre"));
 			break;
+		case R.id.bt_bitmap:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_bitmap"));
+			break;
 		case R.id.bt_Pixels:
 			startActivity(new Intent(this,PixelsAcitivity.class));
+			break;
+		case R.id.bt_customAni:
+			startActivity(new Intent(this,CustomAniActivity.class));
 			break;
 
 		default:

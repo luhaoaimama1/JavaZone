@@ -1,6 +1,7 @@
 package com.example.mylib_test.activity.animal;
 
 import com.example.mylib_test.R;
+import com.example.mylib_test.activity.animal.viewa.BitmapTry;
 import com.example.mylib_test.activity.animal.viewa.Canvas1;
 import com.example.mylib_test.activity.animal.viewa.MatrixView;
 import com.example.mylib_test.activity.animal.viewa.SimpleDraw;
@@ -35,6 +36,9 @@ public class CanvasTest extends Activity{
 		if("bt_MatrixPre".equals(type)){
 				setContentView(new MatrixView(this));
 			}
+		if("bt_bitmap".equals(type)){
+			setContentView(R.layout.a_btimap_copy);
+		}
 		
 	
 	}
