@@ -1,4 +1,4 @@
-package Android.Zone.Utils;
+package Android.Zone.Utils.thirdPlace;
 
 import android.view.View;
 import android.widget.BaseAdapter;

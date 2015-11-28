@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5Utils {
+	//把key进行MD5加密
 	public static String hashKeyForDisk(String key) {  
 	    String cacheKey;  
 	    try {  

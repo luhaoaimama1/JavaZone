@@ -43,9 +43,9 @@ public class RexUtils {
 		ru.addRule("\\D(\\d{11})\\D");
 		ru.addRule("\\D(\\d{3}-\\d{4}-\\d{4})\\D");
 		ru.addRule("\\D(\\d{10})\\D");
-		ru.addRule("\\D(\\d{2}-{1}\\d{4}-\\d{4})\\D");
+		ru.addRule("\\D(\\d{3}-\\d{3}-\\d{4})\\D");
 		ru.addRule("\\D(\\d{8})\\D");
-		ru.addRule("\\D(\\d{4}-{1}\\d{4})\\D");
+		ru.addRule("\\D(\\d{4}-\\d{4})\\D");
 		return getValuePhone(str,ru.build());
 	}
 	/**

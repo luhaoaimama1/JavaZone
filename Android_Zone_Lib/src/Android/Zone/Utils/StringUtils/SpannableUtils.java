@@ -22,9 +22,7 @@ public class SpannableUtils {
 		List<PhoneEntity> phones = RexUtils.byContextGetPhone(contentStr);
 		SpannableString ss = new SpannableString(contentStr);
 		for (PhoneEntity phoneEntity : phones) {
-			ss.setSpan(new UnderlineSpan(), phoneEntity.start, phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-			ss.setSpan(new ForegroundColorSpan(Color.BLUE), phoneEntity.start, 
-					phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+			
 			final String phone = phoneEntity.str;
 			ss.setSpan(new ClickableSpan(){
 		         //在onClick方法中可以编写单击链接时要执行的动作
@@ -33,7 +31,12 @@ public class SpannableUtils {
 		        	 listener.onClick(widget,phone);
 		          }
 		      },phoneEntity.start, phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+			ss.setSpan(new UnderlineSpan(), phoneEntity.start, phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+			//因为　ClickableSpan　会变成蓝色的　即必须在后边设置颜色
+			ss.setSpan(new ForegroundColorSpan(Color.RED), phoneEntity.start, 
+					phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 		}
+		
 		tv.setText(ss);
 		//在单击链接时凡是有要执行的动作，都必须设置MovementMethod对象
 		tv.setMovementMethod(LinkMovementMethod.getInstance());
