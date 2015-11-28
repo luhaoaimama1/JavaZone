@@ -4,15 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-
 import com.example.mylib_test.R;
-
-import Android.Zone.Log.LogUtils;
 import Android.Zone.Log.ToastUtils;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.SD.SdSituation;
 import Java.Zone.IO.IOUtils;
-import Java.Zone.Log.PrintUtils;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;

@@ -7,20 +7,33 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import Android.Zone.Features.FeaturesActivity;
 import Android.Zone.Features.Feature_Pic;
-public class Photo_Shot_MainActivity extends FeaturesActivity{
+public class Photo_Shot_MainActivity extends FeaturesActivity implements OnClickListener{
 	private Feature_Pic feature_Pic;
 	@Override
-	protected void onCreate(Bundle bundle) {
-		super.onCreate(bundle);
+	public void setContentView() {
+		System.err.println("Photo_Shot_MainActivity setContentView");
 		setContentView(R.layout.a_photo_shot);
 	}
 	@Override
+	public void findIDs() {
+		
+	}
+	@Override
+	public void initData() {
+		
+	}
+	@Override
+	public void setListener() {
+		
+	}
+	
+	@Override
 	public void onClick(View v) {
-		super.onClick(v);
 		switch (v.getId()) {
 		case R.id.shot:
 			feature_Pic.openCamera();
@@ -37,7 +50,7 @@ public class Photo_Shot_MainActivity extends FeaturesActivity{
 	}
 
 	@Override
-	protected void addFeatureMethod() {
+	protected void init2AddFeature() {
 		feature_Pic = new Feature_Pic(this) {
 			@Override
 			protected void getReturnedPicPath(String path) {
@@ -50,5 +63,6 @@ public class Photo_Shot_MainActivity extends FeaturesActivity{
 		};
 		addFeature(feature_Pic);
 	}
+
 
 }

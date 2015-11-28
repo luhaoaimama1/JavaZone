@@ -14,16 +14,20 @@ package com.example.mylib_test.app;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+import Android.Zone.Log.Logger_Zone;
+import Android.Zone.Log.Logger_Zone.LogStatue;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.os.Build;
 import android.os.StrictMode;
+
 import com.example.mylib_test.app.config.ImageLoaderConfig;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
 public class Apps extends Application {
+
 	// SDCard路径
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@SuppressWarnings("unused")
@@ -34,9 +38,13 @@ public class Apps extends Application {
 			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
 		}
+		
+		Logger_Zone.setAllLogStatue(LogStatue.Child_Control);
+		
 		//初始化 sqlite
 		//初始化ImageLoader
 		ImageLoaderConfig.initImageLoader(getApplicationContext());
+		
 //		CrashHandler.getInstance().init(this);
 
 //		每次loading页 发送bug日志  如果发送成功就删除

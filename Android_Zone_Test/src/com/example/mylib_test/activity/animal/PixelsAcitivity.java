@@ -1,7 +1,10 @@
 package com.example.mylib_test.activity.animal;
 
-import com.example.mylib_test.R;
 
+import com.example.mylib_test.R;
+import com.example.mylib_test.app.Apps;
+import com.example.mylib_test.app.Constant;
+import Android.Zone.Log.Logger_Zone;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -16,9 +19,13 @@ public class PixelsAcitivity extends Activity {
 	private int[] pixels;
 	private int[] newPixels;
 	private Bitmap newBt;
+	private Logger_Zone logger;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		logger=new Logger_Zone(PixelsAcitivity.class, Constant.Logger_Config);
+		logger.logLocation("定位腹部");
+		logger.log("真的成不啊");
 		iv=new ImageView(this);
 		setContentView(iv);
 		
