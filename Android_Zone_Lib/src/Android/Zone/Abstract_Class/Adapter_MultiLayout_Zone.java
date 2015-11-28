@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import Android.Zone.Constant;
+import Android.Zone.Log.Logger_Zone;
 import Android.Zone.Utils.ViewIDsUtils;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,7 +22,7 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 	private int[] layout_ids;
 	private LayoutInflater mInflater;// 得到一个LayoutInfalter对象用来导入布局
 	private int[] idArray;// 得到一个LayoutInfalter对象用来导入布局
-	private boolean log=false;
+	private Logger_Zone logger;
 	/**
 	 * @param context
 	 * @param data
@@ -29,6 +32,8 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 		this.data = data;
 		this.layout_ids=layout_ids;
 		mInflater = LayoutInflater.from(context);
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
 	}
 
 	public int getItemViewType(int position) {
@@ -90,22 +95,18 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 				}
 			//给View添加监听 
 			convertView.setTag(holder);
-			  if (log) {
-				System.out.println("初始化：position:" + position);
-			}
+			logger.log("初始化：position:" + position);
 		} else {
 			holder = ((ViewHolder) convertView.getTag());
-			if (log) {
-				System.out.println("复用 position:" + position);
-			}
+			logger.log("复用 position:" + position);
 		}
 		//布局都已经弄好了  就是往view里 填数据   holder里有view 有index 有该组的数据
 		T dataIndex = data.get(position);
 		setData(holder.map,dataIndex,position,holder.layoutId);
-		 if (log) {
+		
+		 if (logger.isPrint()) {
 				int type = getItemViewType(position);
-				System.out.println("getView " + position + " " + convertView
-						+ " type = " + type);
+				logger.log("getView " + position + " " + convertView+ " type = " + type);
 			}
 		return convertView;
 	}

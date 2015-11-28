@@ -17,9 +17,9 @@ public class RunProcess {
 	 * @param PingBoolean  控制什么时候停止 循环的开关 改变即关闭Ping
 	 * @param IPAddress ping的IP地址（www.baidu.com 也可以192.168.60.112）
 	 * @param context	Toast需要的Context
+	 * TODO 写的有问题
 	 */
 	public static void Ping(boolean PingBoolean, String IPAddress,Context context) {
-		MyJava_Preferences.op();
 		BufferedReader br = null;
 		try {
 			System.out.println("Ping 的值为 : ping -c 100" + IPAddress);
@@ -43,14 +43,13 @@ public class RunProcess {
 				System.out.println("Ping的结果：" + s);
 			}
 		} catch (Exception e) {
-			System.out.println("发生异常！！！：" + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				br.close();
 			} catch (IOException e) {
-				System.out.println("br流关闭异常");
+				e.printStackTrace();
 			}
-			MyJava_Preferences.ed();
 		}
 
 	}
@@ -64,11 +63,9 @@ public class RunProcess {
 	 *            文件的绝对路径
 	 */
 	public static void openExe(String string) {
-		// TODO Auto-generated method stub
 		try {
 			Runtime.getRuntime().exec("cmd /c \""+string+"\"");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("打开程序发生IOException！！！");
 		}
@@ -80,13 +77,10 @@ public class RunProcess {
 	 * @param file  文件即可
 	 */
 	public static void openExe(File file) {
-		// TODO Auto-generated method stub
 		try {
 			Runtime.getRuntime().exec("cmd /c \""+file.getCanonicalPath()+"\"");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("打开程序发生IOException！！！");
 		}
 	}
 

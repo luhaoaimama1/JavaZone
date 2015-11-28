@@ -1,6 +1,7 @@
 package Android.Zone.Features;
 
 import java.io.IOException;
+
 import Android.Zone.Log.ToastUtils;
 import Java.Zone.Log.PrintUtils;
 import android.annotation.SuppressLint;
@@ -18,6 +19,7 @@ import android.view.SurfaceHolder.Callback;
 import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 /**
  * 需要的服务如下： <br>
@@ -30,10 +32,13 @@ import android.view.View;
  * } <br>
  * 点击对焦 在onclick里 故super.onclick传递进来
  * 
+ *	TODO  初始化　和销毁功能 封装的不完善！
+ *	因为外部setonclick会顶掉这里的　故onclick就不封装了　仅仅封装方法！！！
+ * 
  * @author Zone
  * 
  */
-public abstract class Featrue_CustomCamera extends ExtraFeature {
+public abstract class Featrue_CustomCamera extends ExtraFeature{
 	public Featrue_CustomCamera(Activity activity) {
 		super(activity);
 	}
@@ -55,7 +60,6 @@ public abstract class Featrue_CustomCamera extends ExtraFeature {
 		this.camera = cam;
 		cameraCount=Camera.getNumberOfCameras();
 		this.surfaceView = surfaceView;
-		surfaceView.setOnClickListener(this);
 		// holder=surfaceView.getHolder();
 //		surfaceView.getHolder().setFixedSize(176, 164);
 		surfaceView.getHolder().addCallback(new Callback() {
@@ -107,7 +111,7 @@ public abstract class Featrue_CustomCamera extends ExtraFeature {
 	 * 对焦
 	 */
 	@SuppressLint("ShowToast")
-	protected void cameraFocus() {
+	private void cameraFocus() {
 		focusIsOk = false;
 		camera.autoFocus(new AutoFocusCallback() {
 			@Override
@@ -220,18 +224,15 @@ public abstract class Featrue_CustomCamera extends ExtraFeature {
 		}
 	}
 
-	@Override
-	public void onClick(View v) {
-		if (v == surfaceView) {
-			PrintUtils.print("对焦");
-			if (!autoFocus_ing) {
-				cameraFocus();
-			}
+	public void cameraFocus_Click(){
+		PrintUtils.print("对焦");
+		if (!autoFocus_ing) {
+			cameraFocus();
 		}
 	}
 
 	@Override
-	public void onCreate(Bundle bundle) {
+	public void init() {
 		
 	}
 
@@ -241,10 +242,8 @@ public abstract class Featrue_CustomCamera extends ExtraFeature {
 	}
 
 	@Override
-	public void onDestroy() {
+	public void destory() {
 		
 	}
-	
-	
 
 }

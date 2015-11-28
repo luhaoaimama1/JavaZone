@@ -4,6 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import Android.Zone.Constant;
+import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Log.Logger_Zone;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -13,6 +17,12 @@ import android.graphics.BitmapFactory.Options;
  *
  */
 public class Compress_Sample_Utils {
+	private static Logger_Zone logger;
+
+	static{
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
+	}
 	/**
 	 * @param filePath  仅仅解析边界的路径
 	 * @return 仅仅解析边界的Options
@@ -43,13 +53,12 @@ public class Compress_Sample_Utils {
 		if(targetHeight != null&&targetWidth != null){
 			float h_scale = opts.outHeight / targetHeight;
 			float w_scale = opts.outWidth / targetWidth;
-			System.out.println("横向缩放比：h_scale:" + h_scale);
-			System.out.println("总想缩放比：w_scale" + w_scale);
+			logger.log("横向缩放比：h_scale:" + h_scale);
+			logger.log("纵向缩放比：w_scale" + w_scale);
 			// 谁 缩放比例大用
 			simpleScale = (int) ((h_scale > w_scale) ? h_scale : w_scale);
 		}
-		
-		System.out.println("用的缩放比：simpleScale" + simpleScale);
+		logger.log("用的缩放比：simpleScale" + simpleScale);
 		if (simpleScale <= 1) {
 			// 不缩放 即原图大小
 			simpleScale = 1;
@@ -60,7 +69,7 @@ public class Compress_Sample_Utils {
 				}
 			}
 		}
-		System.out.println("最终缩放比：simpleScale" + simpleScale);
+		logger.log("最终缩放比：simpleScale" + simpleScale);
 		return simpleScale;
 	}
 
@@ -91,7 +100,7 @@ public class Compress_Sample_Utils {
 	public static Bitmap compressBitmap(Bitmap bt,int targetSize,int qualityMin) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		bt.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-		System.out.println("压缩的时候_开始_大小："+baos.toByteArray().length / 1024*4+"kb");
+		logger.log("压缩的时候_开始_大小："+baos.toByteArray().length / 1024*4+"kb");
 		int options = 100;
 		int step = 10;
 		while (baos.toByteArray().length / 1024 * 4 > targetSize) {
@@ -108,7 +117,7 @@ public class Compress_Sample_Utils {
 				break;
 			}
 		}
-		System.out.println("压缩的时候_完成后_大小："+baos.toByteArray().length / 1024*4+"kb");
+		logger.log("压缩的时候_完成后_大小："+baos.toByteArray().length / 1024*4+"kb");
 		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
 		Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
 		return bitmap;

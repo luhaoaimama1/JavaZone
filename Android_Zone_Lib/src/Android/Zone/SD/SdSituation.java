@@ -2,7 +2,9 @@ package Android.Zone.SD;
 
 import java.io.File;
 
-import Android.Zone.Setting.MyAndroid_Preferences;
+import Android.Zone.Constant;
+import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Log.Logger_Zone;
 import Java.Zone.Setting.MyJava_Preferences;
 import android.content.Context;
 import android.os.Environment;
@@ -10,7 +12,13 @@ import android.os.StatFs;
 import android.text.format.Formatter;
 
 public class SdSituation {
-	
+	private static Logger_Zone logger;
+
+
+	static{
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
+	}
 	public static File getDiskCacheDir(Context context, String fileDirName) {  
 	    String cachePath;  
 	    if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())  
@@ -118,7 +126,7 @@ public class SdSituation {
 			long left = (long) size.getAvailableBlocks();// 还剩下多少块
 			// Formatter.formatFileSize(context, left*kuai) 把byte 转化成 GB,KB什么的
 			String leftStr = Formatter.formatFileSize(context, left * kuai);
-			MyAndroid_Preferences.MyLog( "剩余空间：" + leftStr);
+			logger.log( "剩余空间：" + leftStr);
 			if (need == null) {
 				return true;
 			}
@@ -147,20 +155,20 @@ public class SdSituation {
 				needBig = needlong * 1024 * 1024 * 1024;
 				break;
 			default:
-				MyAndroid_Preferences.MyLog( "不是 KB,MB,GB 之一");
+				logger.log("不是 KB,MB,GB 之一");
 				return false;
 			}
 			if (needBig < (left * kuai)) {
 				long lin = left * kuai - needBig;
-				MyAndroid_Preferences.MyLog("用完你所需要的内存还剩：" + Formatter.formatFileSize(context, lin));
+				logger.log("用完你所需要的内存还剩：" + Formatter.formatFileSize(context, lin));
 				return true;
 			} else {
-				MyAndroid_Preferences.MyLog( "内存不足");
+				logger.log( "内存不足");
 				return false;
 			}
 
 		} else {
-			MyAndroid_Preferences.MyLog( "SD卡不存在等状况！！");
+			logger.log("SD卡不存在等状况！！");
 			return false;
 		}
 	}

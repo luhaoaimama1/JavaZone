@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-
+//**这个不能用　因为这个让acitivity不能正常的销毁
 public class ActivityCollector {
 	public static List<Activity> activities = new ArrayList<Activity>();
 

@@ -13,6 +13,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import Android.Zone.Constant;
+import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Log.Logger_Zone;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.SD.SdSituation;
 import Android.Zone.Utils.AppUtils;
@@ -33,10 +36,10 @@ public class DiskLruUtils {
 	
 	private static final String TAG="DiskLruUtils";
 	private static boolean writeLog=true;
-	public static void log(String str){
-		if (writeLog) {
-			Log.d(TAG, str);
-		}
+	private static Logger_Zone logger;
+	static{
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
 	}
 
 	private DiskLruUtils() {
@@ -118,7 +121,7 @@ public class DiskLruUtils {
 			OutputStream outputStream = editor.newOutputStream(0);  
 			if(readToOutStream(bm, outputStream)){
 				editor.commit();
-				log("addUrl:"+url);
+				logger.log("addUrl:"+url);
 			}else {  
 				editor.abort();  
 			}  
@@ -131,7 +134,7 @@ public class DiskLruUtils {
 		String key = MD5Utils.hashKeyForDisk(url);
 		try {
 			boolean temp= mDiskLruCache.remove(key);
-			log("addUrl:"+url+(temp==true?"成功":"失败"));
+			logger.log("addUrl:"+url+(temp==true?"成功":"失败"));
 			return temp;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -146,7 +149,7 @@ public class DiskLruUtils {
 			DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);
 			if(snapShot != null){
 				bitmap = BitmapFactory.decodeStream(snapShot.getInputStream(0));
-				log("getBitmapByUrl:"+url);
+				logger.log("getBitmapByUrl:"+url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

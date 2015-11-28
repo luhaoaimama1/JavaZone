@@ -1,5 +1,8 @@
 package Android.Zone.Abstract_Class;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import Android.Zone.Constant;
+import Android.Zone.Log.Logger_Zone;
 import Android.Zone.Utils.ScreenUtils;
 import android.os.Bundle;
 import android.os.Message;
@@ -7,25 +10,24 @@ import android.os.Handler.Callback;
 import android.support.v4.app.FragmentActivity;
 
 public abstract class BaseActvity extends FragmentActivity implements Callback{
-	public static int screenW;
-	public static int screenH;
+	
 	protected ImageLoader imageLoader;
+	private Logger_Zone logger;
 	@Override
 	protected void onCreate(Bundle arg0) {
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
+		logger.log("BaseActvity  onCreate");
 		super.onCreate(arg0);
-		getScreenPix();
+		ScreenUtils.getScreenPix(this);
 		imageLoader = ImageLoader.getInstance();
+		logger.log("BaseActvity  setContentView");
 		setContentView();
 		findIDs();
 		initData();
 		setListener();
 	}
 
-	private void getScreenPix() {
-		int[] screen = ScreenUtils.getScreenPix(this);
-		screenW=screen[0];
-		screenH=screen[1];
-	}
 
 	/**
 	 * 设置子类布局对象

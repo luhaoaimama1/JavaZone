@@ -6,12 +6,18 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class ScreenUtils {
+	public static int screenW;
+	public static int screenH;
+	
 	public static int[] getScreenPix(Activity context) {
 		DisplayMetrics dm = new DisplayMetrics();
 		context.getWindowManager().getDefaultDisplay().getMetrics(dm);
 		int[] screen=new int[2];
-		screen[0]=dm.widthPixels;
-		screen[1]=dm.heightPixels;
+		screenW=dm.widthPixels;
+		screenH=dm.heightPixels;
+		
+		screen[0]=screenW;
+		screen[1]=screenH;
 		return screen;
 	}
 	public static void  requestFillWindow(Activity context){

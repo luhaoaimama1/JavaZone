@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.Locale;
 
+import Android.Zone.Constant;
+import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Log.Logger_Zone;
 import Android.Zone.SD.FileUtils_SD;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -22,26 +25,29 @@ import android.view.View;
  *
  */
 public abstract  class Feature_Pic extends ExtraFeature{
-	public Feature_Pic(Activity activity) {
-		super(activity);
-	}
+	private Logger_Zone logger;
 	private static String path;
-	private static final int REQUESTCODE_CAMERA = 6789;
-	private static final int REQUESTCODE_PHOTOS = 9876;
 	private static File outFile = FileUtils_SD.FolderCreateOrGet("Zone", "picSave");
 
+	public Feature_Pic(Activity activity) {
+		super(activity);
+		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
+		logger.closeLog();
+	}
+	
 	public  void openCamera() {
 		String picName = DateFormat.format("yyyyMMdd_hhmmss",Calendar.getInstance(Locale.CHINA))+ ".jpg";
+		logger.log("’’∆¨√˚∏Ò Ω£∫yyyyMMdd_hhmmss.jpg");
 		outFile = new File(outFile, picName);
 		path = outFile.getPath();
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(outFile));
-		activity.startActivityForResult(intent, REQUESTCODE_CAMERA);
+		activity.startActivityForResult(intent, RequestCodeConfig.Feature_Pic__REQUESTCODE_CAMERA);
 	}
 	public  void openPhotos() {
 		Intent intent = new Intent(Intent.ACTION_PICK, null);
 		intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
-		activity.startActivityForResult(intent,REQUESTCODE_PHOTOS);
+		activity.startActivityForResult(intent,RequestCodeConfig.Feature_Pic__REQUESTCODE_PHOTOS);
 	}
 
 	/**
@@ -63,7 +69,7 @@ public abstract  class Feature_Pic extends ExtraFeature{
 		}
 	}
 	@Override
-	public void onCreate(Bundle bundle) {
+	public void init() {
 		
 	}
 	@Override
@@ -71,12 +77,12 @@ public abstract  class Feature_Pic extends ExtraFeature{
 			Intent intent) {
 		if (resultCode == -1) {
 			switch (requestCode) {
-			case REQUESTCODE_CAMERA:
+			case RequestCodeConfig.Feature_Pic__REQUESTCODE_CAMERA:
 				if (isFileExist()) {
 					getReturnedPicPath(path);
 				}
 				break;
-			case REQUESTCODE_PHOTOS:
+			case RequestCodeConfig.Feature_Pic__REQUESTCODE_PHOTOS:
 				if (intent!=null) {
 					Uri uri = intent.getData();
 					ContentResolver cr = activity.getContentResolver();
@@ -89,7 +95,7 @@ public abstract  class Feature_Pic extends ExtraFeature{
 					}
 					cursor.moveToFirst();
 					for (int i = 0; i < cursor.getColumnCount(); i++) {
-						// System.out.println(i + "-----------------"+cursor.getString(i)+"----"+cursor.getColumnName(i));
+						logger.log(i + "-----------------"+cursor.getString(i)+"----"+cursor.getColumnName(i));
 						if (cursor.getColumnName(i).contains("data")) {
 							path = cursor.getString(i);
 						}
@@ -104,11 +110,7 @@ public abstract  class Feature_Pic extends ExtraFeature{
 		}
 	}
 	@Override
-	public void onDestroy() {
-		
-	}
-	@Override
-	public void onClick(View v) {
+	public void destory() {
 		
 	}
 	
