@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 * Author: msdx (645079761@qq.com) 
 * Time: 14-7-17 下午5:46 
 */  
-public abstract class LazyFragment extends Fragment {  
+public abstract class Fragment_Lazy extends Fragment {  
   protected boolean isVisible;  
   /** 
    * 在这里实现Fragment数据的缓加载. 

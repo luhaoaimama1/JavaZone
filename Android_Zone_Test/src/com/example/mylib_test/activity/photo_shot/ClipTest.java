@@ -8,6 +8,7 @@ import com.example.mylib_test.R;
 import Android.Zone.Image.Compress_Sample_Utils;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.Utils.MeasureUtils;
+import Android.Zone.Utils.ScreenUtils;
 import Android.Zone.Utils.MeasureUtils.GlobalState;
 import Android.Zone.Utils.MeasureUtils.OnMeasureListener;
 import android.app.Activity;
@@ -35,6 +36,7 @@ public class ClipTest extends Activity implements OnClickListener{
 	private ImageView imageView;
 	private Bitmap bitmap;
 	private Bitmap chipSmallBt;
+	private  Uri savePath=Uri.fromFile(FileUtils_SD.FolderCreateOrGet("", "a1.jpg"));
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,36 +75,50 @@ public class ClipTest extends Activity implements OnClickListener{
 		imageView.setImageBitmap(chipSmallBt);
 	}
 	private void saveBig() {
-		cropImageUri( Uri.parse(imgFile.getPath()), 100, 100, CHOOSE_BIG_PICTURE);
+		//http://bbs.csdn.net/topics/390932011 解决地址
+		//已经解决了，4.4后gallery的最近和图片返回的content前缀的uri，需要将其转换为file:///前缀的绝对地址，然后再去调用com.android.camera.action.CROP，将该uri给setData，就不会有权限问题了。
+		cropImageUri( Uri.parse("file://" + "/"+imgFile.getPath()), 800, 800, CHOOSE_BIG_PICTURE);
 	}
 	
 	private void cropImageUri(Uri uri, int outputX, int outputY, int requestCode){
+		//小米特殊的intent action
+//		不难知道，我们从相册选取图片的Action为Intent.ACTION_GET_CONTENT。
+//		 Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
 		 Intent intent = new Intent("com.android.camera.action.CROP");
+		//可以选择图片类型，如果是*表明所有类型的图片
 		 intent.setDataAndType(uri, "image/*");
-		 intent.putExtra("crop", "true"); // crop=true 有这句才能出来最后的裁剪页面.  
-		 intent.putExtra("aspectX", 2);// 这两项为裁剪框的比例.  
+	     // 下面这个crop = true是设置在开启的Intent中设置显示的VIEW可裁剪
+		 intent.putExtra("crop", "true");
+		//裁剪时是否保留图片的比例，这里的比例是1:1
+		 intent.putExtra("scale", true);
+		// 这两项为裁剪框的比例.   固定比率　　
+		 intent.putExtra("aspectX", 2);
 		 intent.putExtra("aspectY", 1);
+		  // outputX outputY 是裁剪图片宽高
 		 intent.putExtra("outputX", outputX);
 		 intent.putExtra("outputY", outputY);
-		 intent.putExtra("scale", true);
-		 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-		 intent.putExtra("return-data", false);
+		 //是否将数据保留在Bitmap中返回
+		 intent.putExtra("return-data", true);
+		 //设置输出的格式
 		 intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-		 intent.putExtra("output", Uri.fromFile(new File("SDCard/1.jpg")));//输出地址  
 		 intent.putExtra("noFaceDetection", true); // no face detection
+		 intent.putExtra(MediaStore.EXTRA_OUTPUT,savePath );//输出地址  
 		 startActivityForResult(intent, requestCode);
 		}
+	
+	
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
 		case CHOOSE_BIG_PICTURE:
 		    Log.d("a", "CHOOSE_BIG_PICTURE: data = " + data);//it seems to be null
-			Uri imageUri = data.getData();
-		    if(imageUri != null){
-		        Bitmap bitmap = decodeUriAsBitmap(imageUri);//decode bitmap
-		        imageView.setImageBitmap(bitmap);
-		    }
+			if (data != null) {
+				int[] screen = ScreenUtils.getScreenPix(this);
+				Bitmap bitmap = Compress_Sample_Utils.getSampleBitmap(savePath.getPath(), screen[0], screen[1]);
+				imageView.setImageBitmap(bitmap);
+			}
 		    break;
 		case CHOOSE_SMALL_PICTURE:
 		    if(data != null){
@@ -116,16 +132,6 @@ public class ClipTest extends Activity implements OnClickListener{
 		    break;
 		}
 		
-	}
-	private Bitmap decodeUriAsBitmap(Uri uri){
-	    Bitmap bitmap = null;
-	    try {
-	        bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	        return null;
-	    }
-	    return bitmap;
 	}
 	
 }

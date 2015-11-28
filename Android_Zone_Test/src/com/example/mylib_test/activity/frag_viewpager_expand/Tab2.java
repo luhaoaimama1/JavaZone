@@ -2,7 +2,7 @@ package com.example.mylib_test.activity.frag_viewpager_expand;
 
 import com.example.mylib_test.R;
 
-import Android.Zone.Abstract_Class.LazyFragment;
+import Android.Zone.Abstract_Class.Fragment_Lazy;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Tab2 extends LazyFragment {
+public class Tab2 extends Fragment_Lazy {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
