@@ -12,8 +12,8 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
 import Android.Zone.Log.ToastUtils;
-import Android.Zone.Utils.RefreshUtils;
-import Android.Zone.Utils.RefreshUtils.PullToRefreshListener;
+import Android.Zone.Utils.thirdPlace.RefreshUtils;
+import Android.Zone.Utils.thirdPlace.RefreshUtils.PullToRefreshListener;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;

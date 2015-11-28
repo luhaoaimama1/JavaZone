@@ -1,14 +1,15 @@
 package com.example.mylib_test.activity.three_place;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import com.example.mylib_test.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import Android.Zone.Abstract_Class.Adapter_Zone;
@@ -26,6 +27,7 @@ public class ImageLoaderGridActivity extends Activity{
 	private GridView gridView1;
 	private String[] imageThumbUrls;
 	private DiskLruUtils diskLru;
+	private DisplayImageOptions options;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +43,17 @@ public class ImageLoaderGridActivity extends Activity{
 //		Images.imageThumbUrls
 		List<String> temp = Arrays.asList(Images.imageThumbUrls);
 		gridView1.setAdapter(new Adapter(this, temp, R.layout.imageitem));
+//		gridView1.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
+		
+		options = new DisplayImageOptions.Builder()
+		.showStubImage(R.drawable.ic_stub)
+		.showImageForEmptyUri(R.drawable.ic_empty)
+		.showImageOnFail(R.drawable.ic_error)
+		.imageScaleType(ImageScaleType.EXACTLY)
+		.cacheInMemory(true)
+		.cacheOnDisc(true)
+		.bitmapConfig(Bitmap.Config.RGB_565)	 //设置图片的解码类型
+		.build();
 	}
 	public class Adapter extends Adapter_Zone<String>{
 
@@ -51,8 +64,8 @@ public class ImageLoaderGridActivity extends Activity{
 		@Override
 		public void setData(Map<Integer, View> viewMap, String data,
 				int position) {
-			ImageView iv=(ImageView) viewMap.get(R.id.iv);
-			ImageLoader.getInstance().displayImage(data, iv);
+			 ImageView iv=(ImageView) viewMap.get(R.id.iv);
+			ImageLoader.getInstance().displayImage(data, iv,options);
 //			Bitmap bm = diskLru.getBitmapByUrl(data);
 //			if (bm==null) {
 //				ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
