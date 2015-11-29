@@ -1,4 +1,4 @@
-package Android.Zone.Image;
+package Android.Zone.Image.lruUtils;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;

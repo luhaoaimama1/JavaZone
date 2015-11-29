@@ -1,4 +1,4 @@
-package Android.Zone.Image;
+package Android.Zone.Image.lruUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,7 +15,8 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import Android.Zone.Constant;
 import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
-import Android.Zone.Image.official.DiskLruCache;
+import Android.Zone.Image.Compress_Sample_Utils;
+import Android.Zone.Image.lruUtils.official.DiskLruCache;
 import Android.Zone.Log.Logger_Zone;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.SD.SdSituation;

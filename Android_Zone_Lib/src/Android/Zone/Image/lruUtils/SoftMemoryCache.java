@@ -1,4 +1,4 @@
-package Android.Zone.Image;
+package Android.Zone.Image.lruUtils;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;

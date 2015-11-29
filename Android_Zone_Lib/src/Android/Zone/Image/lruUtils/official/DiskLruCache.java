@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package Android.Zone.Image.official;
+package Android.Zone.Image.lruUtils.official;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;

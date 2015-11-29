@@ -14,6 +14,7 @@ public class Logger_Zone {
 	
 	//全局控制  默认关闭
 	private  static LogStatue logAllFlag = LogStatue.Close;
+	private static boolean infoLocation=false;
 	//单个logger的的控制
 	private boolean  logflag=true;
 	private  String projectName="";
@@ -49,12 +50,16 @@ public class Logger_Zone {
 		 logflag=true;
 		 return this;
 	};
-	public static void setAllLogStatue(LogStatue logStatue){
+	public static void setAllLogStatue(LogStatue logStatue,boolean infoLocation){
 		 logAllFlag=logStatue;
+		 Logger_Zone.infoLocation=infoLocation;
 	};
 	public static LogStatue getAllLogStatue(){
 		return  logAllFlag;
 	};
+	public static boolean  getLogIsLoaction(){
+		return infoLocation;
+	}
 	public boolean isPrint(){
 		boolean flag=false;
 		switch (logAllFlag) {
@@ -84,36 +89,17 @@ public class Logger_Zone {
 	public void log(String str) {
 		log(str, false,Log.INFO);
 	}
-	/**
-	 *带定位信息的　log
-	 * @param str
-	 */
-	public void logLocation(String str) {
-		log(str, true,Log.INFO);
-	}
 	public void v(String str) {
 		log(str, false,Log.VERBOSE);
-	}
-	public void vLocation(String str) {
-		log(str, true,Log.VERBOSE);
 	}
 	public void d(String str) {
 		log(str, false,Log.DEBUG);
 	}
-	public void dLocation(String str) {
-		log(str, true,Log.DEBUG);
-	}
 	public void e(String str) {
 		log(str, false,Log.ERROR);
 	}
-	public void eLocation(String str) {
-		log(str, true,Log.ERROR);
-	}
 	public void w(String str) {
 		log(str, false,Log.WARN);
-	}
-	public void wLocation(String str) {
-		log(str, true,Log.WARN);
 	}
 	/**
 	 * @param str
@@ -125,22 +111,22 @@ public class Logger_Zone {
 		case Close:
 			break;
 		case Open:
-			logOut(str,location,logType);
+			logOut(str,logType);
 			break;
 		case Child_Control:
 			if (logflag) {
-				logOut(str,location,logType);
+				logOut(str,logType);
 			}
 			break;
 		default:
 			break;
 		}
-		logOut(str,location,logType);
+		logOut(str,logType);
 		
 	}
-	private void logOut(String str, boolean location, int logType) {
+	private void logOut(String str, int logType) {
 		String name=null;
-		if (location) {
+		if (infoLocation) {
 			name = getFunctionName();
 		}
 		String connect="";
