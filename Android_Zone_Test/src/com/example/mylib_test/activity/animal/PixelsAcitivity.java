@@ -24,7 +24,6 @@ public class PixelsAcitivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		logger=new Logger_Zone(PixelsAcitivity.class, Constant.Logger_Config);
-		logger.logLocation("定位腹部");
 		logger.log("真的成不啊");
 		iv=new ImageView(this);
 		setContentView(iv);

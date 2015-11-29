@@ -14,14 +14,15 @@ package com.example.mylib_test.app;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+import Android.Zone.Image.ImageLoader.ImageLoaderConfigUtils;
+import Android.Zone.Image.ImageLoader.ImageLoaderOptionsUtils;
 import Android.Zone.Log.Logger_Zone;
 import Android.Zone.Log.Logger_Zone.LogStatue;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.os.Build;
 import android.os.StrictMode;
-
-import com.example.mylib_test.app.config.ImageLoaderConfig;
+import com.example.mylib_test.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
@@ -39,11 +40,13 @@ public class Apps extends Application {
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
 		}
 		
-		Logger_Zone.setAllLogStatue(LogStatue.Child_Control);
+		//全局控制　打印日志
+		Logger_Zone.setAllLogStatue(LogStatue.Child_Control,false);
 		
 		//初始化 sqlite
+		ImageLoaderOptionsUtils.initShowImage(R.drawable.ic_stub, R.drawable.ic_empty, R.drawable.ic_error);
 		//初始化ImageLoader
-		ImageLoaderConfig.initImageLoader(getApplicationContext());
+		ImageLoaderConfigUtils.initImageLoader(getApplicationContext(),ImageLoaderOptionsUtils.getNormalOption＿NotBuild().build(),true);
 		
 //		CrashHandler.getInstance().init(this);
 

@@ -3,6 +3,7 @@ package com.example.mylib_test.activity.animal.viewa;
 import com.example.mylib_test.R;
 import com.example.mylib_test.R.color;
 
+import Android.Zone.Image.BitmapUtils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -33,7 +34,10 @@ public class BitmapTry extends View {
 	private void init(Context context) {
 		bt = BitmapFactory.decodeResource(getResources(),
 				R.drawable.ic_launcher);
-
+		
+		BitmapUtils.getScaledBitmapDeep(bt, bt.getWidth(), bt.getHeight(),false);
+		BitmapUtils.copyDeep(bt,false);
+		
 		paint.setDither(true);
 		paint.setAntiAlias(true);
 		paint.setFilterBitmap(true);

@@ -13,7 +13,7 @@ import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import Android.Zone.Abstract_Class.Adapter_Zone;
-import Android.Zone.Image.DiskLruUtils;
+import Android.Zone.Image.lruUtils.DiskLruUtils;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -27,7 +27,7 @@ public class ImageLoaderGridActivity extends Activity{
 	private GridView gridView1;
 	private String[] imageThumbUrls;
 	private DiskLruUtils diskLru;
-	private DisplayImageOptions options;
+//	private DisplayImageOptions options;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,15 +45,15 @@ public class ImageLoaderGridActivity extends Activity{
 		gridView1.setAdapter(new Adapter(this, temp, R.layout.imageitem));
 //		gridView1.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
 		
-		options = new DisplayImageOptions.Builder()
-		.showStubImage(R.drawable.ic_stub)
-		.showImageForEmptyUri(R.drawable.ic_empty)
-		.showImageOnFail(R.drawable.ic_error)
-		.imageScaleType(ImageScaleType.EXACTLY)
-		.cacheInMemory(true)
-		.cacheOnDisc(true)
-		.bitmapConfig(Bitmap.Config.RGB_565)	 //设置图片的解码类型
-		.build();
+//		options = new DisplayImageOptions.Builder()
+//		.showImageOnLoading(R.drawable.ic_stub)
+//		.showImageForEmptyUri(R.drawable.ic_empty)
+//		.showImageOnFail(R.drawable.ic_error)
+//		.imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+//		.cacheInMemory(true)
+//		.cacheOnDisk(true)
+//		.bitmapConfig(Bitmap.Config.RGB_565)	 //设置图片的解码类型
+//		.build();
 	}
 	public class Adapter extends Adapter_Zone<String>{
 
@@ -65,7 +65,8 @@ public class ImageLoaderGridActivity extends Activity{
 		public void setData(Map<Integer, View> viewMap, String data,
 				int position) {
 			 ImageView iv=(ImageView) viewMap.get(R.id.iv);
-			ImageLoader.getInstance().displayImage(data, iv,options);
+//			ImageLoader.getInstance().displayImage(data, iv,options);
+			ImageLoader.getInstance().displayImage(data, iv);
 //			Bitmap bm = diskLru.getBitmapByUrl(data);
 //			if (bm==null) {
 //				ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){

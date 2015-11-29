@@ -44,6 +44,15 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 		case R.id.bt_bitmap:
 			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_bitmap"));
 			break;
+		case R.id.bt_bitmaptoRound:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_bitmaptoRound"));
+			break;
+		case R.id.bt_bitmaptoScale:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_bitmaptoScale"));
+			break;
+		case R.id.bt_bitmaptoRorate:
+			startActivity(new Intent(this,CanvasTest.class).putExtra("type", "bt_bitmaptoRorate"));
+			break;
 		case R.id.bt_Pixels:
 			startActivity(new Intent(this,PixelsAcitivity.class));
 			break;
