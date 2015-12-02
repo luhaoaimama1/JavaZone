@@ -75,6 +75,8 @@ public class FragmentSwitchUtils {
 //			tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
 		}
 		String targetName = fragment.getName();
+		//TODO 传入空的时候隐藏 所有fragment(可以新写个方法例如switchToNull )   并且参数有可以考虑下传入 fragment实例的那种方法
+		//TODO 当然需要动画    但是我觉得动画是早构造器中比较好  毕竟一个切换一种风格把 如果每个风格不一样说明这个也要留着！！！
 		if (nowFragment != null) {
 			String nowName = nowFragment.getClass().getName();
 			if (nowName.equals(targetName)) {
