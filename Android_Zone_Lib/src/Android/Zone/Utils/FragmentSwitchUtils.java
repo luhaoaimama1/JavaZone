@@ -16,6 +16,10 @@ public class FragmentSwitchUtils {
 	private BackStatue allowBack=BackStatue.NO_BACK;
 	private FragmentManager manager;
 	
+	private boolean firstShowFrag=true;
+	
+	private int ani_in=-1;
+	private int ani_out=-1;
 	public enum BackStatue{
 		NO_BACK,BACK;
 	}
@@ -54,7 +58,55 @@ public class FragmentSwitchUtils {
 	 * @param fragment
 	 */
 	public void switchPage(Class<?> fragment) {
-		switchPage(fragment, -1, -1);
+		int in = -1, out = -1;
+		if (ani_in != -1) {
+			in = ani_in;
+		}
+		if (ani_out != -1) {
+			out = ani_out;
+		}
+		switchPage(fragment, in, out);
+	}
+	public void switchToNull() {
+		int in = -1, out = -1;
+		if (ani_in != -1) {
+			in = ani_in;
+		}
+		if (ani_out != -1) {
+			out = ani_out;
+		}
+		switchToNull(in,  out);
+	}
+	public void setCustomAnimations(int ani_in, int ani_out){
+		this.ani_in=ani_in;
+		this.ani_out=ani_out;
+	}
+	public void switchToNull(int ani_in, int ani_out) {
+		if (!firstShowFrag) {
+			//不是第一次的时候在走
+			FragmentTransaction tran = manager.beginTransaction();
+			if (ani_in != -1) {
+				tran.setCustomAnimations(ani_in, ani_out);
+				// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+			}
+			if (manager.getFragments() != null && nowFragment != null) {
+				//不为空的时候  
+				tran.hide(nowFragment);
+				nowFragment = null;
+			}
+			// 第一次不可以回退 即第二次以后 通过allowBack 是否添加回退
+			switch (allowBack) {
+			case BACK:
+				tran.addToBackStack(null);
+				break;
+			case NO_BACK:
+
+				break;
+			default:
+				break;
+			}
+			tran.commit();
+		}
 	}
 	/**
 	 * <strong>	tran.addToBackStack(null); 是否允许回退到上一个fragment  不写就直接退出activity</strong>
@@ -75,50 +127,82 @@ public class FragmentSwitchUtils {
 //			tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
 		}
 		String targetName = fragment.getName();
-		//TODO 传入空的时候隐藏 所有fragment(可以新写个方法例如switchToNull )   并且参数有可以考虑下传入 fragment实例的那种方法
-		//TODO 当然需要动画    但是我觉得动画是早构造器中比较好  毕竟一个切换一种风格把 如果每个风格不一样说明这个也要留着！！！
-		if (nowFragment != null) {
-			String nowName = nowFragment.getClass().getName();
-			if (nowName.equals(targetName)) {
-				// 还是这个页面
-				return;
-			}
-			Fragment targetFm = null;
-			if(manager.getFragments()!=null){
-				for (Fragment item : manager.getFragments()) {
-					if (item!=null&&targetName.equals(item.getTag())) {
-						// 如果有直接控制 显隐
-						tran.hide(nowFragment);
-						targetFm = manager.findFragmentByTag(targetName);
-						tran.show(targetFm);
+		//TODO 当然需要动画    但是我觉得动画是早构造器中比较好  毕竟一个切换一种风格把 如果每个风格不一样说明这个也要留着！！！ 
+		//TODO 并且参数有可以考虑下传入 fragment实例的那种方法
+		if(!firstShowFrag){
+			if (nowFragment != null) {
+				String nowName = nowFragment.getClass().getName();
+				if (nowName.equals(targetName)) {
+					// 还是这个页面
+					return;
+				}
+				Fragment targetFm = null;
+				if(manager.getFragments()!=null){
+					for (Fragment item : manager.getFragments()) {
+						if (item!=null&&targetName.equals(item.getTag())) {
+							// 如果有直接控制 显隐
+							tran.hide(nowFragment);
+							targetFm = manager.findFragmentByTag(targetName);
+							tran.show(targetFm);
+						}
+					}
+				}
+				if (targetFm == null) {
+					// 没有则 生成 然后显示隐藏
+					targetFm = Fragment.instantiate(frameActivity, targetName);
+					tran.hide(nowFragment);
+					tran.add(frameId, targetFm, targetFm.getClass().getName())
+							.show(targetFm);
+				}
+				nowFragment = targetFm;
+				
+				//第一次不可以回退  即第二次以后 通过allowBack 是否添加回退
+				switch (allowBack) {
+				case BACK:
+					tran.addToBackStack(null);
+					break;
+				case NO_BACK:
+					
+					break;
+				default:
+					break;
+				}
+			} else {
+				//中途 切换到空Frag的时候
+				Fragment targetFm = null;
+				if(manager.getFragments()!=null){
+				
+					for (Fragment item : manager.getFragments()) {
+						if (item!=null&&targetName.equals(item.getTag())) {
+							// 如果有直接控制 显隐
+							targetFm = manager.findFragmentByTag(targetName);
+							tran.show(targetFm);
+						}
+					}
+					if (targetFm == null) {
+						// 没有则 生成 然后显示隐藏
+						targetFm = Fragment.instantiate(frameActivity, targetName);
+						tran.add(frameId, targetFm, targetFm.getClass().getName()).show(targetFm);
+					}
+					nowFragment = targetFm;
+					//第一次不可以回退  即第二次以后 通过allowBack 是否添加回退
+					switch (allowBack) {
+					case BACK:
+						tran.addToBackStack(null);
+						break;
+					case NO_BACK:
+						
+						break;
+					default:
+						break;
 					}
 				}
 			}
-			if (targetFm == null) {
-				// 没有则 生成 然后显示隐藏
-				targetFm = Fragment.instantiate(frameActivity, targetName);
-				tran.hide(nowFragment);
-				tran.add(frameId, targetFm, targetFm.getClass().getName())
-						.show(targetFm);
-			}
-			nowFragment = targetFm;
-			
-			//第一次不可以回退  即第二次以后 通过allowBack 是否添加回退
-			switch (allowBack) {
-			case BACK:
-				tran.addToBackStack(null);
-				break;
-			case NO_BACK:
-				
-				break;
-			default:
-				break;
-			}
-		} else {
-			// 当第一次的时候 即now 为空的情况
+		}else{
+			// 当第一次的时候 即now为空的情况
 			nowFragment = Fragment.instantiate(frameActivity, targetName);
-			tran.add(frameId, nowFragment, nowFragment.getClass().getName())
-					.show(nowFragment);
+			tran.add(frameId, nowFragment, nowFragment.getClass().getName()).show(nowFragment);
+			firstShowFrag=false;
 		}
 		tran.commit();
 	}
