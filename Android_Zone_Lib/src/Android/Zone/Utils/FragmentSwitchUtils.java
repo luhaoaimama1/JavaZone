@@ -81,15 +81,32 @@ public class FragmentSwitchUtils {
 		this.ani_in=ani_in;
 		this.ani_out=ani_out;
 	}
+	//TODO 判断有没有 getFragments 有那个类吗 
+//	private FragmentTransaction getTranAni(int ani_in, int ani_out){
+//		FragmentTransaction tran = manager.beginTransaction();
+//		if (ani_in != -1) {
+//			tran.setCustomAnimations(ani_in, ani_out);
+//			// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+//		}
+//		return tran;
+//	}
+//	private FragmentTransaction getTranAniDefault(int ani_in, int ani_out){
+//		FragmentTransaction tran = manager.beginTransaction();
+//		if (ani_in != -1) {
+//			tran.setCustomAnimations(ani_in, ani_out);
+//			// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+//		}
+//		return tran;
+//	}
 	public void switchToNull(int ani_in, int ani_out) {
-		if (!firstShowFrag) {
+		if (!firstShowFrag&& nowFragment != null) {
 			//不是第一次的时候在走
 			FragmentTransaction tran = manager.beginTransaction();
 			if (ani_in != -1) {
 				tran.setCustomAnimations(ani_in, ani_out);
 				// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
 			}
-			if (manager.getFragments() != null && nowFragment != null) {
+			if (manager.getFragments() != null ) {
 				//不为空的时候  
 				tran.hide(nowFragment);
 				nowFragment = null;
