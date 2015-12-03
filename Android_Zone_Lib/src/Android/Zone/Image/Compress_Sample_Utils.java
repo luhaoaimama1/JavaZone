@@ -9,6 +9,7 @@ import Android.Zone.Constant;
 import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
 import Android.Zone.Log.Logger_Zone;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 /**
@@ -67,24 +68,44 @@ public class Compress_Sample_Utils {
 				if (simpleScale < Math.pow(2, i)) {
 					simpleScale =(int) Math.pow(2, i-1);
 				}
+				if(simpleScale == Math.pow(2, i)){
+					simpleScale=(int) Math.pow(2, i);
+					break;
+				}
 			}
 		}
 		logger.log("最终缩放比：simpleScale" + simpleScale);
 		return simpleScale;
 	}
-
 	/**
 	 *一般是640*960   480* 800  720*1280
+	 * @param filePath 文件路径
+	 * @param targetWidth	为null的时候 以 height为标准
+	 * @param targetHeight 为null的时候 以 width为标准
+	 * @param config  图片解析的config
+	 * @return  返回 原图到目标宽高 等比缩放后的 采样位图
+	 */
+	public static Bitmap getSampleBitmap(String filePath,Integer targetWidth, Integer targetHeight,Config config) {
+		Options options = justDecodeBounds(filePath);
+		options.inSampleSize = calculateInSampleSize(options, targetWidth, targetHeight);
+		options.inJustDecodeBounds = false;
+		//另外，为了节约内存我们还可以使用下面的几个字段：
+	    options.inPreferredConfig =config;// 默认是Bitmap.Config.ARGB_8888
+	    options.inPurgeable = true;//true 内存不足可收回 再次用的时候 重新解码   false则不可收回
+	    options.inInputShareable = true;//设置是否深拷贝，与inPurgeable结合使用，inPurgeable为false时，该参数无意义。 
+		return BitmapFactory.decodeFile(filePath, options);
+	
+	}
+	/**
+	 *一般是640*960   480* 800  720*1280
+	 *默认配置Bitmap.Config.ARGB_8888
 	 * @param filePath 文件路径
 	 * @param targetWidth	为null的时候 以 height为标准
 	 * @param targetHeight 为null的时候 以 width为标准
 	 * @return  返回 原图到目标宽高 等比缩放后的 采样位图
 	 */
 	public static Bitmap getSampleBitmap(String filePath,Integer targetWidth, Integer targetHeight) {
-		Options options = justDecodeBounds(filePath);
-		options.inSampleSize = calculateInSampleSize(options, targetWidth, targetHeight);
-		options.inJustDecodeBounds = false;
-		return BitmapFactory.decodeFile(filePath, options);
+		return getSampleBitmap(filePath, targetWidth, targetHeight,Bitmap.Config.ARGB_8888);
 	}
 	public static Bitmap getRawBitmap(String filePath){
 		return BitmapFactory.decodeFile(filePath);
