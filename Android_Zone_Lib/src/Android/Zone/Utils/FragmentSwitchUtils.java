@@ -1,6 +1,7 @@
 package Android.Zone.Utils;
 
 import java.util.List;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -53,21 +54,28 @@ public class FragmentSwitchUtils {
 		this(frameActivity,frameId,BackStatue.NO_BACK);
 	}
 
-	/**
-	 * 没有动画的
-	 * @param fragment
-	 */
-	public void switchPage(Class<?> fragment) {
-		int in = -1, out = -1;
-		if (ani_in != -1) {
-			in = ani_in;
-		}
-		if (ani_out != -1) {
-			out = ani_out;
-		}
-		switchPage(fragment, in, out);
+	
+	public void setDefaultCustomAnimations(int ani_in, int ani_out){
+		this.ani_in=ani_in;
+		this.ani_out=ani_out;
 	}
+	public boolean containFragment(Class<?> fragment){
+		if (!Fragment.class.isAssignableFrom(fragment)) {
+			throw new IllegalArgumentException("参数类型不是frament! ");
+		}
+		String target = fragment.getClass().getName();
+		if(manager.getFragments()!=null){
+			for (Fragment item : manager.getFragments()) {
+				if(target.equals(item.getTag())){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public void switchToNull() {
+		//加层过滤 如果有默认动画 直接走默认动画
 		int in = -1, out = -1;
 		if (ani_in != -1) {
 			in = ani_in;
@@ -77,32 +85,11 @@ public class FragmentSwitchUtils {
 		}
 		switchToNull(in,  out);
 	}
-	public void setCustomAnimations(int ani_in, int ani_out){
-		this.ani_in=ani_in;
-		this.ani_out=ani_out;
-	}
-	//TODO 判断有没有 getFragments 有那个类吗 
-//	private FragmentTransaction getTranAni(int ani_in, int ani_out){
-//		FragmentTransaction tran = manager.beginTransaction();
-//		if (ani_in != -1) {
-//			tran.setCustomAnimations(ani_in, ani_out);
-//			// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
-//		}
-//		return tran;
-//	}
-//	private FragmentTransaction getTranAniDefault(int ani_in, int ani_out){
-//		FragmentTransaction tran = manager.beginTransaction();
-//		if (ani_in != -1) {
-//			tran.setCustomAnimations(ani_in, ani_out);
-//			// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
-//		}
-//		return tran;
-//	}
 	public void switchToNull(int ani_in, int ani_out) {
 		if (!firstShowFrag&& nowFragment != null) {
 			//不是第一次的时候在走
 			FragmentTransaction tran = manager.beginTransaction();
-			if (ani_in != -1) {
+			if (ani_in!=-1&&ani_out!=-1) {
 				tran.setCustomAnimations(ani_in, ani_out);
 				// tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
 			}
@@ -126,6 +113,21 @@ public class FragmentSwitchUtils {
 		}
 	}
 	/**
+	 * 没有动画的
+	 * @param fragment
+	 */
+	public void switchPage(Class<?> fragment) {
+		//加层过滤 如果有默认动画 直接走默认动画
+		int in = -1, out = -1;
+		if (ani_in != -1) {
+			in = ani_in;
+		}
+		if (ani_out != -1) {
+			out = ani_out;
+		}
+		switchPage(fragment, in, out);
+	}
+	/**
 	 * <strong>	tran.addToBackStack(null); 是否允许回退到上一个fragment  不写就直接退出activity</strong>
 	 * null貌似是tag  未验证
 	 * Tag：是 class.getName();
@@ -139,7 +141,7 @@ public class FragmentSwitchUtils {
 		}
 		manager = frameActivity.getSupportFragmentManager();
 		FragmentTransaction tran = manager.beginTransaction();
-		if(ani_in!=-1){
+		if(ani_in!=-1&&ani_out!=-1){
 			tran.setCustomAnimations(ani_in,ani_out);	
 //			tran.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
 		}
