@@ -18,9 +18,9 @@ public class 电话号码的提取 {
 		ru.addRule("\\D(\\d{11})\\D");
 		ru.addRule("\\D(\\d{3}-\\d{4}-\\d{4})\\D");
 		ru.addRule("\\D(\\d{10})\\D");
-		ru.addRule("\\D(\\d{2}-{1}\\d{4}-\\d{4})\\D");
+		ru.addRule("\\D(\\d{3}-\\d{3}-\\d{4})\\D");
 		ru.addRule("\\D(\\d{8})\\D");
-		ru.addRule("\\D(\\d{4}-{1}\\d{4})\\D");
+		ru.addRule("\\D(\\d{4}-\\d{4})\\D");
 //		getValuePhone(str,ru.build());
 		getValue(str,ru.build());
 	}
@@ -29,6 +29,11 @@ public class 电话号码的提取 {
 		private  StringBuffer sb=new StringBuffer();
 		List<String> rules=new ArrayList<String>();
 		private boolean isFirst=true;
+		/**
+		 * 只是中间添加了|或  为了防止太长而看的迷糊
+		 * @param rex
+		 * @return
+		 */
 		public RexUtils addRule(String rex){
 			rules.add(rex);
 			if (isFirst) {
