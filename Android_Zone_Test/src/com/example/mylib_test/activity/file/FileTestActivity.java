@@ -31,11 +31,11 @@ public class FileTestActivity extends Activity implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.create:
 			//创建目录测试
-			 File file2 = FileUtils_SD.FolderCreateOrGet("mammama", "mma", "heihei","bbcc.txt");
+			 File file2 = FileUtils_SD.getFile("mammama", "mma", "heihei","bbcc.txt");
 			 Log.e("xihuan",file2.getAbsolutePath() );
 			break;
 		case R.id.delete:
-			if (FileUtils_SD.FolderCreateOrGet("mammama", "mma", "heihei").delete()) 
+			if (FileUtils_SD.getFile("mammama", "mma", "heihei").delete()) 
 				//删除文件测试
 				ToastUtils.showLong(this, "删除成功");
 			else
@@ -43,7 +43,7 @@ public class FileTestActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.readFile:
 			//得到bbcc.txt这个文件 读取文件
-			File file = new File(FileUtils_SD.FolderCreateOrGet(""), "bbcc.txt");
+			File file = new File(FileUtils_SD.getFile(""), "bbcc.txt");
 			String text="我非常好,你说呢！";
 			InputStream in=null;
 			try {
@@ -56,8 +56,8 @@ public class FileTestActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.writeFileByFile:
 			//把数据复制到另一个路径 的文件aabb.txt
-			File inFile = new File(FileUtils_SD.FolderCreateOrGet(""), "bbcc.txt");
-			File outFile = new File(FileUtils_SD.FolderCreateOrGet(""), "aabb.txt");
+			File inFile = new File(FileUtils_SD.getFile(""), "bbcc.txt");
+			File outFile = new File(FileUtils_SD.getFile(""), "aabb.txt");
 			ToastUtils.showLong(this, IOUtils.write(outFile, inFile, false) == true ? "复制成功": "复制失败");
 			break;
 		case R.id.sd:

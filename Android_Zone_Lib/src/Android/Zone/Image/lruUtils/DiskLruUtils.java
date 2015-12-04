@@ -60,7 +60,7 @@ public class DiskLruUtils {
 			 * 第三个参数指定同一个key可以对应多少个缓存文件，基本都是传1，第四个参数指定最多可以缓存多少字节的数据。
 			 */
 //			File cacheDir = SdSituation.getDiskCacheDir(context, DirName);
-			File cacheDir = FileUtils_SD.FolderCreateOrGet("Love",DirName);
+			File cacheDir = FileUtils_SD.getFile("Love",DirName);
 			if (!cacheDir.exists()) {
 				cacheDir.mkdirs();
 			}

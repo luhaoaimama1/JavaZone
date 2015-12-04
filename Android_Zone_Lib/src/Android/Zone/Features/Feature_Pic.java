@@ -27,7 +27,7 @@ import android.view.View;
 public abstract  class Feature_Pic extends ExtraFeature{
 	private Logger_Zone logger;
 	private static String path;
-	private static File outFile = FileUtils_SD.FolderCreateOrGet("Zone", "picSave");
+	private static File outFile = FileUtils_SD.getFile("Zone", "picSave");
 
 	public Feature_Pic(Activity activity) {
 		super(activity);
