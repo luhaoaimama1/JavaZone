@@ -3,12 +3,13 @@ package com.example.mylib_test.activity.photo_shot;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+
 //import com.edmodo.cropper.CropImageView;
 //import com.edmodo.cropper.cropwindow.CropOverlayView;
 import com.example.mylib_test.R;
 
-import Android.Zone.Features.Feature_SystemClip;
 import Android.Zone.Features.FeaturesActivity;
+import Android.Zone.Features.extraFeature.Feature_SystemClip;
 import Android.Zone.Image.Compress_Sample_Utils;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.Utils.MeasureUtils;

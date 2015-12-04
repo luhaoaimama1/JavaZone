@@ -1,7 +1,8 @@
-package Android.Zone.Features;
+package Android.Zone.Features.extraFeature;
 
 import java.io.IOException;
 
+import Android.Zone.Features.ExtraFeature;
 import Android.Zone.Log.ToastUtils;
 import Java.Zone.Log.PrintUtils;
 import android.annotation.SuppressLint;
