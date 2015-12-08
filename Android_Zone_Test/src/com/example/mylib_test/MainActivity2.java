@@ -5,6 +5,7 @@ import java.util.Map;
 import com.example.mylib_test.activity.db.entity.MenuEntity;
 
 import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Log.ToastUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -45,6 +46,7 @@ public class MainActivity2 extends Activity{
 					
 					@Override
 					public void onClick(View v) {
+						ToastUtils.showLong(getApplication(), "真的好使吗");
 						startActivity(new Intent(MainActivity2.this, MainMenu.menu.get(position).goClass));
 					}
 				});
