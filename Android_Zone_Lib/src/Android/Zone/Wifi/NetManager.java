@@ -53,17 +53,15 @@ public class NetManager {
 		}
 		return result;
 	}
-	public boolean haveNetWork(Context context) {
+	public static boolean haveNetWork(Context context) {
 		 ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
        NetworkInfo info=connectivityManager.getActiveNetworkInfo();
        if(info==null){
-       	ToastUtils.showLong(context, "当前无网络");
        	 return false;
        }
        if(info.getState()==NetworkInfo.State.CONNECTED){
        	return true;
        }
-    	ToastUtils.showLong(context, "当前无网络");
        return false;
 	}
 }
