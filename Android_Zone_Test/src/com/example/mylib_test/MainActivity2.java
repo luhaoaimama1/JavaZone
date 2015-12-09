@@ -46,7 +46,7 @@ public class MainActivity2 extends Activity{
 					
 					@Override
 					public void onClick(View v) {
-						ToastUtils.showLong(getApplication(), "真的好使吗");
+//						ToastUtils.showLong(getApplication(), "真的好使吗");//真的好使
 						startActivity(new Intent(MainActivity2.this, MainMenu.menu.get(position).goClass));
 					}
 				});
@@ -86,5 +86,6 @@ public class MainActivity2 extends Activity{
 		       });
 		 alert = builder.create();
 	}
+	
 
 }

@@ -4,12 +4,15 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+
 import com.example.mylib_test.R;
+
 import Android.Zone.Log.ToastUtils;
 import Android.Zone.SD.FileUtils_SD;
 import Android.Zone.SD.SdSituation;
 import Java.Zone.IO.IOUtils;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -64,6 +67,9 @@ public class FileTestActivity extends Activity implements OnClickListener{
 			//测试 用完1000mb SD是否够用
 			System.out.println("ri");
 			SdSituation.IsSDspaceEnough(this, "1000mb");
+			break;
+		case R.id.self:
+			startActivity(new Intent(this,Activity1.class));
 			break;
 		default:
 			break;

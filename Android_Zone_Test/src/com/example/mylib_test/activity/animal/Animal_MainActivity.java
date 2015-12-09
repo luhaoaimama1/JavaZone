@@ -1,17 +1,36 @@
 package com.example.mylib_test.activity.animal;
-import com.example.mylib_test.R;
+import view.FlowLayout_Zone;
 
+import com.example.mylib_test.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import Android.Zone.Image.BitmapUtils;
+import Android.Zone.Image.ImageLoader.ImageLoaderURIUtils;
+import Android.Zone.Image.ImageLoader.ImageLoaderURIUtils.Type;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
 public class Animal_MainActivity extends Activity implements OnClickListener{
+	private FlowLayout_Zone flowLayoutZone1;
+	private ImageView iv_iv;
+	private Bitmap bt;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_animaltest);
+		flowLayoutZone1=(FlowLayout_Zone) findViewById(R.id.flowLayoutZone1);
+		iv_iv=(ImageView) findViewById(R.id.iv_iv);
+		 bt =BitmapFactory.decodeResource(getResources(), R.drawable.abcd);
 	}
 
 	@Override
@@ -59,10 +78,31 @@ public class Animal_MainActivity extends Activity implements OnClickListener{
 		case R.id.bt_customAni:
 			startActivity(new Intent(this,CustomAniActivity.class));
 			break;
+		case R.id.bt_bitmapRecyle:
+			bitmapRecyleTest();
+			break;
 
 		default:
 			break;
 		}
 	}
+
+	private void bitmapRecyleTest() {
+	if (bt!=null) {
+		//		ImageLoader.getInstance().loadImageSync(ImageLoaderURIUtils.transformURI(R.drawable.abcd+"", Type.Drawable));
+		Log.i("hei", "bitmapRecyleTest" +(bt.isRecycled()==true ? "被回收了" : "没有被回收"));
+		iv_iv.setImageBitmap(bt);
+		rec(bt);
+		System.gc();
+		Log.i("hei", "bitmapRecyleTest" + (bt.isRecycled()==true ? "被回收了" : "没有被回收"));
+		}
+	
+	}
+
+	private void rec(Bitmap bt1) {
+		bt1.recycle();
+		Log.i("hei", "rec"+(bt1.isRecycled()==true ? "被回收了" : "没有被回收"));
+	}
+	
 
 }
