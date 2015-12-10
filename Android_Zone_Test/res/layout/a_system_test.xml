@@ -19,6 +19,14 @@
         android:padding="10dp"
         android:gravity="center"
         android:text="crash 闪退测试" />
+    <Button
+        android:id="@+id/bt_activityResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="activityResult研究" />
 
 
 </view.FlowLayout_Zone>
