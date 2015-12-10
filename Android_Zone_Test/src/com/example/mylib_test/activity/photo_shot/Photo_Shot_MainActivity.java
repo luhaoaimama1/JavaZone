@@ -63,6 +63,11 @@ public class Photo_Shot_MainActivity extends FeaturesActivity implements OnClick
 		};
 		addFeature(feature_Pic);
 	}
+	@Override
+	public void backRefresh() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

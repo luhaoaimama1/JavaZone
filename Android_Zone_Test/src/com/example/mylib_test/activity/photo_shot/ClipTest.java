@@ -168,5 +168,11 @@ public class ClipTest extends FeaturesActivity implements OnClickListener{
 //	public void setListener() {
 //		
 //	}
+
+	@Override
+	public void backRefresh() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

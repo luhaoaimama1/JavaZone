@@ -52,6 +52,14 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.system.ResultBase1"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.mylib_test.activity.system.ResultBase2"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.system.ResultActivity2"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
