@@ -64,6 +64,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.photo_shot.TouchClipActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.three_place.ImageLoaderActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
