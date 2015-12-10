@@ -1,8 +1,9 @@
-package Android.Zone.Utils.StringUtils;
+package Android.Zone.Utils;
 
 import java.util.List;
 
-import Android.Zone.Utils.StringUtils.RexUtils.PhoneEntity;
+import Android.Zone.Utils.rexUtils.RexUtils;
+import Android.Zone.Utils.rexUtils.RexWorkHelp.Rex_Phone.PhoneEntity;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableString;
@@ -18,7 +19,14 @@ public class SpannableUtils {
 	public interface onClickSpannableListener{
 		public abstract void onClick(View widget, String phone);
 	}
-	public static void contentToPhone(TextView tv,Context context,String contentStr,final onClickSpannableListener listener){
+	/**
+	 * 把内容是电话的突出出来,然后添加点击事件
+	 * @param tv
+	 * @param context
+	 * @param contentStr
+	 * @param listener
+	 */
+	public static void contentToPhone(TextView tv,Context context,String contentStr,int color,final onClickSpannableListener listener){
 		List<PhoneEntity> phones = RexUtils.byContextGetPhone(contentStr);
 		SpannableString ss = new SpannableString(contentStr);
 		for (PhoneEntity phoneEntity : phones) {
@@ -33,7 +41,7 @@ public class SpannableUtils {
 		      },phoneEntity.start, phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 			ss.setSpan(new UnderlineSpan(), phoneEntity.start, phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 			//因为　ClickableSpan　会变成蓝色的　即必须在后边设置颜色
-			ss.setSpan(new ForegroundColorSpan(Color.RED), phoneEntity.start, 
+			ss.setSpan(new ForegroundColorSpan(color), phoneEntity.start, 
 					phoneEntity.end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 		}
 		

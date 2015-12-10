@@ -33,6 +33,9 @@ public class FramentSwitchAcitiviy extends FragmentActivity implements OnClickLi
 		case R.id.open3:
 			fragmentSwitch.switchPage(Tab3.class);
 			break;
+		case R.id.open4:
+			fragmentSwitch.switchToNull();
+			break;
 
 		default:
 			break;

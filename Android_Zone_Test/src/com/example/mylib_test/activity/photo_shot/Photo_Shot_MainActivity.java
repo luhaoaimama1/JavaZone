@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import Android.Zone.Features.FeaturesActivity;
-import Android.Zone.Features.Feature_Pic;
+import Android.Zone.Features.extraFeature.Feature_Pic;
 public class Photo_Shot_MainActivity extends FeaturesActivity implements OnClickListener{
 	private Feature_Pic feature_Pic;
 	@Override

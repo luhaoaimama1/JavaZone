@@ -111,9 +111,9 @@ public class Http_MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.client_upload:
 			//测试 封装的 文件提交表单
-			File f = new File(FileUtils_SD.FolderCreateOrGet(""), "高达 - 00.mp3");
+			File f = new File(FileUtils_SD.getFile(""), "高达 - 00.mp3");
 //			DCIM\Camera
-			File f2 = new File(FileUtils_SD.FolderCreateOrGet("DCIM","Camera"), "20150621_121327.jpg");
+			File f2 = new File(FileUtils_SD.getFile("DCIM","Camera"), "20150621_121327.jpg");
 			map.put("String_uid", "love");
 			map.put("File_upload", f);
 			map.put("File_upload2", f2);	
@@ -166,7 +166,7 @@ public class Http_MainActivity extends Activity implements OnClickListener {
 			String urlPath="http://down.360safe.com/360/inst.exe";
 			DownLoader b=DownLoader.INSTANCE;
 			final Button connectionDown=(Button) findViewById(R.id.con_down);
-			b.downLoader(urlPath,  FileUtils_SD.FolderCreateOrGet(""), 4,new ProgressListener() {
+			b.downLoader(urlPath,  FileUtils_SD.getFile(""), 4,new ProgressListener() {
 
 				@Override
 				public void onProgressUpdate(int current, int total,
@@ -179,9 +179,9 @@ public class Http_MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.con_upload:
 			//测试 封装的 文件提交表单
-			File f = new File(FileUtils_SD.FolderCreateOrGet(""), "高达 - 00.mp3");
+			File f = new File(FileUtils_SD.getFile(""), "高达 - 00.mp3");
 //			DCIM\Camera
-			File f2 = new File(FileUtils_SD.FolderCreateOrGet("DCIM","Camera"), "20150621_121327.jpg");
+			File f2 = new File(FileUtils_SD.getFile("DCIM","Camera"), "20150621_121327.jpg");
 			map.put("String_uid", "love");
 			map.put("File_upload", f);
 			map.put("File_upload2", f2);

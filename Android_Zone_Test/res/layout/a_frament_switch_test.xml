@@ -39,6 +39,13 @@
             android:layout_margin="4dp"
             android:onClick="onClick"
             android:text="打开3" />
+        <Button
+            android:id="@+id/open4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:onClick="onClick"
+            android:text="打开null" />
     </view.FlowLayout_Zone>
 
 </RelativeLayout>

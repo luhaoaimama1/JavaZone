@@ -44,6 +44,9 @@ public class CustomView_MainActivity  extends Activity implements OnClickListene
 		case R.id.bt_scroll:
 			startActivity(new Intent(this,AndroidHeroActivity.class).putExtra("type", "scroll"));
 			break;
+		case R.id.refreshListView:
+			startActivity(new Intent(this,RefreshListViewActivity.class));
+			break;
 
 		default:
 			break;

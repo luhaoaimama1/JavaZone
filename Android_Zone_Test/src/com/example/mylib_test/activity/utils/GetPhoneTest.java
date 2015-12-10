@@ -1,9 +1,10 @@
 package com.example.mylib_test.activity.utils;
 
 import Android.Zone.Log.ToastUtils;
-import Android.Zone.Utils.StringUtils.SpannableUtils;
-import Android.Zone.Utils.StringUtils.SpannableUtils.onClickSpannableListener;
+import Android.Zone.Utils.SpannableUtils;
+import Android.Zone.Utils.SpannableUtils.onClickSpannableListener;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -20,7 +21,7 @@ public class GetPhoneTest extends Activity {
 		TextView tv = new TextView(this);
 		tv.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		tv.setGravity(Gravity.CENTER);
-		SpannableUtils.contentToPhone(tv, this, Content, new onClickSpannableListener() {
+		SpannableUtils.contentToPhone(tv, this, Content,Color.RED, new onClickSpannableListener() {
 			
 			@Override
 			public void onClick(View widget, String phone) {

@@ -1,4 +1,4 @@
-package Android.Zone.Features;
+package Android.Zone.Features.extraFeature;
 
 import java.io.File;
 import java.util.Calendar;
@@ -6,6 +6,8 @@ import java.util.Locale;
 
 import Android.Zone.Constant;
 import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Features.ExtraFeature;
+import Android.Zone.Features.RequestCodeConfig;
 import Android.Zone.Log.Logger_Zone;
 import Android.Zone.SD.FileUtils_SD;
 import android.app.Activity;
@@ -27,7 +29,7 @@ import android.view.View;
 public abstract  class Feature_Pic extends ExtraFeature{
 	private Logger_Zone logger;
 	private static String path;
-	private static File outFile = FileUtils_SD.FolderCreateOrGet("Zone", "picSave");
+	private static File outFile = FileUtils_SD.getFile("Zone", "picSave");
 
 	public Feature_Pic(Activity activity) {
 		super(activity);

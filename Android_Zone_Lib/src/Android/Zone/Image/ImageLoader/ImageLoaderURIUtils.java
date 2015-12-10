@@ -1,6 +1,6 @@
 package Android.Zone.Image.ImageLoader;
 
-public class ImageLoader_TransformURI_Utils {
+public class ImageLoaderURIUtils {
 	/**
 	 * 	 例子： http的话 任何人都会用就不封装里面了
 		<br>String imageUri = "http://site.com/image.png"; // 网络图片  
@@ -20,7 +20,7 @@ public class ImageLoader_TransformURI_Utils {
 			return str;
 		}
 	}
-	public String transformURI(String uri,Type type){
+	public static String transformURI(String uri,Type type){
 		return type.getStr()+uri;
 	}
 }

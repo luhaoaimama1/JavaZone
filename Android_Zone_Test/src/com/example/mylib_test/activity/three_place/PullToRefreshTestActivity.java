@@ -14,6 +14,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import Android.Zone.Log.ToastUtils;
 import Android.Zone.Utils.thirdPlace.RefreshUtils;
 import Android.Zone.Utils.thirdPlace.RefreshUtils.PullToRefreshListener;
+import Android.Zone.Wifi.NetManager;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,9 +43,6 @@ public class PullToRefreshTestActivity extends Activity implements Callback,Pull
 		adapter=new PullToAdapter(this, data);
 		RefreshUtils.initPullToRefreshListView(list, adapter, this);
 	}
-	public void loadMore(){
-		
-	}
 //	@Override
 //	public boolean handleMessage(Message msg) {
 //		switch (msg.what) {
@@ -64,6 +62,7 @@ public class PullToRefreshTestActivity extends Activity implements Callback,Pull
 //	}
 	@Override
 	public boolean handleMessage(Message msg) {
+		list.onRefreshComplete();
 		return false;
 	}
 	private class GetDataTask extends AsyncTask<Void, Void, String> {
@@ -129,6 +128,10 @@ public class PullToRefreshTestActivity extends Activity implements Callback,Pull
 	}
 	@Override
 	public void onRefresh(View v) {
+		if (!NetManager.haveNetWork(this)) {
+			handler.sendEmptyMessage(1);
+			return ;
+		}
 		String label = DateUtils.formatDateTime(getApplicationContext(),
 				System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
 						| DateUtils.FORMAT_SHOW_DATE

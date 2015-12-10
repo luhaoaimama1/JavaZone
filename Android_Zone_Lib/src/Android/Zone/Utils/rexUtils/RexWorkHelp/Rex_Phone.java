@@ -1,27 +1,13 @@
-package Android.Zone.Utils.StringUtils;
+package Android.Zone.Utils.rexUtils.RexWorkHelp;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RexUtils {
-	public static class RexHelperUtils{
-		private  StringBuffer sb=new StringBuffer();
-		private boolean isFirst=true;
-		public RexHelperUtils addRule(String rex){
-			if (isFirst) {
-				sb.append(rex);
-				isFirst=false;
-			}else{
-				sb.append("|" +rex);
-			}
-			return this;
-		}
-		public String build() {
-			return sb.toString();
-		}
-	}
+import Android.Zone.Utils.rexUtils.RexHelperUtils;
+
+public class Rex_Phone {
 	public static class PhoneEntity{
 		public String str;
 		public int start;
@@ -59,7 +45,7 @@ public class RexUtils {
 		Pattern p = Pattern.compile(reg);
 		Matcher m = p.matcher(" "+con+" ");//因为这里为了让在开头的、结尾的也匹配上 所以得到的顺序-1
 		String res = "";
-		List<PhoneEntity>  list=new ArrayList<RexUtils.PhoneEntity>();
+		List<PhoneEntity>  list=new ArrayList<PhoneEntity>();
 		while (m.find()) {
 			for (int i = 0; i <= m.groupCount(); i++) {
 				res = m.group(i);
