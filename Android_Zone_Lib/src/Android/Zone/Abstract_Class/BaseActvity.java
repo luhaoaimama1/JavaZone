@@ -80,9 +80,16 @@ public abstract class BaseActvity extends FragmentActivity implements Callback,O
 			item.finish();
 		}
 	}
+	//带有可返回刷新 跳转
 	public  void startActivityWithRefresh(Intent intent){
 		startActivityForResult(intent,Default_RequestCode);
 	}
+	//有intent数据返回的刷新
+	public void finishWithBackRefresh(Intent data){
+		setResult(Reresh_Response, data);
+		finish();
+	}
+	//没有intent数据返回的刷新
 	public void finishWithBackRefresh(){
 		setResult(Reresh_Response);
 		finish();
