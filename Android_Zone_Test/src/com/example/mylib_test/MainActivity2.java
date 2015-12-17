@@ -34,7 +34,7 @@ public class MainActivity2 extends Activity{
 		createDialog();
 		listView1=(ListView) findViewById(R.id.listView1);
 		final int[] colorArry={Color.WHITE,Color.GREEN,Color.YELLOW,Color.CYAN};
-		adapter=new Adapter_Zone<MenuEntity>(this,MainMenu.menu, R.layout.item_menu) {
+		adapter=new Adapter_Zone<MenuEntity>(this,MainMenu.menu) {
 
 			@Override
 			public void setData(Map<Integer, View> viewMap, MenuEntity data,
@@ -62,6 +62,11 @@ public class MainActivity2 extends Activity{
 				});
 				
 				
+			}
+
+			@Override
+			public int setLayoutID() {
+				return R.layout.item_menu;
 			}
 		};
 		listView1.setAdapter(adapter);

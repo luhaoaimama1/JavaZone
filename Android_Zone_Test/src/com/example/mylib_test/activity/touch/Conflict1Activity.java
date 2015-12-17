@@ -34,12 +34,12 @@ public class Conflict1Activity extends Activity{
 		
 		ListView lv=(ListView) findViewById(R.id.lv);
 		List<String> temp = Arrays.asList(Images.imageThumbUrls);
-		lv.setAdapter(new Adapter(this, temp, R.layout.item_textview));
+		lv.setAdapter(new Adapter(this, temp));
 	}
 	public class Adapter extends Adapter_Zone<String>{
 
-		public Adapter(Context context, List<String> data, int layout_id) {
-			super(context, data, layout_id);
+		public Adapter(Context context, List<String> data) {
+			super(context, data);
 		}
 
 		@Override
@@ -47,6 +47,11 @@ public class Conflict1Activity extends Activity{
 				int position) {
 			TextView tv=(TextView) viewMap.get(R.id.tv);
 			tv.setText(data);
+		}
+
+		@Override
+		public int setLayoutID() {
+			return  R.layout.item_textview;
 		}
 		
 	} 

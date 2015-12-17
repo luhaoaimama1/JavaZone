@@ -25,30 +25,16 @@ public class SoftTestActivity extends Activity{
 		for (int i = 0; i < 15; i++) {
 			list.add( R.drawable.t0);
 		}
-		iv.setAdapter(new AdapterMecha(this, list, R.layout.imageitem));
+		iv.setAdapter(new AdapterMecha(this, list));
 //		for (int i = 0; i <=8; i++) {
 //			list.add(Bitmap.createBitmap(temp,0,0,temp.getWidth(),temp.getHeight(),null,true));
 //		}
 		System.out.println("...");
 	}
-	public class Adapter extends Adapter_Zone<Integer> {
-
-		public Adapter(Context context, List<Integer> data, int layout_id) {
-			super(context, data, layout_id);
-		}
-
-		@Override
-		public void setData(Map<Integer, View> viewMap, Integer data,
-				int position) {
-			ImageView ivD=(ImageView) viewMap.get(R.id.iv);
-			ivD.setImageBitmap(BitmapFactory.decodeResource(getResources(),data));
-		}
-		
-	}
 	public class AdapterMecha extends Adapter_Zone<Integer> {
 		
-		public AdapterMecha(Context context, List<Integer> data, int layout_id) {
-			super(context, data, layout_id);
+		public AdapterMecha(Context context, List<Integer> data) {
+			super(context, data);
 		}
 		
 		@Override
@@ -56,6 +42,11 @@ public class SoftTestActivity extends Activity{
 				int position) {
 			ImageView ivD=(ImageView) viewMap.get(R.id.iv);
 			ivD.setImageBitmap(BitmapFactory.decodeResource(getResources(),data));
+		}
+
+		@Override
+		public int setLayoutID() {
+			return  R.layout.imageitem;
 		}
 		
 	}

@@ -42,7 +42,7 @@ public class ImageLoaderGridActivity extends Activity{
 		gridView1=(GridView) findViewById(R.id.gridView1);
 //		Images.imageThumbUrls
 		List<String> temp = Arrays.asList(Images.imageThumbUrls);
-		gridView1.setAdapter(new Adapter(this, temp, R.layout.imageitem));
+		gridView1.setAdapter(new Adapter(this, temp));
 //		gridView1.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
 		
 //		options = new DisplayImageOptions.Builder()
@@ -57,8 +57,8 @@ public class ImageLoaderGridActivity extends Activity{
 	}
 	public class Adapter extends Adapter_Zone<String>{
 
-		public Adapter(Context context, List<String> data, int layout_id) {
-			super(context, data, layout_id);
+		public Adapter(Context context, List<String> data) {
+			super(context, data);
 		}
 
 		@Override
@@ -79,6 +79,12 @@ public class ImageLoaderGridActivity extends Activity{
 //				});
 //			} else
 //				iv.setImageBitmap(bm);
+		}
+
+		@Override
+		public int setLayoutID() {
+			// TODO Auto-generated method stub
+			return  R.layout.imageitem;
 		}
 		
 	} 

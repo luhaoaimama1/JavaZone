@@ -15,13 +15,18 @@ public class PullToAdapter extends Adapter_Zone<String>{
 	private TextView tv;
 
 	public PullToAdapter(Context context, List<String> data) {
-		super(context, data, R.layout.item_threethird_pull);
+		super(context, data);
 	}
 
 	@Override
 	public void setData(Map<Integer, View> viewMap, String data, int position) {
 		tv=(TextView)viewMap.get(R.id.tv);
 		tv.setText(data);
+	}
+
+	@Override
+	public int setLayoutID() {
+		return  R.layout.item_threethird_pull;
 	}
 
 }

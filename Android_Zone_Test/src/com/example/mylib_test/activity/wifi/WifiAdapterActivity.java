@@ -59,7 +59,7 @@ public class WifiAdapterActivity extends Activity {
 		}
 		
 		
-		Adapter_Zone<WifiItem> adpt=new Adapter_Zone<WifiItem>(this, data, R.layout.wifi_item) {
+		Adapter_Zone<WifiItem> adpt=new Adapter_Zone<WifiItem>(this, data) {
 			@Override
 			public void setData(Map<Integer, View> map,final WifiItem dataIndex,int arg0) {
 				// TODO Auto-generated method stub
@@ -108,6 +108,11 @@ public class WifiAdapterActivity extends Activity {
 				Wifi_item_NotCon.setOnClickListener(listener);
 				Wifi_item_ToString.setOnClickListener(listener);			
 				
+			}
+
+			@Override
+			public int setLayoutID() {
+				return R.layout.wifi_item;
 			}
 
 		};

@@ -22,13 +22,18 @@ public class RefreshListViewActivity extends Activity{
 		setContentView(R.layout.a_customview_refreshlist);
 		rf_list=(RefreshZone) findViewById(R.id.rf_list);
 		addData();
-		rf_list.setAdapter(new Adapter_Zone<String>(this, data, R.layout.item_textview) {
+		rf_list.setAdapter(new Adapter_Zone<String>(this, data) {
 
 			@Override
 			public void setData(Map<Integer, View> viewMap, String data,
 					int position) {
 				TextView tv=(TextView) viewMap.get(R.id.tv);
 				tv.setText(data);
+			}
+
+			@Override
+			public int setLayoutID() {
+				return R.layout.item_textview;
 			}
 		});
 	}

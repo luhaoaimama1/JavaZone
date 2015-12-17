@@ -5,8 +5,11 @@ import java.util.List;
 
 import com.example.mylib_test.R;
 import com.example.mylib_test.activity.three_place.recyclerAdapter.RecyclerBaseAdapterTest;
+import com.example.mylib_test.activity.three_place.recyclerAdapter.RecyclerBaseAdapterTest_Muli;
 import com.example.mylib_test.activity.three_place.recyclerAdapter.RvAdapter_Pull;
 
+import Android.Zone.Abstract_Class.recycler.Adapter_Zone_Recycler.OnItemClickListener;
+import Android.Zone.Abstract_Class.recycler.RecyclerHolder_Zone;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 //瀑布刘　动画添加问题　　还有　onclick　位置问题　
 public class RecyclerActivity extends Activity {
@@ -24,10 +28,13 @@ public class RecyclerActivity extends Activity {
 	private RecyclerView rv;
 	private List<String> mDatas=new ArrayList<String>();
 	private RvAdapter_Pull pullAdapter;
-	 boolean isPull=false;
+	Type type=Type.Base;
 	private DefaultItemAnimator pullAni;
 	private RecyclerBaseAdapterTest baseRecycler;
-	
+	private RecyclerBaseAdapterTest_Muli muliAdapter;
+	public enum Type{
+		Base,Pull,Mulitple;
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,8 +46,17 @@ public class RecyclerActivity extends Activity {
 		rv.setLayoutManager(new LinearLayoutManager(this));
 //		noPullAdapter=new RvAdapter(this, mDatas);
 		pullAdapter=new RvAdapter_Pull(this, mDatas);
+		muliAdapter=new RecyclerBaseAdapterTest_Muli(this, mDatas);
 		//基础测试
 		baseRecycler=new RecyclerBaseAdapterTest(this, mDatas);
+		baseRecycler.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(View convertView, int position,
+					RecyclerHolder_Zone holder) {
+				System.out.println("onItemClick__position:"+position);
+			}
+		});
 		rv.setAdapter(baseRecycler);
 		// 设置item动画　　　此动画不设置默认也有
 		pullAni=new DefaultItemAnimator();
@@ -59,62 +75,82 @@ public class RecyclerActivity extends Activity {
 		int id = item.getItemId();
 		switch (id) {
 		case  R.id.all:
-			if(isPull){
-				pullAdapter.addAllData("insert All");
-			}else{
+			switch (type) {
+			case Base:
 				baseRecycler.addAllData("insert All");
+				break;
+			case Mulitple:
+				muliAdapter.addAllData("insert All");
+				break;
+			case Pull:
+				pullAdapter.addAllData("insert All");
+				break;
+
+			default:
+				break;
 			}
 			break;
 		case  R.id.add:
-			if(isPull){
-				pullAdapter.addData("insert one");
-			}else{
+			switch (type) {
+			case Base:
 				baseRecycler.addData("insert one");
+				break;
+			case Mulitple:
+				muliAdapter.addData("insert one");
+				break;
+			case Pull:
+				pullAdapter.addData("insert one");
+				break;
+
+			default:
+				break;
 			}
 			break;
 		case  R.id.delete:
-			if(isPull){
-				pullAdapter.deleteData();
-			}else{
+			switch (type) {
+			case Base:
 				baseRecycler.deleteData();
+				break;
+			case Mulitple:
+				muliAdapter.deleteData();
+				break;
+			case Pull:
+				pullAdapter.deleteData();
+				break;
+
+			default:
+				break;
 			}
 			break;
 		case  R.id.action_GirdView:
 			rv.setLayoutManager(new GridLayoutManager(this,3));
-			if(isPull){
-				rv.setAdapter(baseRecycler);
-			}
-			isPull=false;
+			rv.setAdapter(baseRecycler);
+			type=Type.Base;
 			break;
 		case  R.id.action_ListView:
 			rv.setLayoutManager(new LinearLayoutManager(this));
-			if(isPull){
-				rv.setAdapter(baseRecycler);
-			}
-			isPull=false;
+			rv.setAdapter(baseRecycler);
+			type=Type.Base;
 			break;
 		case  R.id.action_pull:
 			rv.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
-			if(!isPull){
-				rv.setAdapter(pullAdapter);
-			}
-			isPull=true;
+			rv.setAdapter(pullAdapter);
+			type=Type.Pull;
 			break;
 		case  R.id.action_H_GirdView:
 			rv.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL));
-			if(isPull){
-				//可以在适配器动态修改也可以在外部修改
-				rv.setAdapter(baseRecycler);
-			}
-			isPull=false;
+			rv.setAdapter(baseRecycler);
+			type=Type.Base;
 			break;
 		case  R.id.baseAdapter:
 			rv.setLayoutManager(new LinearLayoutManager(this));
-			if(isPull){
-				//可以在适配器动态修改也可以在外部修改
-				rv.setAdapter(new RecyclerBaseAdapterTest(this, mDatas));
-			}
-			isPull=false;
+			rv.setAdapter(baseRecycler);
+			type=Type.Base;
+			break;
+		case  R.id.multiples:
+			rv.setLayoutManager(new LinearLayoutManager(this));
+			rv.setAdapter(muliAdapter);
+			type=Type.Mulitple;
 			break;
 
 		default:

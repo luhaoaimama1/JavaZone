@@ -39,12 +39,17 @@ public class AdapterActivity extends Activity {
 		}
 		idArray=new int[]{R.id.Item_Tv1,R.id.Item_Tv2};
 		
-		myAdapter = new Adapter_Zone<Item>(AdapterActivity.this, data, R.layout.item) {
+		myAdapter = new Adapter_Zone<Item>(AdapterActivity.this, data) {
 
 			@Override
 			public void setData(Map<Integer, View> map,Item data,int arg0) {
 				((TextView)	map.get(R.id.Item_Tv1)).setText(data.getTv1());
 				((TextView)	map.get(R.id.Item_Tv2)).setText( data.getTv2());
+			}
+
+			@Override
+			public int setLayoutID() {
+				return  R.layout.item;
 			}
 			
 		};

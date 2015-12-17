@@ -43,5 +43,10 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="adapter封装测试"/>
+    <item
+        android:id="@+id/multiples"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="多布局测试"/>
 
 </menu>
