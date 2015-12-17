@@ -40,5 +40,12 @@
         android:layout_margin="4dp"
         android:onClick="onClick"
         android:text="google下拉刷新" />
+    <Button
+        android:id="@+id/bt_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="recycler测试" />
 
 </view.FlowLayout_Zone>

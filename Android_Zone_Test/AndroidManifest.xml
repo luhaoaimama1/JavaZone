@@ -16,6 +16,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -142,6 +143,10 @@
         <activity
             android:name="com.example.mylib_test.activity.three_place.ThirdParty_MainActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.mylib_test.activity.three_place.RecyclerActivity"
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name="com.example.mylib_test.activity.pop_dialog.Dialog_Pop_Adapter_MainActivity"
