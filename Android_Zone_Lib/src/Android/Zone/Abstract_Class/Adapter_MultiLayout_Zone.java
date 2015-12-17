@@ -28,23 +28,16 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 	 * @param data
 	 * @param layout_ids
 	 */
-	public Adapter_MultiLayout_Zone(Context context, List<T> data,int... layout_ids) {
+	public Adapter_MultiLayout_Zone(Context context, List<T> data) {
 		this.data = data;
-		this.layout_ids=layout_ids;
+		this.layout_ids=setLayoutIDs();
 		mInflater = LayoutInflater.from(context);
 		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
 		logger.closeLog();
 	}
 
 	public int getItemViewType(int position) {
-		List<Integer> layoutList=new ArrayList<Integer>();
-		for (Integer item : layout_ids) {
-			layoutList.add(item);
-		}
-		int temp=getItemViewType_Zone(position,layoutList);
-		if(temp<0||temp>layout_ids.length){
-			throw new IllegalStateException("return value must be 0-layout_ids.length!");
-		}
+		int temp=getItemViewType_Zone(position,layout_ids);
 		return temp;
 	}
 
@@ -55,10 +48,10 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 	/**
 	 * 
 	 * @param position
-	 * @param layoutlist 
-	 * @return  必须为 layout_ids长度范围内
+	 * @param layout_ids 
+	 * @return  返回的id是资源id
 	 */
-	public abstract int getItemViewType_Zone(int position, List<Integer> layoutlist);
+	public abstract int getItemViewType_Zone(int position, int[] layout_ids);
 	
 	@Override
 	public int getCount() {
@@ -81,7 +74,7 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 		if (convertView == null) {
 			//convertView 会重复利用  arg0则不会 所以数据 每次都加载就好了 所以  有关convertView的都是初始化用
 			holder = new ViewHolder();
-			convertView = mInflater.inflate(layout_ids[getItemViewType(position)], null);
+			convertView = mInflater.inflate(getItemViewType(position), null);
 			holder.layoutId=layout_ids[getItemViewType(position)];
 			//把id 都找出来
 			List<Integer> idList = ViewIDsUtils.getIDsByView(convertView);			
@@ -119,6 +112,10 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 		public	 Map<Integer,View> map=new  HashMap<Integer, View>();
 		public int layoutId=-1;
 	}
+	
+	
+	
+	public abstract  int[] setLayoutIDs();
 	/**
 	 * 
 	 * @param viewMap   装载convertView的视图 故从中取出然后赋值即可
@@ -127,5 +124,6 @@ public abstract class Adapter_MultiLayout_Zone<T> extends BaseAdapter {
 	 * @param layoutId 此为布局id 
 	 */
 	public abstract  void setData(Map<Integer, View> viewMap, T data, int position, int layoutId); //注意这里，只声明了这个方法，但没有具体实现。
+
 
 }

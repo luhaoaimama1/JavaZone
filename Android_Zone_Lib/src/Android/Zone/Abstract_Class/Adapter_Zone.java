@@ -26,9 +26,9 @@ public abstract class Adapter_Zone<T> extends BaseAdapter {
 	 * @param data
 	 * @param layout_id
 	 */
-	public Adapter_Zone(Context context, List<T> data,int layout_id) {
+	public Adapter_Zone(Context context, List<T> data) {
 		this.data = data;
-		this.layout_id=layout_id;
+		this.layout_id=setLayoutID();
 		mInflater = LayoutInflater.from(context);
 		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
 		logger.closeLog();
@@ -87,6 +87,10 @@ public abstract class Adapter_Zone<T> extends BaseAdapter {
 		public	 Map<Integer,View> map=new  HashMap<Integer, View>();
 	}
 
+	
+	
+	public abstract  int setLayoutID();
+
 	/**
 	 * 
 	 * @param viewMap   装载convertView的视图 故从中取出然后赋值即可
@@ -94,5 +98,5 @@ public abstract class Adapter_Zone<T> extends BaseAdapter {
 	 * @param position		
 	 */
 	public abstract  void setData(Map<Integer, View> viewMap, T data, int position); //注意这里，只声明了这个方法，但没有具体实现。
-
+	
 }

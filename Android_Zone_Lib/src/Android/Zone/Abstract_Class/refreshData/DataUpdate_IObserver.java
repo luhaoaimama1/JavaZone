@@ -1,4 +1,4 @@
 package Android.Zone.Abstract_Class.refreshData;
 public interface DataUpdate_IObserver {
-	 void updateObj(Object o);
+	 void updateData(Object o);
 }

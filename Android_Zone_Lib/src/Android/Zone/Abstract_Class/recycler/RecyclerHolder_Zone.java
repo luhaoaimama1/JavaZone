@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Created by Zone on 2015/12/16.
  */
-public class MyRecyclerHolder extends android.support.v7.widget.RecyclerView.ViewHolder{
+public class RecyclerHolder_Zone extends android.support.v7.widget.RecyclerView.ViewHolder{
     private int[] idArray;// 得到一个LayoutInfalter对象用来导入布局
     public Map<Integer,View> map=new HashMap<Integer, View>();
-    public MyRecyclerHolder(View convertView) {
+    public RecyclerHolder_Zone(View convertView) {
         super(convertView);
         //把id 都找出来
         List<Integer> idList = ViewIDsUtils.getIDsByView(convertView);
