@@ -1,7 +1,7 @@
 package Android.Zone.Image;
 
 import Android.Zone.Constant;
-import Android.Zone.Abstract_Class.Adapter_MultiLayout_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_MultiLayout_Zone;
 import Android.Zone.Log.Logger_Zone;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
