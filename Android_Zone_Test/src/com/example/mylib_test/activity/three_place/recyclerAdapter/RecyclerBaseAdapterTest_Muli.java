@@ -5,16 +5,15 @@ import java.util.Map;
 
 import com.example.mylib_test.R;
 
-import Android.Zone.Abstract_Class.recycler.Adapter_Zone_MuliRecycler;
-import Android.Zone.Abstract_Class.recycler.Adapter_Zone_Recycler;
-import Android.Zone.Abstract_Class.recycler.RecyclerHolder_Zone;
+import Android.Zone.Abstract_Class.recyclerAdapter.AdapterRecycler_MuliLayout_Zone;
+import Android.Zone.Abstract_Class.recyclerAdapter.core.RecyclerHolder_Zone;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class RecyclerBaseAdapterTest_Muli extends Adapter_Zone_MuliRecycler<String> {
+public class RecyclerBaseAdapterTest_Muli extends AdapterRecycler_MuliLayout_Zone<String> {
 	List<String> datas;
 
 	public RecyclerBaseAdapterTest_Muli(Context context, List<String> data) {
@@ -26,9 +25,9 @@ public class RecyclerBaseAdapterTest_Muli extends Adapter_Zone_MuliRecycler<Stri
 		return  new int[]{R.layout.item_recycler,R.layout.item_recycler_muptli};
 	}
 	@Override
-	public void setData(Map<Integer, View> viewMap, String data, final int position,final RecyclerHolder_Zone holder) {
-		TextView tem = (TextView) viewMap.get(R.id.id_num);
-		LinearLayout ll = (LinearLayout) viewMap.get(R.id.ll_item);
+	public void setData(final RecyclerHolder_Zone holder,String data, final int position) {
+		TextView tem = (TextView) holder.findViewById(R.id.id_num);
+		LinearLayout ll = (LinearLayout) holder.findViewById(R.id.ll_item);
 		ll.setOnClickListener(new OnClickListener() {
 			
 			@Override

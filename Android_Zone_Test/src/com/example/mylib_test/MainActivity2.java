@@ -4,7 +4,8 @@ import java.util.Map;
 
 import com.example.mylib_test.activity.db.entity.MenuEntity;
 
-import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import Android.Zone.Log.ToastUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -36,10 +37,16 @@ public class MainActivity2 extends Activity{
 		final int[] colorArry={Color.WHITE,Color.GREEN,Color.YELLOW,Color.CYAN};
 		adapter=new Adapter_Zone<MenuEntity>(this,MainMenu.menu) {
 
+
 			@Override
-			public void setData(Map<Integer, View> viewMap, MenuEntity data,
+			public int setLayoutID() {
+				return R.layout.item_menu;
+			}
+
+			@Override
+			public void setData(ViewHolder_Zone holder, MenuEntity data,
 					final int position) {
-				TextView tv=(TextView) viewMap.get(R.id.tv);
+				TextView tv=(TextView) holder.findViewById(R.id.tv);
 				tv.setText(MainMenu.menu.get(position).info);
 				tv.setBackgroundColor(colorArry[position%colorArry.length]);
 				tv.setOnClickListener(new OnClickListener() {
@@ -61,12 +68,6 @@ public class MainActivity2 extends Activity{
 					}
 				});
 				
-				
-			}
-
-			@Override
-			public int setLayoutID() {
-				return R.layout.item_menu;
 			}
 		};
 		listView1.setAdapter(adapter);

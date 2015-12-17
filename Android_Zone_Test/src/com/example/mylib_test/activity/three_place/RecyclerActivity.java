@@ -8,15 +8,16 @@ import com.example.mylib_test.activity.three_place.recyclerAdapter.RecyclerBaseA
 import com.example.mylib_test.activity.three_place.recyclerAdapter.RecyclerBaseAdapterTest_Muli;
 import com.example.mylib_test.activity.three_place.recyclerAdapter.RvAdapter_Pull;
 
-import Android.Zone.Abstract_Class.recycler.Adapter_Zone_Recycler.OnItemClickListener;
-import Android.Zone.Abstract_Class.recycler.RecyclerHolder_Zone;
+import Android.Zone.Abstract_Class.recyclerAdapter.I.OnItemClickListener;
+import Android.Zone.Abstract_Class.recyclerAdapter.I.OnItemLongClickListener;
+import Android.Zone.Abstract_Class.recyclerAdapter.core.RecyclerHolder_Zone;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,11 +51,18 @@ public class RecyclerActivity extends Activity {
 		//»ù´¡²âÊÔ
 		baseRecycler=new RecyclerBaseAdapterTest(this, mDatas);
 		baseRecycler.setOnItemClickListener(new OnItemClickListener() {
-
+			
 			@Override
 			public void onItemClick(View convertView, int position,
 					RecyclerHolder_Zone holder) {
-				System.out.println("onItemClick__position:"+position);
+				
+			}
+		});
+		baseRecycler.setOnItemLongClickListener(new OnItemLongClickListener() {
+			
+			@Override
+			public void onItemLongClick(View convertView, int position,RecyclerHolder_Zone holder) {
+				
 			}
 		});
 		rv.setAdapter(baseRecycler);
@@ -110,6 +118,7 @@ public class RecyclerActivity extends Activity {
 			switch (type) {
 			case Base:
 				baseRecycler.deleteData();
+				rv.scrollToPosition(0);
 				break;
 			case Mulitple:
 				muliAdapter.deleteData();

@@ -12,7 +12,8 @@ import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import Android.Zone.Image.lruUtils.DiskLruUtils;
 import android.app.Activity;
 import android.content.Context;
@@ -62,29 +63,28 @@ public class ImageLoaderGridActivity extends Activity{
 		}
 
 		@Override
-		public void setData(Map<Integer, View> viewMap, String data,
-				int position) {
-			 ImageView iv=(ImageView) viewMap.get(R.id.iv);
-//			ImageLoader.getInstance().displayImage(data, iv,options);
-			ImageLoader.getInstance().displayImage(data, iv);
-//			Bitmap bm = diskLru.getBitmapByUrl(data);
-//			if (bm==null) {
-//				ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
-//					@Override
-//					public void onLoadingComplete(String imageUri, View view,
-//							Bitmap loadedImage) {
-//						super.onLoadingComplete(imageUri, view, loadedImage);
-//						diskLru.addUrl(imageUri, loadedImage);
-//					}
-//				});
-//			} else
-//				iv.setImageBitmap(bm);
-		}
-
-		@Override
 		public int setLayoutID() {
 			// TODO Auto-generated method stub
 			return  R.layout.imageitem;
+		}
+
+		@Override
+		public void setData(ViewHolder_Zone holder, String data, int position) {
+			 ImageView iv=(ImageView) holder.findViewById(R.id.iv);
+//				ImageLoader.getInstance().displayImage(data, iv,options);
+				ImageLoader.getInstance().displayImage(data, iv);
+//				Bitmap bm = diskLru.getBitmapByUrl(data);
+//				if (bm==null) {
+//					ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
+//						@Override
+//						public void onLoadingComplete(String imageUri, View view,
+//								Bitmap loadedImage) {
+//							super.onLoadingComplete(imageUri, view, loadedImage);
+//							diskLru.addUrl(imageUri, loadedImage);
+//						}
+//					});
+//				} else
+//					iv.setImageBitmap(bm);
 		}
 		
 	} 

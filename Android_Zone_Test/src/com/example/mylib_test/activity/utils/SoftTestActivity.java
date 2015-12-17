@@ -3,8 +3,11 @@ package com.example.mylib_test.activity.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import com.example.mylib_test.R;
-import Android.Zone.Abstract_Class.Adapter_Zone;
+
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -37,16 +40,16 @@ public class SoftTestActivity extends Activity{
 			super(context, data);
 		}
 		
-		@Override
-		public void setData(Map<Integer, View> viewMap, Integer data,
-				int position) {
-			ImageView ivD=(ImageView) viewMap.get(R.id.iv);
-			ivD.setImageBitmap(BitmapFactory.decodeResource(getResources(),data));
-		}
 
 		@Override
 		public int setLayoutID() {
 			return  R.layout.imageitem;
+		}
+
+		@Override
+		public void setData(ViewHolder_Zone holder, Integer data, int position) {
+			ImageView ivD=(ImageView) holder.findViewById(R.id.iv);
+			ivD.setImageBitmap(BitmapFactory.decodeResource(getResources(),data));
 		}
 		
 	}

@@ -7,7 +7,9 @@ import java.util.Map;
 import com.example.mylib_test.R;
 import com.example.mylib_test.activity.pop_dialog.entity.Item;
 import com.google.gson.Gson;
-import Android.Zone.Abstract_Class.Adapter_Zone;
+
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,14 +44,14 @@ public class AdapterActivity extends Activity {
 		myAdapter = new Adapter_Zone<Item>(AdapterActivity.this, data) {
 
 			@Override
-			public void setData(Map<Integer, View> map,Item data,int arg0) {
-				((TextView)	map.get(R.id.Item_Tv1)).setText(data.getTv1());
-				((TextView)	map.get(R.id.Item_Tv2)).setText( data.getTv2());
+			public int setLayoutID() {
+				return  R.layout.item;
 			}
 
 			@Override
-			public int setLayoutID() {
-				return  R.layout.item;
+			public void setData(ViewHolder_Zone holder, Item data, int position) {
+				((TextView)	holder.findViewById(R.id.Item_Tv1)).setText(data.getTv1());
+				((TextView)	holder.findViewById(R.id.Item_Tv2)).setText( data.getTv2());
 			}
 			
 		};

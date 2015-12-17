@@ -8,7 +8,8 @@ import com.example.mylib_test.R;
 import com.example.mylib_test.activity.three_place.Images;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -41,17 +42,15 @@ public class Conflict1Activity extends Activity{
 		public Adapter(Context context, List<String> data) {
 			super(context, data);
 		}
-
-		@Override
-		public void setData(Map<Integer, View> viewMap, String data,
-				int position) {
-			TextView tv=(TextView) viewMap.get(R.id.tv);
-			tv.setText(data);
-		}
-
 		@Override
 		public int setLayoutID() {
 			return  R.layout.item_textview;
+		}
+
+		@Override
+		public void setData(ViewHolder_Zone holder, String data, int position) {
+			TextView tv=(TextView) holder.findViewById(R.id.tv);
+			tv.setText(data);
 		}
 		
 	} 

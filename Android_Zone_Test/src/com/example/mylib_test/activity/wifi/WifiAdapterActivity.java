@@ -9,7 +9,8 @@ import com.example.mylib_test.R.id;
 import com.example.mylib_test.R.layout;
 import com.example.mylib_test.activity.wifi.entity.WifiItem;
 
-import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import Android.Zone.Wifi.MyWifiAnd3G;
 import android.app.Activity;
 import android.net.wifi.WifiConfiguration;
@@ -60,15 +61,23 @@ public class WifiAdapterActivity extends Activity {
 		
 		
 		Adapter_Zone<WifiItem> adpt=new Adapter_Zone<WifiItem>(this, data) {
+
 			@Override
-			public void setData(Map<Integer, View> map,final WifiItem dataIndex,int arg0) {
+			public int setLayoutID() {
+				return R.layout.wifi_item;
+			}
+
+			@Override
+			public void setData(ViewHolder_Zone holder, final WifiItem dataIndex,
+					int position) {
+				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
 				//能得到View就能设置 事件了
 				//找到View
-				TextView Wifi_item_ssid=(TextView)map.get(R.id.Wifi_item_ssid);
-				Button Wifi_item_con=(Button)map.get(R.id.Wifi_item_con);
-				Button Wifi_item_NotCon=(Button)map.get(R.id.Wifi_item_NotCon);
-				Button Wifi_item_ToString=(Button)map.get(R.id.Wifi_item_ToString);
+				TextView Wifi_item_ssid=(TextView)holder.findViewById(R.id.Wifi_item_ssid);
+				Button Wifi_item_con=(Button)holder.findViewById(R.id.Wifi_item_con);
+				Button Wifi_item_NotCon=(Button)holder.findViewById(R.id.Wifi_item_NotCon);
+				Button Wifi_item_ToString=(Button)holder.findViewById(R.id.Wifi_item_ToString);
 				
 				//给view赋值
 				Wifi_item_ssid.setText(dataIndex.getSSID());
@@ -106,13 +115,7 @@ public class WifiAdapterActivity extends Activity {
 				//给view添加监听事件
 				Wifi_item_con.setOnClickListener(listener);
 				Wifi_item_NotCon.setOnClickListener(listener);
-				Wifi_item_ToString.setOnClickListener(listener);			
-				
-			}
-
-			@Override
-			public int setLayoutID() {
-				return R.layout.wifi_item;
+				Wifi_item_ToString.setOnClickListener(listener);	
 			}
 
 		};

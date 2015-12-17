@@ -6,7 +6,8 @@ import java.util.Map;
 
 import com.example.mylib_test.R;
 
-import Android.Zone.Abstract_Class.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
+import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import Android.Zone.ListView.RefreshZone;
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,17 +25,19 @@ public class RefreshListViewActivity extends Activity{
 		addData();
 		rf_list.setAdapter(new Adapter_Zone<String>(this, data) {
 
-			@Override
-			public void setData(Map<Integer, View> viewMap, String data,
-					int position) {
-				TextView tv=(TextView) viewMap.get(R.id.tv);
-				tv.setText(data);
-			}
 
 			@Override
 			public int setLayoutID() {
 				return R.layout.item_textview;
 			}
+
+			@Override
+			public void setData(ViewHolder_Zone holder, String data,
+					int position) {
+				TextView tv=(TextView) holder.findViewById(R.id.tv);
+				tv.setText(data);
+			}
+
 		});
 	}
 	private void addData() {
