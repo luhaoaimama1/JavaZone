@@ -29,15 +29,8 @@ public class RecyclerBaseAdapterTest extends AdapterRecycler_Zone<String> {
 	}
 	
 	public void addData(String str) {
-		for (int i = 2; i >=0; i--) {
-			datas.add(2*i+1, str);
-			notifyItemInserted(2*i+1);//插入1的动画	
-		}
-//		notifyItemMoved(1, 3);//1与3互换的动画
-		
-//		notifyItemChanged(1);
-		
-		
+		openAni();
+		add(1, str);
 	}
 
 	public void saveDataForAni(List<String> backUpDatas){
@@ -95,38 +88,13 @@ public class RecyclerBaseAdapterTest extends AdapterRecycler_Zone<String> {
 //		return result;
 //	}
 	public void addAllData(String str) {
-		datas.add(1, str);
-		notifyDataSetChanged();
-		
-//		notifyItemRangeChanged(1, 3);、、
-//		
-//		for (int i = 2; i >=0; i--) {
-//			datas.add(2*i+1, str);
-//			notifyItemInserted(2*i+1);//插入1的动画	
-//		}
-//		for (int i = 2; i >=0; i--) {
-//			datas.remove(2*i+4);
-//			notifyItemRemoved(2*i+4);
-//		}
-		
+		openAni();
+		changePos(1, 3);
 	}
 
 	public void deleteData() {
-//		for (int i = 2; i >=0; i--) {
-//			datas.remove(2*i+1);
-//			notifyItemRemoved(2*i+1);
-//		}
-//		saveDataForAni(datas);
-//		datas.remove(3);
-//		datas.remove(2);
-//		datas.remove(1);
-		
-		for (int i = 4; i >= 0; i--) {
-			datas.add(1, "insert"+i);
-		}
-		notifyItemInserted(1);//在现在的窗口上的1的位置上添加一个  item带动画 并且数据是  现在data的1的数据
-//		notifyDataSetChangedWithAni();
-	
+		openAni();
+		remove(1);
 		
 	}
 	@Override

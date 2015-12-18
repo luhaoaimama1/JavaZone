@@ -17,6 +17,8 @@ public abstract class BaseRecyclerAdapter<T> extends Adapter<RecyclerHolder_Zone
 	public Context context;
 	private OnItemClickListener clickListener;
 	private OnItemLongClickListener longClicklistener;
+	private boolean openAni=false;
+	
 	public BaseRecyclerAdapter(Context context,List<T> data) {
 		this.context = context;
 		this.data = data;
@@ -78,5 +80,78 @@ public abstract class BaseRecyclerAdapter<T> extends Adapter<RecyclerHolder_Zone
 	 * @param position 此位置  在监听 回调那种类型中不试用   因为位置变了 监听中还没变。。。
 	 */
 	public abstract  void setData(RecyclerHolder_Zone holder, T data, int position); //注意这里，只声明了这个方法，但没有具体实现。
+
 	
+
+	public void openAni(){
+		openAni=true;
+	}
+	public void closeAni(){
+		openAni=false;
+	}
+    public void add(T elem) {
+    	data.add(elem);
+    	if (openAni) 
+    		notifyItemInserted(data.size());
+		else
+			notifyDataSetChanged();
+    }
+    public void add(int index,T elem) {
+    	data.add(index,elem);
+    	if (openAni) 
+    		notifyItemInserted(index);
+    	else
+    		notifyDataSetChanged();
+    }
+    public void addAll(List<T> elem) {
+    	int index=data.size();
+    	data.addAll(elem);
+    	if (openAni) 
+			notifyItemRangeInserted(index, elem.size());
+		else
+			notifyDataSetChanged();
+    }
+    public void changePos(int fromPosition,int toPosition){
+    	T temp=data.get(fromPosition);
+    	data.remove(fromPosition);
+    	data.set(toPosition, temp);
+    	if (openAni) 
+    		notifyItemMoved(fromPosition, toPosition);
+		else
+			notifyDataSetChanged();
+    }
+    public void set(int index, T elem) {
+    	data.set(index, elem);
+    	if (openAni) 
+    		notifyItemChanged(index);
+		else
+			notifyDataSetChanged();
+    }
+    public void remove(T elem) {
+    	int index=data.indexOf(elem);
+    	data.remove(elem);
+        if (openAni) 
+    		notifyItemRemoved(index);
+		else
+			notifyDataSetChanged();
+    }
+    public void remove(int index) {
+    	data.remove(index);
+        if (openAni) 
+    		notifyItemRemoved(index);
+		else
+			notifyDataSetChanged();
+    }
+
+    /**
+     * Clear data list
+     */
+    public void clear() {
+    	int count=data.size();
+    	data.clear();
+    	 if (openAni) 
+     		notifyItemRangeRemoved(0, count);
+ 		else
+ 			notifyDataSetChanged();
+    }
 }
