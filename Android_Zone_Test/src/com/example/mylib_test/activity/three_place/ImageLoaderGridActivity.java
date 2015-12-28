@@ -15,19 +15,27 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
 import Android.Zone.Abstract_Class.Adapter.core.ViewHolder_Zone;
 import Android.Zone.Image.lruUtils.DiskLruUtils;
+import Android.Zone.Log.ToastUtils;
+import Android.Zone.Utils.MeasureUtils;
+import Android.Zone.Utils.MeasureUtils.GlobalState;
+import Android.Zone.Utils.MeasureUtils.OnMeasureListener;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.LruCache;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 public class ImageLoaderGridActivity extends Activity{
 	private GridView gridView1;
 	private String[] imageThumbUrls;
 	private DiskLruUtils diskLru;
+	private ScrollView sl;
 //	private DisplayImageOptions options;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,9 @@ public class ImageLoaderGridActivity extends Activity{
 		diskLru=DiskLruUtils.openLru(this);
 		setContentView(R.layout.a_thirdparty_imageloader_grid);
 		gridView1=(GridView) findViewById(R.id.gridView1);
+		gridView1.setFocusable(false);
+		sl=(ScrollView) findViewById(R.id.sl);
+	
 //		Images.imageThumbUrls
 		List<String> temp = Arrays.asList(Images.imageThumbUrls);
 		gridView1.setAdapter(new Adapter(this, temp));
@@ -73,6 +84,14 @@ public class ImageLoaderGridActivity extends Activity{
 			 ImageView iv=(ImageView) holder.findViewById(R.id.iv);
 //				ImageLoader.getInstance().displayImage(data, iv,options);
 				ImageLoader.getInstance().displayImage(data, iv);
+				iv.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						ToastUtils.showLong(ImageLoaderGridActivity.this, "Äã¸ÉÉ¶");
+					}
+				});
 //				Bitmap bm = diskLru.getBitmapByUrl(data);
 //				if (bm==null) {
 //					ImageLoader.getInstance().displayImage(data, iv,new SimpleImageLoadingListener(){
