@@ -9,11 +9,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <TextView
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="center"
-            android:text="哈哈 好使不" />
+            android:text="点击加载数据" />
 
         <view.NoScrollGridView
             android:id="@+id/gridView1"
@@ -22,7 +24,9 @@
             android:numColumns="3" >
         </view.NoScrollGridView>
 
-        <TextView
+          <Button
+            android:onClick="onClick"
+            android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="center"

@@ -1,5 +1,6 @@
 package com.example.mylib_test.activity.three_place;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +32,13 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-public class ImageLoaderGridActivity extends Activity{
+public class ImageLoaderGridActivity extends Activity implements OnClickListener{
 	private GridView gridView1;
 	private String[] imageThumbUrls;
 	private DiskLruUtils diskLru;
 	private ScrollView sl;
+	private List<String> temp=new ArrayList<String>();
+	private Adapter adapter;
 //	private DisplayImageOptions options;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,16 @@ public class ImageLoaderGridActivity extends Activity{
 		diskLru=DiskLruUtils.openLru(this);
 		setContentView(R.layout.a_thirdparty_imageloader_grid);
 		gridView1=(GridView) findViewById(R.id.gridView1);
-		gridView1.setFocusable(false);
+
 		sl=(ScrollView) findViewById(R.id.sl);
+//		gridView1.setFocusable(false);//这个也 可以解决ScrollView起始位置不是最顶部的解决办法
+		sl.smoothScrollTo(0,0);//这个也 可以解决ScrollView起始位置不是最顶部的解决办法
 	
 //		Images.imageThumbUrls
-		List<String> temp = Arrays.asList(Images.imageThumbUrls);
-		gridView1.setAdapter(new Adapter(this, temp));
+		for (int i = 0; i < Images.imageThumbUrls.length; i++) {
+			temp.add(Images.imageThumbUrls[i]);
+		}
+		gridView1.setAdapter(adapter=new Adapter(this, temp));
 //		gridView1.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
 		
 //		options = new DisplayImageOptions.Builder()
@@ -112,6 +119,29 @@ public class ImageLoaderGridActivity extends Activity{
 		diskLru.flush();
 		diskLru.delete();
 		super.onDestroy();
+	}
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv:
+			temp.add(temp.get(0));
+			temp.add(temp.get(0));
+			temp.add(temp.get(0));
+			temp.add(temp.get(0));
+			adapter.notifyDataSetChanged();
+			break;
+		case R.id.tv1:
+			temp.add(temp.get(1));
+			temp.add(temp.get(1));
+			temp.add(temp.get(1));
+			temp.add(temp.get(1));
+			adapter.notifyDataSetChanged();
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 }
