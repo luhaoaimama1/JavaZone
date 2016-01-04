@@ -13,7 +13,7 @@
         android:text="这个页面有Menu" />
     <Button
         android:id="@+id/crash"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:padding="10dp"
@@ -21,7 +21,7 @@
         android:text="crash 闪退测试" />
     <Button
         android:id="@+id/bt_activityResult"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:padding="10dp"
@@ -29,12 +29,20 @@
         android:text="activityResult研究" />
     <Button
         android:id="@+id/bt_baseResult"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:padding="10dp"
         android:gravity="center"
         android:text="activityResult封装测试" />
+    <Button
+        android:id="@+id/bt_webView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="webView 学习" />
 
 
 </view.FlowLayout_Zone>
