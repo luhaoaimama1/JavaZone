@@ -49,6 +49,8 @@ public class Xiang_1234 {
 			for (int horizontal = 0; horizontal < b; horizontal++) {
 				if(fang[horizontal][vertical]<=initValue){
 					System.out.print(fang[horizontal][vertical]+"\t");
+				}else{
+					System.out.print(" "+"\t");
 				}
 			}
 			System.out.println();

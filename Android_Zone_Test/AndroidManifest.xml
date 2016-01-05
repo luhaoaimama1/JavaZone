@@ -53,6 +53,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.system.WebViewAcitivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.system.ResultBase1"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
@@ -142,6 +146,10 @@
         </activity>
         <activity
             android:name="com.example.mylib_test.activity.three_place.ThirdParty_MainActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.mylib_test.activity.three_place.GooglePull2RecyclerActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity

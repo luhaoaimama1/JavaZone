@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content" >
 
-    <GridView
-        android:id="@+id/gridView1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="3" >
-    </GridView>
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="点击加载数据" />
+
+        <view.NoScrollGridView
+            android:id="@+id/gridView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" >
+        </view.NoScrollGridView>
+
+          <Button
+            android:onClick="onClick"
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="哈哈  底部好使不呢" />
+    </LinearLayout>
+
+</ScrollView>

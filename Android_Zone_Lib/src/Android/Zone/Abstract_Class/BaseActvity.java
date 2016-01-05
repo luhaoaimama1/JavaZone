@@ -10,6 +10,7 @@ import Android.Zone.Log.Logger_Zone;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.os.Handler.Callback;
 import android.support.v4.app.FragmentActivity;
@@ -21,6 +22,7 @@ public abstract class BaseActvity extends FragmentActivity implements Callback,O
 	public static int Reresh_Response=9998;
 	protected ImageLoader imageLoader;
 	private Logger_Zone logger;
+	protected Handler handler;
 	public static List<Activity> activitys=new ArrayList<Activity>();
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -30,6 +32,7 @@ public abstract class BaseActvity extends FragmentActivity implements Callback,O
 		logger.log("BaseActvity  onCreate");
 		super.onCreate(arg0);
 		imageLoader = ImageLoader.getInstance();
+		handler=new Handler(this);
 		logger.log("BaseActvity  setContentView");
 		setContentView();
 		findIDs();
@@ -95,6 +98,7 @@ public abstract class BaseActvity extends FragmentActivity implements Callback,O
 		setResult(Reresh_Response);
 		finish();
 	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		//resultCode==0那么就是默认返回的即直接finish　的不管
