@@ -14,13 +14,20 @@ public class 电话号码的提取 {
 		String str = "wo185106400111we18510640011ishenmald185-1064-0011klajldj"
 				+ "185-1064-0011fadfjladjkfl4002342222akjdfajdflkajdfl400-234-2222ajdflka22223334jld"
 				+ "fjl2222-3334ajd 2222-33344aa133-7015-6232";
+//		String str = "您的订单(脱光行动)已完成支付。您的美人记消费券验证码为：[6390957808,3897698247,5419726456]，有效期至2016-02-25，请尽快登录美人记与小美私信或电话预约。预约电话：400-967-1001。";
 		RexUtils ru=new RexUtils();
-		ru.addRule("\\D(\\d{11})\\D");
-		ru.addRule("\\D(\\d{3}-\\d{4}-\\d{4})\\D");
-		ru.addRule("\\D(\\d{10})\\D");
-		ru.addRule("\\D(\\d{3}-\\d{3}-\\d{4})\\D");
-		ru.addRule("\\D(\\d{8})\\D");
-		ru.addRule("\\D(\\d{4}-\\d{4})\\D");
+		ru.addRule("\\D(\\d{11})");
+		ru.addRule("\\D(\\d{3}-\\d{4}-\\d{4})");
+		ru.addRule("\\D(\\d{10})");
+		ru.addRule("\\D(\\d{3}-\\d{3}-\\d{4})");
+		ru.addRule("\\D(\\d{8})");
+		ru.addRule("\\D(\\d{4}-\\d{4})");
+//		ru.addRule("\\D(\\d{11})\\D");
+//		ru.addRule("\\D(\\d{3}-\\d{4}-\\d{4})\\D");
+//		ru.addRule("\\D(\\d{10})\\D");
+//		ru.addRule("\\D(\\d{3}-\\d{3}-\\d{4})\\D");
+//		ru.addRule("\\D(\\d{8})\\D");
+//		ru.addRule("\\D(\\d{4}-\\d{4})\\D");
 //		getValuePhone(str,ru.build());
 		getValue(str,ru.build());
 	}
