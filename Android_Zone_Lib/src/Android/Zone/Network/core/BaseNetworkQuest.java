@@ -47,16 +47,15 @@ public abstract class BaseNetworkQuest {
 		pageNumber=0;
 		startTask();
 	};
-	//firstPage 
-	public  void firstPage(String urlString,Map<String,String> map,int tag,NetworkListener listener){
-		exceptionChecked();
-		pageNumber=0;
-		startTask();
-	};
 	public  void nextPage(){
 		 exceptionChecked();
 		 pageNumber++;
 		 startTask();
+	};
+	public  void trunPage(int number){
+		exceptionChecked();
+		pageNumber=number;
+		startTask();
 	};
 	private void exceptionChecked(){
 		if(listView==null)

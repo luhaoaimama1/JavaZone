@@ -22,7 +22,7 @@ import Android.Zone.Network.engine.XutilsEngine;
 import Android.Zone.Network.pullView.GooglePullView;
 
 public class NetworkPull_TestActivity extends BaseActvity implements OnRefresh2LoadMoreListener{
-	 final	String UrlPath = "http://182.254.243.254:8080/Test/log";
+	final	String UrlPath = "http://182.254.243.254:8080/Test/log";
 	private SwipeRefreshLayout swipe_container;
 	private ListView rv;
 	private XutilsEngine engineGet;
@@ -68,9 +68,7 @@ public class NetworkPull_TestActivity extends BaseActvity implements OnRefresh2L
 		};
 		rv.setAdapter(adapter);
 		
-		//TODO  最后这个多余 就是data.class貌似 因为泛型
-		googlePullView=new GooglePullView<String, Data>(swipe_container, rv, adapter, dataImg, Data.class) {
-
+		googlePullView=new GooglePullView<String, Data>(swipe_container, rv, adapter, dataImg) {
 			@Override
 			public List<String> getData(Data entity) {
 				return entity.getImgEntity().getImg();

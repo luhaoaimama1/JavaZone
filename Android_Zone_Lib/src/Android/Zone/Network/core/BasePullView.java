@@ -1,5 +1,7 @@
 package Android.Zone.Network.core;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -13,15 +15,24 @@ public abstract class BasePullView<T,K,M,E,A> {
 	private  A entity;
 	public K listView;
 	public BaseNetworkQuest baseNetworkQuest;
-	public  BasePullView(T pullView,K listView,M adapter,List<E> data,Class<A> clazz) {
+	public  BasePullView(T pullView,K listView,M adapter,List<E> data) {
 		this.pullView=pullView;
 		this.listView=listView;
 		this.adapter=adapter;
-		this.clazz=clazz;
 		this.data=data;
+		setType();
 	}
+	
 	public  void relateBaseNetworkQuest(BaseNetworkQuest baseNetworkQuest){
+	
 		this.baseNetworkQuest=baseNetworkQuest;
+	}
+	//通过泛型得到类
+	@SuppressWarnings("unchecked")
+	private void setType(){
+		Type superClass = getClass().getGenericSuperclass();
+		Type[] types = ((ParameterizedType)superClass).getActualTypeArguments();
+		this.clazz = (Class<A>)types[types.length-1]; 
 	}
 	public  void gsonParse(String msg){
 		boolean resultIsRight=MsgCheck.errorChecked(msg);

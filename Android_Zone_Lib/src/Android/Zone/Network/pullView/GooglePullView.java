@@ -10,9 +10,8 @@ import Android.Zone.Network.core.BasePullView;
 
 public abstract class GooglePullView<E, A> extends BasePullView<SwipeRefreshLayout,ListView, BaseAdapter,E, A> {
 	boolean loadMoreOk=true;
-	public GooglePullView(SwipeRefreshLayout pullView,ListView listView, BaseAdapter adapter,
-			List<E> data, Class<A> clazz) {
-		super(pullView, listView,adapter, data,clazz );
+	public GooglePullView(SwipeRefreshLayout pullView,ListView listView, BaseAdapter adapter,List<E> data) {
+		super(pullView, listView,adapter, data);
 	}
 
 	@Override

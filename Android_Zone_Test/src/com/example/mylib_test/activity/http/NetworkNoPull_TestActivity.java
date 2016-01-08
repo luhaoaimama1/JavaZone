@@ -14,8 +14,7 @@ import Android.Zone.Network.engine.XutilsEngine;
 import Android.Zone.SD.FileUtils_SD;
 //TODO  listener有问题  null或者 有的时候不应该会有消息
 public class NetworkNoPull_TestActivity extends BaseActvity{
-	 final	String UrlPath = "http://182.254.243.254:8080/Test/log";
-
+	final	String UrlPath = "http://182.254.243.254:8080/Test/log";
 	private XutilsEngine engineGet,enginePost,engineFile;
 	private static final int GET_TAG=1,POST_TAG=2,FILE_TAG=3;
 	Map<String,String> params=new HashMap<String,String>();
