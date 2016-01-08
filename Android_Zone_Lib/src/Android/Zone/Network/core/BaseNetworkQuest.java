@@ -31,12 +31,12 @@ public abstract class BaseNetworkQuest {
 	private  int limit=10, pageNumber=0;
 	private List<Integer> pageNumberhistory=new ArrayList<Integer>();
 	private boolean isGet=true;
-	
+	private Context context;
 	public BaseNetworkQuest(Context context,Handler handler) {
 		this(context,handler,false);
 	}
 	public BaseNetworkQuest(Context context,Handler handler,boolean showDialog) {
-		dialog=createDefaultDialog(context);
+		this.context=context;
 		this.handler= handler;
 		this.showDialog= showDialog;
 	}
@@ -122,19 +122,23 @@ public abstract class BaseNetworkQuest {
 				@Override
 				public void run() {
 					int number=pageNumberhistory.get(0);
-					//动画弄掉
-					if(number==0)
-						listView.onRefreshComplete();
-					else
-						listView.onloadMoreComplete();
 					//数据处理
 					listView.gsonParse(msg);
 					if(number==0)
 						listView.clearData();
+					removeListAnimal(number,listView);
+					//动画弄掉
 					listView.addAllData2Notify();
 					//把nubmerHistory处理过的 移除
 					pageNumberhistory.remove(0);
 					handler.obtainMessage(tag,msg).sendToTarget();
+				}
+				//动画弄掉
+				private void removeListAnimal(int number, BasePullView listView) {
+					if(number==0)
+						listView.onRefreshComplete();
+					else
+						listView.onloadMoreComplete();
 				}
 			});
 		}else{
@@ -170,6 +174,8 @@ public abstract class BaseNetworkQuest {
 		this.dialog=dialog;
 	};
 	protected   void showDialog(){
+		if(dialog==null)
+			dialog=createDefaultDialog(context);
 		//这样没有dialog也不会爆空了
 		if(dialog!=null)
 			dialog.show();
@@ -193,7 +199,10 @@ public abstract class BaseNetworkQuest {
 		Gson g=new Gson();
 		return 	g.fromJson(msg, clazz);
 	};
-	
+	void relateReturnEmptyData(){
+		if(pageNumber>0)
+			pageNumber--;
+	}
 
 	
 }

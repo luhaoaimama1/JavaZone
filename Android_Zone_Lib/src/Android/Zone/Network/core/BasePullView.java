@@ -46,12 +46,14 @@ public abstract class BasePullView<T,K,M,E,A> {
 			return ;
 		}
 	};
-	
 	public void clearData(){
-		data.clear();
+		if (entity != null&&getData(entity).size()!= 0) 
+				data.clear();
 	}
 	public void addAllData2Notify(){
 		if (entity!=null) {
+			if(getData(entity).size()==0)
+				baseNetworkQuest.relateReturnEmptyData();
 			data.addAll(getData(entity));
 			notifyDataSetChanged();
 		}
