@@ -7,11 +7,13 @@ import java.util.Map;
 
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mylib_test.R;
 import com.example.mylib_test.activity.http.entity.Data;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import Android.Zone.Abstract_Class.BaseActvity;
 import Android.Zone.Abstract_Class.Adapter.Adapter_Zone;
@@ -54,14 +56,15 @@ public class NetworkPull_TestActivity extends BaseActvity implements OnRefresh2L
 
 			@Override
 			public int setLayoutID() {
-				return  R.layout.item_recycler;
+				return  R.layout.item_network_pull;
 			}
 
 			@Override
 			public void setData(ViewHolder_Zone holder, String data,
 					int position) {
-				TextView id_num=(TextView) holder.findViewById(R.id.id_num);
-				id_num.setText(data);
+				ImageView id_num=(ImageView) holder.findViewById(R.id.id_num);
+				ImageLoader.getInstance().displayImage(data, id_num);
+//				id_num.setText(data);
 				
 			}
 
@@ -75,7 +78,6 @@ public class NetworkPull_TestActivity extends BaseActvity implements OnRefresh2L
 			}
 		};
 		googlePullView.init2Listener(this);
-		
 		engineGet.relateList(googlePullView);
 	}
 
@@ -99,7 +101,7 @@ public class NetworkPull_TestActivity extends BaseActvity implements OnRefresh2L
 		switch (msg.what) {
 		case GET_TAG:
 //			System.out.println("GET_TAG:"+msg.obj);
-//			System.err.println("size:"+dataImg.size());
+			System.err.println("size:"+dataImg.size());
 //			adapter.notifyDataSetChanged();
 			break;
 

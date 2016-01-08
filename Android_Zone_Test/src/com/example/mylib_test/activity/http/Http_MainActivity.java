@@ -75,6 +75,9 @@ public class Http_MainActivity extends Activity implements OnClickListener {
 		case R.id.noPullTest:
 			startActivity(new Intent(this,NetworkNoPull_TestActivity.class));
 			break;
+		case R.id.noPull_GloboTest:
+			startActivity(new Intent(this,NetworkNoPull_Globlo_TestActivity.class));
+			break;
 		case R.id.pullGet:
 			startActivity(new Intent(this,NetworkPull_TestActivity.class));
 			break;

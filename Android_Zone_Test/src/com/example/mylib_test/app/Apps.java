@@ -18,10 +18,13 @@ import Android.Zone.Image.ImageLoader.ImageLoaderConfigUtils;
 import Android.Zone.Image.ImageLoader.ImageLoaderOptionsUtils;
 import Android.Zone.Log.Logger_Zone;
 import Android.Zone.Log.Logger_Zone.LogStatue;
+import Android.Zone.Network.core.NetworkEngine;
+import Android.Zone.Network.engine.XutilsEngine;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.os.Build;
 import android.os.StrictMode;
+
 import com.example.mylib_test.R;
 
 /**
@@ -40,6 +43,7 @@ public class Apps extends Application {
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
 		}
 		
+		NetworkEngine.setGlobalEngine(XutilsEngine.class);
 		//全局控制　打印日志
 		Logger_Zone.setAllLogStatue(LogStatue.Child_Control,false);
 		

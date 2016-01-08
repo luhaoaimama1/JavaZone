@@ -113,6 +113,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.http.NetworkNoPull_Globlo_TestActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.http.NetworkPull_TestActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
