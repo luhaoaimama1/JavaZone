@@ -33,7 +33,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Http_MainActivity extends Activity implements OnClickListener {
-	 final	String UrlPath = "http://192.168.1.102:8008/Test/log";
+	 final	String UrlPath = "http://182.254.243.254:8080/Test/log";
 	Map<String,Object> map= new HashMap<String, Object>();
 	Map<String, String> params = new HashMap<String, String>();
 	@Override
@@ -71,6 +71,12 @@ public class Http_MainActivity extends Activity implements OnClickListener {
 			Button hand=(Button) findViewById(R.id.handle);
 			HandlerTest ht=new HandlerTest();
 			ht.updateView(hand);
+			break;
+		case R.id.noPullTest:
+			startActivity(new Intent(this,NetworkNoPull_TestActivity.class));
+			break;
+		case R.id.pullGet:
+			startActivity(new Intent(this,NetworkPull_TestActivity.class));
 			break;
 
 		default:
