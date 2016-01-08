@@ -1,7 +1,9 @@
 package Android.Zone.Network.core;
 
 import java.util.List;
+
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 //一个listView即封装一个T
 public abstract class BasePullView<T,K,M,E,A> {
 	public  T pullView;
@@ -21,20 +23,27 @@ public abstract class BasePullView<T,K,M,E,A> {
 	public  void relateBaseNetworkQuest(BaseNetworkQuest baseNetworkQuest){
 		this.baseNetworkQuest=baseNetworkQuest;
 	}
-	public  A gsonParse(String msg){
+	public  void gsonParse(String msg){
 		boolean resultIsRight=MsgCheck.errorChecked(msg);
 		if(!resultIsRight)
-			return null;
+			return ;
 		Gson g=new Gson();
-		return 	g.fromJson(msg, clazz);
+		try {
+			entity=g.fromJson(msg, clazz);
+		} catch (JsonSyntaxException e) {
+//			e.printStackTrace();
+			return ;
+		}
 	};
 	
 	public void clearData(){
 		data.clear();
 	}
 	public void addAllData2Notify(){
-		data.addAll(getData(entity));
-		notifyDataSetChanged();
+		if (entity!=null) {
+			data.addAll(getData(entity));
+			notifyDataSetChanged();
+		}
 	}
 	
 	public abstract void init2Listener(OnRefresh2LoadMoreListener listener);

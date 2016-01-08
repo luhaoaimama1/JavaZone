@@ -10,4 +10,5 @@ public interface NetworkListener {
 	public abstract void onSuccess(String msg);
 
 	public abstract void onFailure( String msg);
+
 }

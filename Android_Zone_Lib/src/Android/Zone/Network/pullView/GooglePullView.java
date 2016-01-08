@@ -12,7 +12,7 @@ public abstract class GooglePullView<E, A> extends BasePullView<SwipeRefreshLayo
 	boolean loadMoreOk=true;
 	public GooglePullView(SwipeRefreshLayout pullView,ListView listView, BaseAdapter adapter,
 			List<E> data, Class<A> clazz) {
-		super(pullView, listView,adapter, data, clazz);
+		super(pullView, listView,adapter, data,clazz );
 	}
 
 	@Override

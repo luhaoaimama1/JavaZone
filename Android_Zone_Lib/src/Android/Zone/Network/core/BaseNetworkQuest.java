@@ -1,5 +1,6 @@
 package Android.Zone.Network.core;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,8 @@ import android.view.View;
 public abstract class BaseNetworkQuest {
 	public Handler handler;
 	private NetworkListener listener;
-	private Map<String,String> fileMap,map;
+	private Map<String,String> map;
+	private Map<String,File> fileMap;
 	private int tag;
 	private  String urlString;
 	
@@ -43,7 +45,7 @@ public abstract class BaseNetworkQuest {
 	public  void firstPage(){
 		exceptionChecked();
 		pageNumber=0;
-		sendFile(urlString, map, fileMap, tag, listener);
+		startTask();
 	};
 	//firstPage 
 	public  void firstPage(String urlString,Map<String,String> map,int tag,NetworkListener listener){
@@ -70,11 +72,17 @@ public abstract class BaseNetworkQuest {
 		isGet=true;
 		sendFile(urlString, map, null, tag, listener);
 	};
+	public  void send(String urlString,Map<String,String> map,int tag){
+		send(urlString, map, tag, null);
+	};
 	public  void sendPost(String urlString,Map<String,String> map,int tag,NetworkListener listener){
 		isGet=false;
 		sendFile(urlString, map, null, tag, listener);
 	};
-	public  void sendFile(String urlString,Map<String,String> map,Map<String,String> fileMap,int tag,NetworkListener listener){
+	public  void sendPost(String urlString,Map<String,String> map,int tag){
+		sendPost(urlString, map, tag, listener);
+	};
+	public  void sendFile(String urlString,Map<String,String> map,Map<String,File> fileMap,int tag,NetworkListener listener){
 		this.urlString=urlString;
 		this.map=map;
 		this.fileMap=fileMap;
@@ -82,21 +90,24 @@ public abstract class BaseNetworkQuest {
 		this.listener=listener;
 		sendFile(urlString, map, fileMap, tag, listener,false);
 	}
-	private  void sendFile(String urlString,Map<String,String> map,Map<String,String> fileMap,int tag,NetworkListener listener,boolean run){
+	public  void sendFile(String urlString,Map<String,String> map,Map<String,File> fileMap,int tag){
+		sendFile(urlString, map, fileMap, tag, null);
+	}
+	private  void sendFile(String urlString,Map<String,String> map,Map<String,File> fileMap,int tag,NetworkListener listener,boolean run){
 		if (run) {
 			showDialog();
 			relateAddTurnPage(map);
 			if (fileMap == null) {
 				if (isGet) {
-					ab_Send(urlString, fileMap, tag, listener);
+					ab_Send(urlString, map, tag, listener);
 				} else
-					ab_SendPost(urlString, fileMap, tag, listener);
+					ab_SendPost(urlString, map, tag, listener);
 			} else
 				ab_SendFile(urlString, map, fileMap, tag, listener);
 		}
 	}
 	// TODO  error  与  success都需要 发送消息  但是记住必须只有一个发出来
-	public void sendhandlerMsg(final String msg,int tag){
+	public void sendhandlerMsg(final String msg,final int tag){
 		//把dialog弄掉
 		handler.post(new Runnable() {
 			
@@ -124,6 +135,7 @@ public abstract class BaseNetworkQuest {
 					listView.addAllData2Notify();
 					//把nubmerHistory处理过的 移除
 					pageNumberhistory.remove(0);
+					handler.obtainMessage(tag,msg).sendToTarget();
 				}
 			});
 		}else{
@@ -138,7 +150,7 @@ public abstract class BaseNetworkQuest {
 	}
 	public void relateAddTurnPage(Map<String, String> map){
 		if(listView!=null){
-			map.put(LIMIT, pageNumber+ "");
+			map.put(LIMIT, limit+ "");
 			pageNumberhistory.add(pageNumber);
 	        int offest = limit* pageNumber;
 	        map.put(OFFSET, offest + "");
@@ -150,7 +162,7 @@ public abstract class BaseNetworkQuest {
 	//TODO   在子类里实现onSuccess onFailure里 sendhandlerMsg 在调用listener .ononSuccess onFailure
 	protected abstract void ab_SendPost(String urlString, Map<String, String> map, int tag, NetworkListener listener);
 	//TODO   在子类里实现onSuccess onFailure里 sendhandlerMsg 在调用listener .ononSuccess onFailure
-	protected  abstract void ab_SendFile(String urlString, Map<String, String> map,Map<String, String> fileMap, int tag,
+	protected  abstract void ab_SendFile(String urlString, Map<String, String> map,Map<String, File> fileMap, int tag,
 			NetworkListener listener);
 	//设置 默认的dialog 
 	protected  abstract Dialog createDefaultDialog(Context context);

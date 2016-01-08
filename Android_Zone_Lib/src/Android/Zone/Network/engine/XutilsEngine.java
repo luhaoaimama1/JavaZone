@@ -32,8 +32,9 @@ public class XutilsEngine extends BaseNetworkQuest{
 	public XutilsEngine(Context context, Handler handler, boolean showDialog) {
 		super(context, handler, showDialog);
 	}
-	public  RequestParams getXutilsParams(){
-		return new RequestParams(Params_Charset);
+
+	public void getXutilsParams() {
+		params = new RequestParams(Params_Charset);
 	}
 	@Override
 	protected void ab_Send(String urlString, Map<String, String> map, final int tag,final NetworkListener listener) {
@@ -59,7 +60,7 @@ public class XutilsEngine extends BaseNetworkQuest{
 
 	@Override
 	protected void ab_SendFile(String urlString, Map<String, String> map,
-			Map<String, String> fileMap, int tag, NetworkListener listener) {
+			Map<String, File> fileMap, int tag, NetworkListener listener) {
 		HttpUtils http=InnerDispose.getXutils_HttpUtils();
 		getXutilsParams();
 		//添加字段
@@ -67,8 +68,8 @@ public class XutilsEngine extends BaseNetworkQuest{
 			params.addBodyParameter(entry.getKey(), entry.getValue());
 		}
 		// 添加文件
-		for (Entry<String, String> entry : fileMap.entrySet()) {
-			params.addBodyParameter(entry.getKey(), new File(entry.getValue()));
+		for (Entry<String, File> entry : fileMap.entrySet()) {
+			params.addBodyParameter(entry.getKey(), entry.getValue());
 		}
 		http.send(HttpRequest.HttpMethod.POST,urlString,params,InnerDispose.getXutilsCallback(this, tag, listener));
 	}
