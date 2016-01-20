@@ -47,10 +47,10 @@ public class Apps extends Application {
 		//全局控制　打印日志
 		Logger_Zone.setAllLogStatue(LogStatue.Child_Control,false);
 		
-		//初始化 sqlite
+		//记得设置加载中图片 不然下拉加载http的时候慢了 会显示复用之前的背景就会造成 从复用过来的图变成 加载后的图！！！
 		ImageLoaderOptionsUtils.initShowImage(R.drawable.ic_stub, R.drawable.ic_empty, R.drawable.ic_error);
 		//初始化ImageLoader
-		ImageLoaderConfigUtils.initImageLoader(getApplicationContext(),ImageLoaderOptionsUtils.getNormalOption＿NotBuild().build(),true);
+		ImageLoaderConfigUtils.initImageLoader(getApplicationContext(),ImageLoaderOptionsUtils.getNormalOption＿NotBuild().build(),false);
 		
 //		CrashHandler.getInstance().init(this);
 

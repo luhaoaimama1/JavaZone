@@ -47,6 +47,9 @@ public class CustomView_MainActivity  extends Activity implements OnClickListene
 		case R.id.refreshListView:
 			startActivity(new Intent(this,RefreshListViewActivity.class));
 			break;
+		case R.id.imageGroupRecyclerTest:
+			startActivity(new Intent(this,ImageGroupRecyclerTestActvitity.class));
+			break;
 
 		default:
 			break;

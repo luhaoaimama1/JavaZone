@@ -116,4 +116,12 @@
         android:onClick="onClick"
         android:text="自定义下拉刷新view" />
 
+    <Button
+        android:id="@+id/imageGroupRecyclerTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="onClick"
+        android:text="图片组测试" />
+
 </view.FlowLayout_Zone>

@@ -101,6 +101,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.example.mylib_test.activity.custom_view.ImageGroupRecyclerTestActvitity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.mylib_test.activity.db.Db_MainActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

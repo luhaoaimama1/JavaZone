@@ -11,6 +11,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
+import Android.Zone.Image.lruUtils.DiskLruUtils;
 import Android.Zone.Log.ToastUtils;
 import Android.Zone.Network.RefreshUtils;
 import Android.Zone.Network.RefreshUtils.PullToRefreshListener;
@@ -115,8 +116,14 @@ public class PullToRefreshTestActivity extends Activity implements Callback,Pull
 					public void onSuccess(ResponseInfo<String> responseInfo) {
 						// resultText.setText("response:" +
 						// responseInfo.result);
+						System.out.println("咋不上天呢？回来的数据："+responseInfo.result);
 						data.add("onSuccess");
 						adapter.notifyDataSetChanged();
+						DiskLruUtils disk = DiskLruUtils.openLru(PullToRefreshTestActivity.this);
+						disk.addUrl_String("http://www.baidu.com", responseInfo.result);
+						
+						System.out.println("咋不上天呢？Read:"+disk.getStringByUrl("http://www.baidu.com"));
+						
 					}
 
 					@Override
@@ -139,7 +146,7 @@ public class PullToRefreshTestActivity extends Activity implements Callback,Pull
 		// Update the LastUpdatedLabel
 		list.getLoadingLayoutProxy().setLastUpdatedLabel(label);
 		// Do work to refresh the list here.
-		new GetDataTask().execute();
+		new GetDataTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 	}
 
 }
