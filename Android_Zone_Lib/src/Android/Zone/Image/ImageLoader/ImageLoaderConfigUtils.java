@@ -62,7 +62,7 @@ public class ImageLoaderConfigUtils {
 		// 设定缓存的SDcard目录，UnlimitDiscCache速度最快
 		config.diskCache(new UnlimitedDiskCache(cacheDir));
 		//缓存到文件的最大数据   50 MiB
-		//config.diskCacheSize(50 * 1024 * 1024); 
+		config.diskCacheSize(50 * 1024 * 1024); 
 		//文件数量
 		//config.diskCacheFileCount(1000); 
 		

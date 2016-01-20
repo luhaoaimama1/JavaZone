@@ -98,6 +98,7 @@ public abstract class BaseNetworkQuest {
 			relateAddTurnPage(map);
 			if (fileMap == null) {
 				if (isGet) {
+					//TODO 仅仅get的时候有缓存好了  内存缓存   本地缓存 然后http
 					ab_Send(urlString, map, tag, listener);
 				} else
 					ab_SendPost(urlString, map, tag, listener);
@@ -159,12 +160,8 @@ public abstract class BaseNetworkQuest {
 	        map.put(OFFSET, offest + "");
 		}
 	} 
-	//TODO 这个listenr是 你设置的  而我们自己的 则需要自己在创建一个 处理发送正确与错误的消息；
-	//TODO   在子类里实现onSuccess onFailure里 sendhandlerMsg 在调用listener .ononSuccess onFailure
 	protected abstract void ab_Send(String urlString, Map<String, String> map, int tag, NetworkListener listener);
-	//TODO   在子类里实现onSuccess onFailure里 sendhandlerMsg 在调用listener .ononSuccess onFailure
 	protected abstract void ab_SendPost(String urlString, Map<String, String> map, int tag, NetworkListener listener);
-	//TODO   在子类里实现onSuccess onFailure里 sendhandlerMsg 在调用listener .ononSuccess onFailure
 	protected  abstract void ab_SendFile(String urlString, Map<String, String> map,Map<String, File> fileMap, int tag,
 			NetworkListener listener);
 	//设置 默认的dialog 

@@ -3,7 +3,7 @@ import android.graphics.Bitmap;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.DisplayImageOptions.Builder;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
+//记得设置加载中图片 不然下拉加载http的时候慢了 会显示复用之前的背景就会造成 从复用过来的图变成 加载后的图！！！
 public class ImageLoaderOptionsUtils {
 	private static int imageOnLoading=-1;
 	private static int imageForEmptyUri=-1;

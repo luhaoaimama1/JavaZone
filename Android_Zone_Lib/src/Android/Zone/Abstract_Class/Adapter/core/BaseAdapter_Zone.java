@@ -46,8 +46,11 @@ public abstract class BaseAdapter_Zone<T> extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder_Zone holder;
 		if (convertView == null) {
-			//convertView 会重复利用  arg0则不会 所以数据 每次都加载就好了 所以  有关convertView的都是初始化用
-			convertView = mInflater.inflate(getLayoutID(position), null);
+			if (getConverView(position)==null) {
+				//convertView 会重复利用  arg0则不会 所以数据 每次都加载就好了 所以  有关convertView的都是初始化用
+				convertView = mInflater.inflate(getLayoutID(position), null);
+			}else
+				convertView=getConverView(position);
 			holder = new ViewHolder_Zone(convertView);
 			//给View添加监听 
 			convertView.setTag(holder);
@@ -69,4 +72,7 @@ public abstract class BaseAdapter_Zone<T> extends BaseAdapter{
 	 */
 	public abstract  void setData(ViewHolder_Zone holder, T data, int position); //注意这里，只声明了这个方法，但没有具体实现。
 	public abstract int getLayoutID(int position);
+	public View getConverView(int position){
+		return null;
+	}
 }

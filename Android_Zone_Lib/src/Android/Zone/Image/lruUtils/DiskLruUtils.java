@@ -1,30 +1,23 @@
 package Android.Zone.Image.lruUtils;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import Android.Zone.Constant;
 import Android.Zone.Abstract_Class.Adapter.Adapter_MultiLayout_Zone;
 import Android.Zone.Image.Compress_Sample_Utils;
 import Android.Zone.Image.lruUtils.official.DiskLruCache;
 import Android.Zone.Log.Logger_Zone;
 import Android.Zone.SD.FileUtils_SD;
-import Android.Zone.SD.SdSituation;
 import Android.Zone.Utils.AppUtils;
 import Android.Zone.Utils.MD5Utils;
 import Java.Zone.CustomException.OperationFailException;
 import Java.Zone.IO.IOUtils;
-import Java.Zone.Utils.FileUtils;
 
 public class DiskLruUtils {
 	private static DiskLruUtils diskLru = new DiskLruUtils();
@@ -39,6 +32,7 @@ public class DiskLruUtils {
 	private static final String TAG="DiskLruUtils";
 	private static boolean writeLog=true;
 	private static Logger_Zone logger;
+	private static final String encoded="utf-8";
 	static{
 		logger= new  Logger_Zone(Adapter_MultiLayout_Zone.class,Constant.Logger_Config);
 		logger.closeLog();
@@ -71,47 +65,20 @@ public class DiskLruUtils {
 		return diskLru;
 	}
 
+	
+	
 	/**
 	 * 所以只有成功才调用这个方法
-	 * 
 	 * @param url
 	 */
-	public void addUrl(String url,String path) {
-		addUrl(url, Compress_Sample_Utils.getRawBitmap(path));
-	}
-	private static ByteArrayInputStream bitmapToOs(Bitmap bt){
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		bt.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
-		return isBm;
-	}
-	// -----------------------------------------------------------readToOutStream---------------------------------------------------------------
-	private static boolean readToOutStream(Bitmap bt,OutputStream os){
-		InputStream in=bitmapToOs(bt);
-		byte[] buffer = new byte[1024];
-		int len = 0;
-		try {
-			while ((len = in.read(buffer)) != -1) {
-				os.write(buffer, 0, len);
-			}
-		} catch (IOException e) {
-			throw new OperationFailException("流读取发生IOException！！！");
-		} finally {
-			try {
-				in.close();
-				os.close();
-			} catch (IOException e) {
-				throw new OperationFailException("流关闭发生异常！");
-			}
-		}
-		return true;
+	public void addUrl_Bitmap(String url,String path) {
+		addUrl_Bitmap(url, Compress_Sample_Utils.getRawBitmap(path));
 	}
 	/**
 	 * 所以只有成功才调用这个方法
-	 * 
 	 * @param url
 	 */
-	public void addUrl(String url, Bitmap bm) {
+	public void addUrl_Bitmap(String url, Bitmap bm) {
 		// if (downloadUrlToStream(imageUrl, outputStream)) {
 		// editor.commit();
 		// } else {
@@ -122,6 +89,31 @@ public class DiskLruUtils {
 			DiskLruCache.Editor editor = mDiskLruCache.edit(key);
 			OutputStream outputStream = editor.newOutputStream(0);  
 			if(readToOutStream(bm, outputStream)){
+				editor.commit();
+				logger.log("addUrl:"+url);
+			}else {  
+				editor.abort();  
+			}  
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * 所以只有成功才调用这个方法
+	 * 
+	 * @param url
+	 */
+	public void addUrl_String(String url,String gsonStr) {
+		// if (downloadUrlToStream(imageUrl, outputStream)) {
+		// editor.commit();
+		// } else {
+		// editor.abort(); //这个就是不提交了~
+		// }
+		String key = MD5Utils.hashKeyForDisk(url);
+		try {
+			DiskLruCache.Editor editor = mDiskLruCache.edit(key);
+			OutputStream outputStream = editor.newOutputStream(0);  
+			if(readToOutStream(gsonStr, outputStream)){
 				editor.commit();
 				logger.log("addUrl:"+url);
 			}else {  
@@ -157,6 +149,21 @@ public class DiskLruUtils {
 			e.printStackTrace();
 		}
 		return bitmap;
+	}
+	
+	public String getStringByUrl(String url) {
+		String key = MD5Utils.hashKeyForDisk(url);
+		String gsonStr = "";
+		try {
+			DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);
+			if(snapShot != null){
+				gsonStr=IOUtils.read(snapShot.getInputStream(0), encoded);
+				logger.log("getBitmapByUrl:"+url);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return gsonStr;
 	}
 
 	/**
@@ -204,4 +211,54 @@ public class DiskLruUtils {
 		return 	mDiskLruCache.size();
 	}
 	
+	
+	private static ByteArrayInputStream bitmapToOs(Bitmap bt){
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		bt.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+		return isBm;
+	}
+	
+	private static boolean readToOutStream(Bitmap bt,OutputStream os){
+		InputStream in=bitmapToOs(bt);
+		byte[] buffer = new byte[1024];
+		int len = 0;
+		try {
+			while ((len = in.read(buffer)) != -1) {
+				os.write(buffer, 0, len);
+			}
+		} catch (IOException e) {
+			throw new OperationFailException("流读取发生IOException！！！");
+		} finally {
+			try {
+				in.close();
+				os.close();
+			} catch (IOException e) {
+				throw new OperationFailException("流关闭发生异常！");
+			}
+		}
+		return true;
+	}
+
+	private static boolean readToOutStream(String gsonStr,OutputStream os){
+		InputStream in = null;
+		byte[] buffer = new byte[1024];
+		int len = 0;
+		try {
+			in = new ByteArrayInputStream(gsonStr.getBytes(encoded));
+			while ((len = in.read(buffer)) != -1) {
+				os.write(buffer, 0, len);
+			}
+		} catch (IOException e) {
+			throw new OperationFailException("流读取发生IOException！！！");
+		} finally {
+			try {
+				in.close();
+				os.close();
+			} catch (IOException e) {
+				throw new OperationFailException("流关闭发生异常！");
+			}
+		}
+		return true;
+	}
 }
