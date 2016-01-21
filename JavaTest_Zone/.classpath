@@ -11,6 +11,9 @@
 	<classpathentry kind="lib" path="lib/xom-1.0d10.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.3.1.jar" sourcepath="lib/gson-2.3.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.3.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/41d75b54-56a1-31fc-aa8e-af7c6b8b9ed1.jar"/>
+	<classpathentry kind="lib" path="lib/53ffafec-781c-3146-b362-86017eb0ad06.jar"/>
+	<classpathentry kind="lib" path="lib/9333c93a-2e60-364d-ab9f-78ca7ab32ef9.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JavaLib_Zone"/>
 	<classpathentry kind="output" path="bin"/>
