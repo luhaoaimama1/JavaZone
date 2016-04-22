@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/9333c93a-2e60-364d-ab9f-78ca7ab32ef9.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JavaLib_Zone"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

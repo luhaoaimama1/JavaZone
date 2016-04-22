@@ -17,7 +17,6 @@ public class ReflectUtils {
 	/**
 	 * 暂时支持  基础类型 基础类型的封装类 list Map
 	 * static 的不赋值
-	 * 
 	 * TODO final 暂时不会管   异常再说
 	 * 不支持枚丿 不过不会报错~ 剩下不支持的会报锿
 	 * @param data

@@ -18,13 +18,11 @@ public class Test {
 //		System.out.println("bc:"+bc);
 		//上面 证明 基本类型  不克隆 赋值修改也没事
 		
-		
-		
 		Child child = new Child();
 		child.setStr("child");
 		Parent parent = new Parent();
 		parent.setSun(new Sun());
-		parent.setEnumTest(EnumTest.Love);
+		parent.setEnumTest(EnumTest.Love.setAb("love"));
 		List<Sun> sunList = new ArrayList<Sun>();
 		for (int i = 0; i < 3; i++) {
 			Sun ss = new Sun();
@@ -47,7 +45,7 @@ public class Test {
 		ss.setName("Sun"+"浪子");
 		childClone.getParent().getSunList().add(ss);
 		childClone.getParent().getSunMap().put("Sun"+"浪子", ss);
-		
+		childClone.getParent().setEnumTest(EnumTest.you);
 		System.out.println("-----------child---------------------------");
 		print(child);
 		System.out.println("-----------childClone--------------------");
@@ -89,7 +87,7 @@ public class Test {
 		
 	}
 	public static void print(Child child){
-		System.out.println("TAG1"+child.getParent().getTAG1());
+		System.out.println("TAG:"+child.getParent().getTAG1());
 		List<Sun> sunListPrint = child.getParent().getSunList();
 		System.out.println("list");
 		for (Sun sun : sunListPrint) {
@@ -99,5 +97,6 @@ public class Test {
 		for ( Entry<String, Sun> item : map.entrySet()) {
 			System.out.println("key:"+item.getKey()+"\t value:"+item.getValue().getName());
 		}
+		System.out.println("枚举类"+child.getParent().getEnumTest()+"\t 内部的值："+child.getParent().getEnumTest().getAb());
 	}
 }

@@ -16,13 +16,23 @@ public class Parent {
 	private Map<String, Sun> sunMap = new HashMap<String, Sun>();
 	private EnumTest enumTest = EnumTest.I;
 	
+	public enum EnumTest {
+		I, Love, you;
+		private String ab;
+
+		public String getAb() {
+			return ab;
+		}
+
+		public EnumTest setAb(String ab) {
+			this.ab = ab;
+			return this;
+		}
+		
+	}
 
 	public String getTAG1() {
 		return TAG1;
-	}
-
-	public enum EnumTest {
-		I, Love, you;
 	}
 
 	public EnumTest getEnumTest() {
