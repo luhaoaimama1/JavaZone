@@ -9,25 +9,25 @@ public class MakeXml2 {
 
     private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\values-{0}x{1}\\";
 
-    private final static float dw = 320f;//不当成像素 当成多少份
-    private final static float dh = 480f;
+    private final static float dw = 720f;//不当成像素 当成多少份
+    private final static float dh = 1280f;
 
     private final static String WTemplate = "<dimen name=\"x{0}\">{1}px</dimen>\n";
     private final static String HTemplate = "<dimen name=\"y{0}\">{1}px</dimen>\n";
 
     public static void main(String[] args) {
-        makeFile(320, 480);
+        makeFile(320, 480);//mdpi
         makeFile(480,800);
-        makeFile(480, 854);
+        makeFile(480, 854);//hdpi
         makeFile(540, 960);
         makeFile(600, 1024);
         makeFile(720, 1184);
         makeFile(720, 1196);
-        makeFile(720, 1280);
+        makeFile(720, 1280);//xdpi
         makeFile(768, 1024);
         makeFile(800, 1280);
         makeFile(1080, 1812);
-        makeFile(1080, 1920);//x1(代表 基准中的一份既  1/320) :1080/320*1(以1080 分成320份在取一份)=3.375px;
+        makeFile(1080, 1920);//xxdpi x1(代表 基准中的一份既  1/320) :1080/320*1(以1080 分成320份在取一份)=3.375px;
         makeFile(1440, 2560);
     }
 

@@ -12,34 +12,38 @@ public class MakeXml_Dp {
     private final static String WTemplate = "<dimen name=\"x{0}\">{1}dp</dimen>\n";
     private final static String HTemplate = "<dimen name=\"y{0}\">{1}dp</dimen>\n";
 
-    private final static float dw = 320f;//w迭代的像素
-    private final static float dh = 480f;//h迭代的像素
+    private final static float dw = 720f;
+    //w迭代的像素 720->360dp 2dpi 1080->360dp 3dpi  480->320dp 1.5dpi 360->360 1dpi 320->320dp 0.75dpi
+    private final static float dh = 1280f;//h迭代的像素 1920 3
+    private final static float dpi=2;
 
     public enum DPI{
     	ldpi("values-ldpi")	,mdpi("values-mdpi"),hdpi("values-hdpi"),xhdpi("values-xhdpi"),xxhdpi("values-xxhdpi");
+    	//  270*480->360dp 0.75dpi    360*640->360 1dpi     480*960->320dp 1.5dpi    720*1280->360dp 2dpi       1080*1920->360dp 3dpi
     	public String  fileName;
     	DPI(String  fileName){
     		this.fileName=fileName;
     	};
     	public float dx2dp(int dx){
     		float resultDp=0F;
-    		switch (this) {
-			case ldpi:
-				resultDp=dx/0.75F;
-				break;
-			case mdpi:
-				resultDp=dx;
-				break;
-			case hdpi:
-				resultDp=dx/1.5F;
-				break;
-			case xhdpi:
-				resultDp=dx/2F;
-				break;
-			case xxhdpi:
-				resultDp= dx/3F;	
-				break;
-			}
+    		resultDp=dx/dpi;
+//    		switch (this) {
+//			case ldpi:
+//				resultDp=dx/0.75F;
+//				break;
+//			case mdpi:
+//				resultDp=dx;
+//				break;
+//			case hdpi:
+//				resultDp=dx/1.5F;
+//				break;
+//			case xhdpi:
+//				resultDp=dx/2F;
+//				break;
+//			case xxhdpi:
+//				resultDp= dx/3F ;	
+//				break;
+//			}
     		return change(resultDp);
     	}
     }

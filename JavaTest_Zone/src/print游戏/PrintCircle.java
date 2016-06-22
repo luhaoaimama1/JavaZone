@@ -2,7 +2,7 @@ package print游戏;
 
 import java.util.Scanner;
 
-public class Xiang_1234 {
+public class PrintCircle {
 	private static Dire dire=Dire.RIGHT;
 	private static int nowX,nowY,centerX,centerY, r=1;
 	private static int[][] fang;
