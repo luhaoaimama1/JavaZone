@@ -5,56 +5,31 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 //values-xhdpi..   Sp的适配
 public class MakeXml_Sp {
-    private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\{0}\\";
+    private final static String  rootPath="/Users/fuzhipeng/Documents/layoutroot/{0}/";//Mac
+//    private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\{0}\\";
     private final static String WTemplate = "<dimen name=\"font{0}px\">{1}sp</dimen>\n";
 
     //font px 迭代 from -to
-    private final static int from = 20;//w迭代的像素
-    private final static int to =50;//h迭代的像素
+    private final static int from = 20,to =50;//w h迭代的范围
+    private final static DPI standardDpi=DPI.xxhdpi;//参考图的DPI
 
-    public enum DPI{
-    	ldpi("values-ldpi")	,mdpi("values-mdpi"),hdpi("values-hdpi"),xhdpi("values-xhdpi"),xxhdpi("values-xxhdpi");
-    	public String  fileName;
-    	DPI(String  fileName){
-    		this.fileName=fileName;
-    	};
-    	public float dx2sp(int dx){
-    		float resultSp=0F;
-    		switch (this) {
-			case ldpi:
-				resultSp=dx/0.75F;
-				break;
-			case mdpi:
-				resultSp=dx;
-				break;
-			case hdpi:
-				resultSp=dx/1.5F;
-				break;
-			case xhdpi:
-				resultSp=dx/2F;
-				break;
-			case xxhdpi:
-				resultSp= dx/3F;	
-				break;
-			}
-    		return change(resultSp);
-    	}
-    }
-    //保留两位小数
-    public static float change(float a) {
-    	return Math.round( a * 100 ) / 100.0F;
-    }
-    
+    //经过此次Log日志对比  发现  绿色的按钮的和总是在world字左边一点  适配完美
+//            07-18 16:55:06.396 30293-30293/com.zone.screenadapter.screenadapter I/System.out: Xd:3.0(参考DPI)
+//            07-18 16:55:06.396 30293-30293/com.zone.screenadapter.screenadapter I/System.out: font20---->20.009949px
+
+//            07-18 16:56:25.401 2526-2526/com.zone.screenadapter.screenadapter I/System.out: Xd:2.0
+//            07-18 16:56:25.401 2526-2526/com.zone.screenadapter.screenadapter I/System.out: font20---->13.339966px
     public static void main(String[] args) {
+        DPI.standardDpi=standardDpi;
     	//生成文件
     	for (DPI item : DPI.values()) 
     		 makeFile(item);
     	
     	//单个分辨率的转换
-    	int fontPx=10;//10px转换sp 各个分辨率的
-    	for (DPI item : DPI.values()) {
-    		System.out.println(item.fileName+"------>font"+fontPx+"px-->"+item.dx2sp(fontPx)+"sp");
-    	}
+//    	int fontPx=10;//10px转换sp 各个分辨率的
+//    	for (DPI item : DPI.values()) {
+//    		System.out.println(item.fileName+"------>font"+fontPx+"px-->"+item.dx2sp(fontPx)+"sp");
+//    	}
     }
 
     public static void makeFile(DPI item) {

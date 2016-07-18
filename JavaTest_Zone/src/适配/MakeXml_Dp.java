@@ -6,56 +6,35 @@ import java.io.PrintWriter;
 //values-xhdpi..  Dp的适配
 public class MakeXml_Dp {
 
-    private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\{0}\\";
-
+    private final static String  rootPath="/Users/fuzhipeng/Documents/layoutroot/{0}/";//Mac
+//    private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\{0}\\";
 
     private final static String WTemplate = "<dimen name=\"x{0}\">{1}dp</dimen>\n";
     private final static String HTemplate = "<dimen name=\"y{0}\">{1}dp</dimen>\n";
 
-    private final static float dw = 720f;
-    //w迭代的像素 720->360dp 2dpi 1080->360dp 3dpi  480->320dp 1.5dpi 360->360 1dpi 320->320dp 0.75dpi
-    private final static float dh = 1280f;//h迭代的像素 1920 3
-    private final static float dpi=2;
+    private final static float dw = 1080f,dh = 1920f;//w h迭代的范围
+    private final static DPI standardDpi=DPI.xxhdpi;//参考图的DPI
+    //Todo 原理:x100就是standardDpi(参考图的DPI)下的100,其他文件夹(m,l,h,x,xx)下 则被缩放了 下面是缩放的Log
 
-    public enum DPI{
-    	ldpi("values-ldpi")	,mdpi("values-mdpi"),hdpi("values-hdpi"),xhdpi("values-xhdpi"),xxhdpi("values-xxhdpi");
-    	//  270*480->360dp 0.75dpi    360*640->360 1dpi     480*960->320dp 1.5dpi    720*1280->360dp 2dpi       1080*1920->360dp 3dpi
-    	public String  fileName;
-    	DPI(String  fileName){
-    		this.fileName=fileName;
-    	};
-    	public float dx2dp(int dx){
-    		float resultDp=0F;
-    		resultDp=dx/dpi;
-//    		switch (this) {
-//			case ldpi:
-//				resultDp=dx/0.75F;
-//				break;
-//			case mdpi:
-//				resultDp=dx;
-//				break;
-//			case hdpi:
-//				resultDp=dx/1.5F;
-//				break;
-//			case xhdpi:
-//				resultDp=dx/2F;
-//				break;
-//			case xxhdpi:
-//				resultDp= dx/3F ;	
-//				break;
-//			}
-    		return change(resultDp);
-    	}
-    }
-    //保留两位小数
-    public static float change(float a) {
-    	return Math.round( a * 100 ) / 100.0F;
-    }
-    
+    //经过此次Log日志对比  发现  绿色的按钮的和总是在world字左边一点  适配完美
+//    07-18 15:54:03.150 21594-21594/com.zone.screenadapter.screenadapter I/System.out: x100---->>66.65997px
+//    07-18 16:09:14.569 27882-27882/com.zone.screenadapter.screenadapter I/System.out: width:720	 height:1280	 dpi:320
+//            07-18 16:09:14.569 27882-27882/com.zone.screenadapter.screenadapter I/System.out: Xd:2.0
+
+//            07-18 16:16:06.011 27179-27179/com.zone.screenadapter.screenadapter I/System.out: x100---->99.98996px(参考DPI)
+//    07-18 16:16:06.011 27179-27179/com.zone.screenadapter.screenadapter I/System.out: width:1080	 height:1920	 dpi:480
+//            07-18 16:16:06.011 27179-27179/com.zone.screenadapter.screenadapter I/System.out: Xd:3.0
+
+//    07-18 16:18:53.411 26574-26574/com.zone.screenadapter.screenadapter I/System.out: x100---->133.31995px
+//    07-18 16:18:53.411 26574-26574/com.zone.screenadapter.screenadapter I/System.out: width:1440	 height:2560	 dpi:640
+//            07-18 16:18:53.411 26574-26574/com.zone.screenadapter.screenadapter I/System.out: Xd:3.0
+
+
+
     
     public static void main(String[] args) {
-    	System.out.println(change(0.33F));
-    	for (DPI item : DPI.values()) 
+        DPI.standardDpi=standardDpi;
+    	for (DPI item : DPI.values())
     		 makeFile(item);
     }
 
@@ -64,6 +43,7 @@ public class MakeXml_Dp {
         StringBuffer sb = new StringBuffer();
         sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
         sb.append("<resources>");
+        sb.append(WTemplate.replace("{0}", "D").replace("{1}dp",item.radio + "px"));
         for (int i = 1; i <=dw; i++) {
             sb.append(WTemplate.replace("{0}", i + "").replace("{1}",item.dx2dp(i) + ""));
         }
