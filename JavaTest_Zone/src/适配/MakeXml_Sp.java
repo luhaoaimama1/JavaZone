@@ -10,7 +10,7 @@ public class MakeXml_Sp {
     private final static String WTemplate = "<dimen name=\"font{0}px\">{1}sp</dimen>\n";
 
     //font px 迭代 from -to
-    private final static int from = 20,to =50;//w h迭代的范围
+    private final static int from = 20,to =100;//w h迭代的范围
     private final static DPI standardDpi=DPI.xxhdpi;//参考图的DPI
 
     //经过此次Log日志对比  发现  绿色的按钮的和总是在world字左边一点  适配完美

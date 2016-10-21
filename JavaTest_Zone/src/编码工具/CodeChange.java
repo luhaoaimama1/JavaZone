@@ -12,7 +12,10 @@ public class CodeChange {
 	private static Charset charset = Charset.forName("gbk");
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		Charset charsetFolder = JudgeFileCode.getFileCode(new File("D://FixedSpeedScroller.java"));
+//		Charset charsetFolder = JudgeFileCode.getFileCode(new File("D://FixedSpeedScroller.java"));
+//		System.out.println(""+charsetFolder);
+		String path="/Users/fuzhipeng/Downloads/名词词库.xlsx";
+		Charset charsetFolder = JudgeFileCode.getFileCode(new File(path));
 		System.out.println(""+charsetFolder);
 //		File folder=new File("D:/Users/Zone/Github/GbkToUTf");
 //		circlrFolder(folder);
