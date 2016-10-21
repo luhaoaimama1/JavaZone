@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class GsonUtils {
 
     /**
      * 可以使用
-     * List<Person> ps = Arrays.asList(gson.fromJson(str, Person[].class));
+     * List<Person> ps = ArraysZ.asList(gson.fromJson(str, Person[].class));
      * 但是还是提供了下此方法
      * @param str
      * @param t
@@ -49,7 +50,7 @@ public class GsonUtils {
     /**
      * 或者用这两种种方式
      * 1.List<Person> ps = gson.fromJson(str, new TypeToken<List<Person>>() {}.getType());
-     * 2.List<Person> ps = Arrays.asList
+     * 2.List<Person> ps = ArraysZ.asList
      * (gson.fromJson(str, Person[].class));//不支持添加等操作!!!
      * @param str
      * @param t
@@ -67,4 +68,5 @@ public class GsonUtils {
         }
 
     }
+
 }
