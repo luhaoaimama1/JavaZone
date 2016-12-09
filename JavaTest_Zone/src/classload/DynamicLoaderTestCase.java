@@ -69,9 +69,6 @@ public class DynamicLoaderTestCase {
 //        clazz.getGenericSuperclass();
         Child parent = (Child) (clazz.newInstance());
 
-
-
-
         Map<String, byte[]> bytecode2 = DynamicLoader.compile("TestClass.java", javaSrc);
         classLoader.add(bytecode2);
         Class clazz2 = classLoader.loadClass("TestClass");

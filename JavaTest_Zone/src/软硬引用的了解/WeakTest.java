@@ -15,7 +15,7 @@ public class WeakTest {
 		System.out.println("before gc: " + abcWeakRef.get());
 		System.gc();
 		System.out.println("after gc: " + abcWeakRef.get());
-		
+
 		//不可达 demo
 		Ga ga = new Ga();
 		list.add(new WeakReference <Ga>(ga));

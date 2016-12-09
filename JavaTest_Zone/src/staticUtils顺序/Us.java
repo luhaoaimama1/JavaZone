@@ -1,7 +1,10 @@
 package staticUtils顺序;
 
 public class Us {
+	static int  i=1;
 	static {
+		i=2;
+		System.out.println(i);
 		System.out.println("static　前面的");
 	}
 	public static void gaga(){
@@ -10,4 +13,6 @@ public class Us {
 	static {
 		System.out.println("static　后边的");
 	}
+
+
 }
