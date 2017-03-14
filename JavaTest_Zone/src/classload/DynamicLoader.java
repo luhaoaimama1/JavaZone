@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /**
  * Required JDK >= 1.6<br><br>
  * This class can help you create the Java byte code dynamically through the string and load it into memory.<br><br>
- *
+ * <p>
  * HOW TO:<br>
  * First step. <code>Map<String, byte[]> bytecode = DynamicLoader.compile("TestClass.java", javaSrc);</code><br>
  * Second step. <code>DynamicLoader.MemoryClassLoader classLoader = new DynamicLoader.MemoryClassLoader(bytecode);</code><br>
@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 public class DynamicLoader {
     /**
      * auto fill in the java-name with code, return null if cannot find the public class
+     *
      * @param javaSrc source code string
      * @return return the Map, the KEY means ClassName, the VALUE means bytecode.
      */
@@ -38,10 +39,10 @@ public class DynamicLoader {
             return compile(matcher.group(1) + ".java", javaSrc);
         return null;
     }
-    
+
     /**
      * @param javaName the name of your public class,eg: <code>TestClass.java</code>
-     * @param javaSrc source code string
+     * @param javaSrc  source code string
      * @return return the Map, the KEY means ClassName, the VALUE means bytecode.
      */
     public static Map<String, byte[]> compile(String javaName, String javaSrc) {
@@ -67,7 +68,12 @@ public class DynamicLoader {
             super(new URL[0], MemoryClassLoader.class.getClassLoader());
         }
 
-        public void add(Map<String, byte[]> classBytes){
+        /**
+         * 需要  className,与对应的流 然后defineClass生成类  defineClass可以在任何方法内生成  例如findClass or loadClass等
+         *
+         * @param classBytes
+         */
+        public void add(Map<String, byte[]> classBytes) {
             this.classBytes.putAll(classBytes);
         }
 
@@ -78,6 +84,35 @@ public class DynamicLoader {
                 return super.findClass(name);
             }
             classBytes.remove(name);
+            return defineClass(name, buf, 0, buf.length);
+        }
+    }
+
+    public static class MemoryClassLoader2 extends ClassLoader {
+
+        Map<String, byte[]> classBytes = new HashMap<String, byte[]>();
+
+
+        public void add(Map<String, byte[]> classBytes) {
+            this.classBytes.putAll(classBytes);
+        }
+
+        @Override
+        public Class<?> loadClass(String name) throws ClassNotFoundException {
+            System.out.println("1:" + name);
+            Class<?> c = findLoadedClass(name);
+            System.out.println("c:" + c);
+            return super.loadClass(name);
+        }
+
+        @Override
+        protected Class<?> findClass(String name) throws ClassNotFoundException {
+            byte[] buf = classBytes.get(name);
+            if (buf == null) {
+                return super.findClass(name);
+            }
+            classBytes.remove(name);
+            //defineClass 会走loadClass但不会走 但不会走父加载器循环
             return defineClass(name, buf, 0, buf.length);
         }
     }

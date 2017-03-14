@@ -9,5 +9,8 @@ public class aaa {
 		System.out.println(isEmptyTrim(null));
 		System.out.println(isEmptyTrim(""));
 		System.out.println(isEmptyTrim("   "));
+		int a=-1;
+		System.out.println((a++));
+		System.out.println((a));
 	}
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class DynamicLoaderTestCase {
-    private static String javaSrc = "public class TestClass{" +
+    public static String javaSrc = "public class TestClass{" +
             "public void sayHello(String msg) {" +
             "System.out.printf(\"Hello %s! This message from a Java String.%n\",msg);" +
             "}" +
@@ -42,9 +42,27 @@ public class DynamicLoaderTestCase {
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
 //        testCompile();
 //        test2();
-        testParent();
+//        testParent();
+        test();
     }
 
+    private static void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+
+        Map<String, byte[]> bytecode = DynamicLoader.compile("TestClass.java", javaSrc);
+        DynamicLoader.MemoryClassLoader2 classLoader = new DynamicLoader.MemoryClassLoader2();
+        classLoader.add(bytecode);
+        Class clazz = classLoader.loadClass("TestClass");
+//        Object object = clazz.newInstance();
+//        Method method = clazz.getMethod("add", int.class, int.class);
+//        Object returnValue = method.invoke(object, a, b);
+//
+//        Assert.assertEquals(a + b, returnValue);
+//        System.out.println(returnValue);
+//        System.out.println("-------");
+        System.out.println("第二次");
+        Class clazz2 = classLoader.loadClass("TestClass");
+
+    }
     private static void test2() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Random random = new Random();
         int a = random.nextInt(1024);
