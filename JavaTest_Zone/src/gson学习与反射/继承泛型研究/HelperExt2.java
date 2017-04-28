@@ -9,11 +9,11 @@ public class HelperExt2 extends HelperExt<HelperExt2> {
         this.child = child;
     }
 
-    public HelperExt2 heihei5() {
+    public HelperExt2 ext2Hei1() {
         return child;
     }
 
-    public HelperExt2 heihei6() {
+    public HelperExt2 ex2hei2() {
         return child;
     }
 }

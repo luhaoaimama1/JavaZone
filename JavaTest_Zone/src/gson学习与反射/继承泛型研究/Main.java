@@ -5,7 +5,7 @@ package gson学习与反射.继承泛型研究;
  */
 public class Main {
     public static void main(String[] args) {
-        new HelperExt2().heihei3().heihei6().heihei5();
-        new HelperExt<HelperExt>().heihei().heihei3();
+        new HelperExt2().ex1hei1().ex2hei2().ex0hei1();
+        new HelperExt<HelperExt>().ex0hei1().ex1hei1();
     }
 }

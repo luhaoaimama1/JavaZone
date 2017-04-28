@@ -22,6 +22,6 @@ public class ExcpetionPrintLine {
     }
 
     public static void main(String[] args) {
-        quiet(new IOException("heihei"));
+        quiet(new IOException("ex0hei1"));
     }
 }

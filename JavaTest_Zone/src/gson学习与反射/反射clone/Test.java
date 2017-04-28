@@ -54,7 +54,7 @@ public class Test {
 		//map 测试
 		Map<String,Sun> map=new HashMap<String,Sun>();
 		map.put("gaga", new Sun().setName("Sun"+111));
-		map.put("heihei", new Sun().setName("Sun"+222));
+		map.put("ex0hei1", new Sun().setName("Sun"+222));
 		map.put("fengle",  new Sun().setName("Sun"+333));
 		Map<String, Sun> mapClone = ReflectUtils.clone(map);
 		mapClone.put("Zone",new Sun().setName("Sun"+444));
