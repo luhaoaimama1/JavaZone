@@ -6,7 +6,7 @@ package a面试.排序;
 public class 快速排序 {
 
     public static void main(String[] args) {
-        int[] array = {-7,-1,9, 6, 5, 4, 1, 0,  8, 7, 3, 2, -2, -3};
+        int[] array = {-7, -1, 9, 6, 5, 4, 1, 0, 8, 7, 3, 2, -2, -3};
 
         System.out.print("Before sort:");
         SortUtils.printArray(array);
@@ -18,6 +18,9 @@ public class 快速排序 {
     }
 
 
+    /**
+     *   已第一个为基准点分割，比他小的放左边，大的放右边。 递归使用直到 start end相邻的时候；
+     */
     public static void quickSort(int a[], int start, int end) {
         int i, j;
         i = start;

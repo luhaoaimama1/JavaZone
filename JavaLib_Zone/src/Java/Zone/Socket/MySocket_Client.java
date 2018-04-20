@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 import Java.Zone.Setting.MyJava_Preferences;
 
 /**
- * 已经测试 OK  例子说明在 class旁边Client说明
+ * ??????? OK  ????????? class???Client???
  * @author zone
  * 
  */
@@ -19,8 +19,8 @@ public abstract class MySocket_Client {
 	private static Socket server;
 	/**
 	 * 
-	 * @param host  要连接的服务端IP地址 例如：String host = "192.168.60.111";
-	 * @param port  端口号
+	 * @param host  ??????????IP??? ???磺String host = "192.168.60.111";
+	 * @param port  ????
 	 */
 	public MySocket_Client(String host, int port) {
 		// TODO Auto-generated constructor stub
@@ -29,7 +29,7 @@ public abstract class MySocket_Client {
 			server = new Socket(host, port);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
-			System.out.println("UnknownHostException！！！");
+			System.out.println("UnknownHostException??????");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public abstract class MySocket_Client {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("server获取流发生IOException！！！");
+			System.out.println("server?????????IOException??????");
 		}
 		MyJava_Preferences.InnerOp();
 		sendOrRead(br_in, br_out);
@@ -63,15 +63,15 @@ public abstract class MySocket_Client {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("流与客户端关闭发生IOException！！！");
+			System.out.println("?????????????IOException??????");
 		}
 		MyJava_Preferences.ed();
 
 	}
 	/**
-	 * 在这里写 读写逻辑就行了
-	 * @param br_in  service（服务器）提供给你的输入流 已经包装好了 BufferedInputStream
-	 * @param br_out  service（服务器）提供给你的输出流 已经包装好了 BufferedOutputStream 
+	 * ??????д ??д?????????
+	 * @param br_in  service??????????????????????? ?????????? BufferedInputStream
+	 * @param br_out  service?????????????????????? ?????????? BufferedOutputStream 
 	 */
 	public abstract void sendOrRead(BufferedInputStream br_in, BufferedOutputStream br_out);
 

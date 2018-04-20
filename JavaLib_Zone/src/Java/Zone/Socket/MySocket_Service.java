@@ -69,7 +69,7 @@ public abstract class  MySocket_Service {
 	/**
 	 * 在这里写 读写逻辑就行了
 	 * @param br_in Client（客户端）提供给你的输入流 已经包装好了 BufferedInputStream
-	 * @param br_out  service（服务器）提供给你的输出流 已经包装好了 BufferedOutputStream 
+	 * @param br_out  service（服务器）提供给你的输出流 已经包装好了 BufferedOutputStream
 	 */ 
-	public abstract void blockProcess(BufferedInputStream br_in, BufferedOutputStream br_ou) ;
+	public abstract void blockProcess(BufferedInputStream br_in, BufferedOutputStream br_out) ;
 }

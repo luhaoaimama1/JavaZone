@@ -5,7 +5,7 @@ package a面试.排序;
  */
 public class 二分排序 {
     public static void main(String[] args) {  
-        int []a={4,2,1,6,3,6,0,-5,1,1};  
+        int []a={4,2,1,6,3,6,0,-5,1,1};
         int i,j;  
         int low,high,mid;  
         int temp;  

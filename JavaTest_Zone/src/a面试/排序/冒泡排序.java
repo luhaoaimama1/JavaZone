@@ -10,6 +10,7 @@ import java.util.Arrays;
  */
 public class 冒泡排序 {
 
+
     public static void main(String[] args) {
         //second:i中的sort.length-1 是因为如果10个数 9个大数已经冒泡上去了那么最后一个就是最小的 不需要再排序了
         for (int i = 0; i < SortUtils.sort.length - 1; i++) {
@@ -21,8 +22,5 @@ public class 冒泡排序 {
             }
         }
         System.out.println("value:" + Arrays.asList(SortUtils.sort));
-
     }
-
-
 }

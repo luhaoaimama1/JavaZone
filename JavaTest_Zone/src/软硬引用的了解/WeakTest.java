@@ -16,6 +16,19 @@ public class WeakTest {
 		System.gc();
 		System.out.println("after gc: " + abcWeakRef.get());
 
+
+		//弱引用+强引用后  还会被回收吗
+		WeakReference<String> temp = new WeakReference<String>(new String("d"));
+		System.out.println("最开始 before gc: " + temp.get());
+
+		String hold=temp.get();
+		System.gc();
+		System.out.println("弱引用+强引用后  还会被回收吗 after gc: " + temp.get());
+
+		hold=null;
+		System.gc();
+		System.out.println("强引用 制空 after gc: " + temp.get());
+
 		//不可达 demo
 		Ga ga = new Ga();
 		list.add(new WeakReference <Ga>(ga));
