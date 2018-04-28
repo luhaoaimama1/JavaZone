@@ -7,11 +7,19 @@ public class SortUtils {
     public static Integer[] sort = new Integer[]{0, 3, 2, 1, 9, 8, 5, 6, 7, 4};
 
     public static void rightBig(Integer[] sort, int left, int right) {
-        if (sort[left] > sort[right]) {
-            Integer temp = sort[left];
-            sort[left] = sort[right];
-            sort[right] = temp;
-        }
+        if (sort[left] > sort[right])
+            swap(sort,left,right);
+    }
+
+    public static void swap(Integer[] sort, int left, int right) {
+        Integer temp = sort[left];
+        sort[left] = sort[right];
+        sort[right] = temp;
+    }
+    public static void swap(int[] sort, int left, int right) {
+        Integer temp = sort[left];
+        sort[left] = sort[right];
+        sort[right] = temp;
     }
 
 

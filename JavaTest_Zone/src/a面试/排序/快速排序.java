@@ -11,46 +11,46 @@ public class 快速排序 {
         System.out.print("Before sort:");
         SortUtils.printArray(array);
 
-        quickSort(array, 0, array.length - 1);
+        quickSortNB(array, 0, array.length - 1);
 
         System.out.print("After sort:");
         SortUtils.printArray(array);
     }
 
 
-    /**
-     *   已第一个为基准点分割，比他小的放左边，大的放右边。 递归使用直到 start end相邻的时候；
-     */
-    public static void quickSort(int a[], int start, int end) {
-        int i, j;
-        i = start;
-        j = end;
-        if ((a == null) || (a.length <= 1))
+    public static void quickSortNB(int[] a, int start, int end) {
+        if (start == end)
             return;
+        int parIndex = par(a, start, end);
+        if (parIndex > start)
+            quickSortNB(a, start, parIndex - 1);
+        if (parIndex < end)
+            quickSortNB(a, parIndex + 1, end);
 
-        while (i < j) {//查找基准点下标
-            while (i < j && a[j] > a[i])
-                j--;
-            if (i < j) { // 右侧扫描，找出第一个比key小的，交换位置
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
+
+    }
+
+    private static int par(int[] a, int start, int end) {
+        //随机抽选一个 放到最后，这个就是 临界点
+        int randomNumber = (int) (Math.random() * (end - start) + start);
+        SortUtils.swap(a, randomNumber, end);
+
+        int bigFist = start - 1;
+        //与临界点对比，小于的话 计数 计数已经归纳的 第一个大的位置 ；
+        for (int i = start; i < end; i++) {
+            if (a[i] < a[end]) {
+                //++是为了  1342 。2->3 的位置更换
+                bigFist++;
+                if (bigFist != i)//如果bigFist和当前的index不一样。就说明已经有大的出现了
+                    SortUtils.swap(a, bigFist, i);
+
             }
-            while (i < j && a[i] < a[j])
-                // 左侧扫描（此时a[j]中存储着key值）
-                i++;
-            if (i < j) { // 找出第一个比key大的，交换位置
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
-            }
         }
-        if (i - start > 1) { // 递归调用，把key前面的完成排序
-            quickSort(a, 0, i - 1);
-        }
-        if (end - j > 1) {
-            quickSort(a, j + 1, end); // 递归调用，把key后面的完成排序
-        }
+
+        //最后归纳第一个大的位置与 最后的位置更换
+        bigFist++;//每次交换之前都得++ 因为bigFist右边那个才是归纳的大的位置
+        SortUtils.swap(a, bigFist, end);
+        return bigFist;
     }
 
 

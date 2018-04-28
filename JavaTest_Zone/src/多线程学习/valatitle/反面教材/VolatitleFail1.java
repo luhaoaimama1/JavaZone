@@ -1,4 +1,4 @@
-package 并发.valatitle.反面教材;
+package 多线程学习.valatitle.反面教材;
 
 /**
  * Created by fuzhipeng on 2016/12/2.
