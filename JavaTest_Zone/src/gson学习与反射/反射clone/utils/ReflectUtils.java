@@ -80,8 +80,7 @@ public class ReflectUtils {
 							field.set(dataClone, listClone);
 						} else if (Map.class.isAssignableFrom(fieldClass)) {
 							ParameterizedType fieldClass2Params = ((ParameterizedType) fieldClass2);
-							Type[] types = fieldClass2Params
-									.getActualTypeArguments();
+							Type[] types = fieldClass2Params.getActualTypeArguments();
 							Map<Object, Object> map = (Map<Object, Object>) field
 									.get(data);
 							Map<Object, Object> mapClone = new HashMap<Object, Object>();

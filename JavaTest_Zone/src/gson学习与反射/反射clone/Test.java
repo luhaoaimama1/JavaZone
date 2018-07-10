@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import gson学习与反射.反射clone.Parent.EnumTest;
 import gson学习与反射.反射clone.utils.ReflectUtils;
+import gson学习与反射.反射clone.utils.ReflectUtils2;
 
 public class Test {
 	public static void main(String[] args) {
@@ -50,6 +51,15 @@ public class Test {
 		print(child);
 		System.out.println("-----------childClone--------------------");
 		print(childClone);
+
+		Child childClone2 = ReflectUtils2.INSTANCE.clone(child);
+		Sun ss2 = new Sun();
+		ss2.setName("Sun_kotlin"+"浪子");
+		childClone2.getParent().getSunList().add(ss2);
+		childClone2.getParent().getSunMap().put("Sun_kotlin"+"浪子", ss);
+		System.out.println("-----------childKotlinClone--------------------");
+		print(childClone2);
+
 		
 		//map 测试
 		Map<String,Sun> map=new HashMap<String,Sun>();
@@ -62,6 +72,11 @@ public class Test {
 		print(map);
 		System.out.println("-----------mapClone---------------------------");
 		print(mapClone);
+		Map<String, Sun> mapClone2 = ReflectUtils2.INSTANCE.clone(map);
+		mapClone2.put("Zone",new Sun().setName("Sun_kotlin"+5555));
+		System.out.println("-----------mapKotlinClone---------------------------");
+		print(mapClone2);
+
 		//list测试
 		List<Sun> list=new ArrayList<Sun>();
 		list.add( new Sun().setName("Sun"+111));
@@ -73,7 +88,10 @@ public class Test {
 		print(list);
 		System.out.println("-----------listClone---------------------------");
 		print(listClone);
-		
+		System.out.println("-----------listKotlinClone---------------------------");
+		List<Sun> listClone2 = ReflectUtils2.INSTANCE.clone(list,true);
+		listClone2.add( new Sun().setName("Sun_kotlin"+555));
+		print(listClone2);
 	}
 	private static void print(List<Sun> list1) {
 		for (Sun sun : list1) {
