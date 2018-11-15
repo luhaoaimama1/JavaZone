@@ -7,6 +7,6 @@ public class Parent<M, B> {
     public String tag="Parent";
 //    public Class<M> class_;
 //    public M entity;
-//    public Parent(M entity,B bilibili) {
+//    public Parent(M entity,B bi) {
 //    }
 }

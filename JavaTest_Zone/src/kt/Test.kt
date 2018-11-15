@@ -21,10 +21,36 @@ fun main(args: Array<String>) {
 //    list常用方法()
 
 
-    val list = listOf("args:", args)
-    println(list)
+//    val list = listOf("args:", args)
+//    println(list)
+//    var list = ArrayList<Int>()
+//    list.add(1)
+//    list.add(2)
+//    list.add(3)
+//    var list2 = list
+//    list.clear()
+//    println(list2)
+//    if(null is String)
+//        print("heieh")
+//    else
+//        print("222")
+
+    listOf<Float>(-251F,-242F,-119F,-35F,23F,27F,23F,9.6F,0F).forEach {
+        print("${MathUtils.linearMap(it ,-251F,0F,-1080F,0F)},")
+    }
+}
 
 
+
+object MathUtils {
+    //    t, tMin, tMax, value1, value2
+    fun linearMap(srcNow: Float, src1: Float, src2: Float, dst1: Float, dst2: Float): Float {
+        return (srcNow - src1) * (dst2 - dst1) / (src2 - src1) + dst1
+    }
+
+    fun linearMap(srcNow: Double, src1: Double, src2: Double, dst1: Double, dst2: Double): Double {
+        return (srcNow - src1) * (dst2 - dst1) / (src2 - src1) + dst1
+    }
 }
 
 private fun list常用方法() {
