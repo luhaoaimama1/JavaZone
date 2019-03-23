@@ -8,4 +8,6 @@ fun main(args: Array<String>) {
 //    println(string.substring("insert one item!+".length,string.length))
 //    if(HH().a is Long) print("是")
 //    else print("false")
+    val str="abc"
+    print("aa==>"+str.subSequence(0,0))
 }

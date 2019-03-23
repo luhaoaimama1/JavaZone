@@ -18,7 +18,6 @@ public class JavaTest {
     private static void fieldTest(ArrayList<Integer> list) {
         System.out.println("/*************fieldTest*************/");
         System.out.println(属性扩展Kt.getLastIndex("abc"));
-        System.out.println(属性扩展Kt.getLastObj(list));
     }
 
     private static void methodTest(ArrayList<Integer> list) {
