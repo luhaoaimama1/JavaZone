@@ -8,6 +8,9 @@ import kotlin.reflect.KProperty
  */
 
 fun main(args: Array<String>) {
+    for (i in 0..1) {
+        println("ga:$i")
+    }
 //    loop()
 //    other()
 //    whenStudy()
@@ -35,9 +38,9 @@ fun main(args: Array<String>) {
 //    else
 //        print("222")
 
-    listOf<Float>(-251F,-242F,-119F,-35F,23F,27F,23F,9.6F,0F).forEach {
-        print("${MathUtils.linearMap(it ,-251F,0F,-1080F,0F)},")
-    }
+//    listOf<Float>(-251F,-242F,-119F,-35F,23F,27F,23F,9.6F,0F).forEach {
+//        print("${MathUtils.linearMap(it ,-251F,0F,-1080F,0F)},")
+//    }
 }
 
 
