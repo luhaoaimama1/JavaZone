@@ -1,0 +1,14 @@
+例子：16进制解码流的例子
+public class ClientTest {
+	public static void main(String[] args) {
+		new MySocket_Client("192.168.60.111", 8765) {
+			@Override
+			public void sendOrRead(BufferedInputStream br_in,
+					BufferedOutputStream br_out) {
+				// 这个方法也已经封装好了
+				writeHexStringToBytes(br_out, "aebcff", false);
+			}
+		};
+	}
+	
+}

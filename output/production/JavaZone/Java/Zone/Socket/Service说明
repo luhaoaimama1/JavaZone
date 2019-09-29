@@ -1,0 +1,15 @@
+例子： 16进制解码流的例子
+public class ServiceTest {
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		new MySocket_Service(8765) {
+			@Override
+			public void blockProcess(BufferedInputStream br_in,
+					BufferedOutputStream br_ou) {
+				// 这个方法也已经封装好了
+				readToHexString(br_in);
+			}
+		}.startAccept();
+	}
+
+}
