@@ -6,11 +6,34 @@ import kotlin.reflect.KProperty
 /**
  * Created by fuzhipeng on 2018/7/9.
  */
+enum class A{
+    LL,MM,CC
+}
+fun test1(vararg a:String){
 
+}
+interface TestInter{
+    fun get():String
+}
 fun main(args: Array<String>) {
     for (i in 0..1) {
         println("ga:$i")
     }
+    var sa: String? = null
+    when (sa) {
+        "a" -> {
+            println("a")
+        }
+        else -> {
+            println("sa:$sa")
+        }
+    }
+    A.valueOf("LL")
+
+    val s= arrayOf("","")
+    test1("","")
+    test1(*s)
+
 //    loop()
 //    other()
 //    whenStudy()
@@ -42,7 +65,6 @@ fun main(args: Array<String>) {
 //        print("${MathUtils.linearMap(it ,-251F,0F,-1080F,0F)},")
 //    }
 }
-
 
 
 object MathUtils {
@@ -97,9 +119,11 @@ private fun 扩展方法() {
     println(Pair(1, 3).sum_())
 }
 
-fun Int.sum_():Boolean=this % 2 == 0
+fun Int.sum_(): Boolean = this % 2 == 0
 
-fun Int.sum_2():Boolean{ return  this % 2 == 0 }
+fun Int.sum_2(): Boolean {
+    return this % 2 == 0
+}
 
 val sum2: Int.() -> Boolean = { this % 2 == 0 }
 
@@ -109,8 +133,7 @@ private fun 方法引用(numbers: List<Int>) {
     numbers.filter(::isOdd)
     numbers.filter(fun(x: Int): Boolean = x % 2 == 1)
     numbers.filter { x -> x % 2 == 1 }
-    numbers.filter {
-        x ->
+    numbers.filter { x ->
         x % 2 == 1
     }
     val compose = compose(::length, ::isOdd)
@@ -172,8 +195,7 @@ class User {
 }
 
 class ObserveExample {
-    var name by Delegates.observable("what?") {
-        property, oldValue, newValue ->
+    var name by Delegates.observable("what?") { property, oldValue, newValue ->
         println("${property.toString()} - $oldValue - $newValue")
     }
 }
@@ -283,7 +305,7 @@ object Utils {
     fun parseInt(str: String): Int? {
         try {
             return str.toInt()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             return null;
         }
     }

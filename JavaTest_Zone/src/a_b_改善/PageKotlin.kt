@@ -17,7 +17,6 @@ fun main(args: Array<String>) {
         println("name:${it.chinese}  \t aaa:${it.name} ")
     }
 
-
 }
 
 /**
