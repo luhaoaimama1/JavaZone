@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @param <V>
  */
 public class UnSortLinkST<K extends Comparable<K>, V> implements Iterable<Pair<K, V>> {
-    static String[] arrays = new String[]{
+    public static String[] arrays = new String[]{
             "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"
     };
 

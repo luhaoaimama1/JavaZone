@@ -1,0 +1,29 @@
+public void deleteMax()
+{
+root = deleteMax(root);
+root.color = BLACK;
+}
+private Node deleteMax(Node h)
+{
+    if (isRed(h.left))
+         h = rotateRight(h);
+    if (h.right == null)
+        return null;
+    if (!isRed(h.right) && !isRed(h.right.left)) //如果他的右侧是 2节点
+        h = moveRedRight(h); //借一个节点 过来
+    h.left = deleteMax(h.left);
+    return fixUp(h);
+}
+
+
+private Node moveRedRight(Node h)
+{
+    colorFlip(h); //翻转节点颜色  ？
+    if (isRed(h.left.left)) //如果当前节点的左节点是3节点
+    {
+        //那么从左节点借过来一个
+         h = rotateRight(h);
+         colorFlip(h);
+    }
+    return h; //把这个节点返回给父亲用来指向
+}

@@ -1,8 +1,6 @@
 package classload;
 
-import sun.jvm.hotspot.HelloWorld;
 
-import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
