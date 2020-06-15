@@ -13,7 +13,7 @@ public class WaitTest {
     public static void main(String[] args) {
         new Thread(new Thread1()).start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         }

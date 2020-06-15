@@ -40,25 +40,21 @@ public class MaxPQ<T extends Comparable<T>> {
         objSize = 0;
     }
 
-    /*
-     * 上浮  用于添加元素后，恢复成有序堆
-     *
-     * 上浮：把新元素放到最后，然后和父节点对比 如果比父节点大就交换，继续上浮直到 k/2==0 break;
-     */
-    public void swim(int k) {
-        //然后上浮k
-        while (k / 2 > 0 && less(k / 2, k)) {
-            //k/2==0 就退出了
-            //父元素小于当前元素 交换, 大于等于就退出
-            exch(a, k / 2, k);
-            k = k / 2;
-        }
-    }
-
     //添加元素插入到结尾。然后上浮这个 成有序堆
     public void insert(T obj) {
         a[++objSize] = obj;
         swim(objSize);
+    }
+
+    /*
+     * 上浮  用于添加元素后，恢复成有序堆
+     * 上浮：把新元素放到最后，然后和父节点对比 如果比父节点大就交换，继续上浮直到 k/2==0 break;
+     */
+    public void swim(int k) {//上浮k
+        while (k / 2 > 0 && less(k / 2, k)) { //k/2==0 就退出了
+            exch(a, k / 2, k);//父元素小于当前元素 交换, 大于等于就退出
+            k = k / 2;
+        }
     }
 
     /**
@@ -67,15 +63,12 @@ public class MaxPQ<T extends Comparable<T>> {
      * 用于删除最上层的元素，交换成最后的元素 重新恢复成有序堆
      */
     public void sink(int k, int rightLastIndex) {
-        while (2 * k <= rightLastIndex) {// 2k>rightLastIndex就越界了
+        while (2 * k <= rightLastIndex) { // 2k>rightLastIndex就越界了
             int j = 2 * k;
-            //找到大的那个元素 。如果只有一个的话  就不比较了
-            //注意边界 j+1<=rightLastIndex=》j < rightLastIndex
+            //找到大的那个元素 。如果只有一个的话  就不比较了  注意边界 j+1<=rightLastIndex=>j < rightLastIndex
             if (j < rightLastIndex && less(j, j + 1)) j++;
-            //当父节点不小于子节点 就不下沉了
-            if (!less(k, j)) break;
-            //当父节点小于子节点 就交换
-            exch(a, k, j);
+            if (!less(k, j)) break; //当父节点不小于子节点 就不下沉了
+            exch(a, k, j);//当父节点小于子节点 就交换
             k = j;
         }
     }

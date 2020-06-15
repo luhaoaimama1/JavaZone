@@ -47,12 +47,16 @@ public class 归并 {
         int leftIndex = start;
         int rightIndex = mid + 1;
 
+        //注意用的是辅助数组内的值进行对比。leftIndex和rightIndex都是辅助数组的index.
         for (int i = start; i <= right; i++) {
-            if (leftIndex > mid) arrays[i] = saveArrays[rightIndex++];
-            else if (rightIndex > right) arrays[i] = saveArrays[leftIndex++];
-            else if (CompareUtils.less(saveArrays[rightIndex], saveArrays[leftIndex]))
-                arrays[i] = saveArrays[rightIndex++];
-            else arrays[i] = saveArrays[leftIndex++];
+            //左半边用尽 取右半边的的元素
+            if      (leftIndex > mid)                                                       arrays[i] = saveArrays[rightIndex++];
+            //右半边用尽 取左半边的的元素
+            else if (rightIndex > right)                                                    arrays[i] = saveArrays[leftIndex++];
+            //如果右边的某个元素<左边的元素。那么当前元素=刚刚的右侧元素
+            else if (CompareUtils.less(saveArrays[rightIndex], saveArrays[leftIndex]))      arrays[i] = saveArrays[rightIndex++];
+            //其他情况就是使用左侧的元素
+            else                                                                            arrays[i] = saveArrays[leftIndex++];
         }
     }
 }

@@ -27,6 +27,7 @@
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -44,5 +45,44 @@
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.71" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test:1.2.71" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test-common:1.2.71" level="project" />
+    <orderEntry type="library" name="com.squareup.retrofit2:retrofit:2.2.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/algs4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/gson-2.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/xom-1.0d10.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/ezmorph-1.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-logging.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-lang-2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-beanutils.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/gson-2.3.1-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/json-lib-1.1-jdk13.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-collections-3.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/41d75b54-56a1-31fc-aa8e-af7c6b8b9ed1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/53ffafec-781c-3146-b362-86017eb0ad06.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/9333c93a-2e60-364d-ab9f-78ca7ab32ef9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/algs4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/gson-2.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/xom-1.0d10.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/ezmorph-1.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-logging.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-lang-2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-beanutils.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/gson-2.3.1-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/json-lib-1.1-jdk13.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/commons-collections-3.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/41d75b54-56a1-31fc-aa8e-af7c6b8b9ed1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/53ffafec-781c-3146-b362-86017eb0ad06.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaTest_Zone/lib/9333c93a-2e60-364d-ab9f-78ca7ab32ef9.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.squareup.retrofit2:converter-gson:2.0.2" level="project" />
+    <orderEntry type="module" module-name="JavaZone" />
+    <orderEntry type="library" name="javassist:javassist:3.12.1.GA" level="project" />
   </component>
 </module>

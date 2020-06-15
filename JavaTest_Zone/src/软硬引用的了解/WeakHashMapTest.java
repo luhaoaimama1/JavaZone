@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 public class WeakHashMapTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Map<Object, Object> objectMap = new WeakHashMap<Object, Object>();
 		String a = String.valueOf(1);
 		String b = String.valueOf(2);
@@ -18,6 +18,7 @@ public class WeakHashMapTest {
 		b=null;
 		c=null;
 		System.gc();
+		Thread.sleep(500); //需要点延时 不没清除完毕
 		System.out.println("Map size :" + objectMap.size());
 	}
 

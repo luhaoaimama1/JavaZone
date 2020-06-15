@@ -17,6 +17,7 @@ private fun removePos() {
     adapter.styleExtra = styleExtra
      arrayList(adapter)
     val list = ArrayList<String>()
+
     for (i in 0..4) {
         val content = "insert one item!+${i}"
         list.add(content)

@@ -6,12 +6,14 @@ public class 选择 {
     public static Comparable[] arrays = new Comparable[]{
             "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"
     };
-
+    public static Comparable[] arrays3 = new Comparable[]{
+            "S", "O", "R", "T", "E", "X", "A", "M", "P", "L"
+    };
 //    static Comparable[] arrays2 = new Comparable[]{
 //            6,9,8,7,6
 //    };
 
-    static Comparable[] arrays2 = new Comparable[]{
+    public static Comparable[] arrays2 = new Comparable[]{
             1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 1, 3, 4, 5, 6,
     };
 

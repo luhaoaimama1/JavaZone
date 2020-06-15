@@ -28,13 +28,13 @@ public class Heap {
      */
     public static void sort(Comparable[] b) {
         Heap maxPQ = new Heap();
-        //如果 最后的元素 与父节点 建立 小堆。 然后父节点的index=>0 依次建立小堆 只会涉及下沉。
-        //todo  这样做的好处也是不懂！貌似是少了最后一层的循环。而一次添加的话是包含最后一层的所有元素的次数的。
+        //堆有序：少了最后一层的循环。 因为最后一层没必要下沉了 。
         int rightLastIndex = b.length;
         for (int i = rightLastIndex / 2; i >= 1; i--) {
             maxPQ.sink(b, i, rightLastIndex);
         }
 
+        //把最大的元素取出来，然后和最后的交换，然后下沉a[1],边界是交换的位置-1；循环,直到边界为1
         while (rightLastIndex > 1) {//=1就排序完事了
             maxPQ.exch(b, 1, rightLastIndex--);
             maxPQ.sink(b, 1, rightLastIndex);
@@ -49,29 +49,22 @@ public class Heap {
     public void sink(Comparable[] a, int k, int rightLastIndex) {
         while (2 * k <= rightLastIndex) {// 2k>rightLastIndex就越界了
             int j = 2 * k;
-            //找到大的那个元素 。如果只有一个的话  就不比较了
-            //注意边界 j+1<=rightLastIndex=》j < rightLastIndex
+            //找到大的那个元素 。如果只有一个的话  就不比较了 注意边界 j+1<=rightLastIndex=》j < rightLastIndex
             if (j < rightLastIndex && less(a, j, j + 1)) j++;
-            //当父节点不小于子节点 就不下沉了
-            if (!less(a, k, j)) break;
-            //当父节点小于子节点 就交换
-            exch(a, k, j);
+            if (!less(a, k, j)) break; //当父节点不小于子节点 就不下沉了
+            exch(a, k, j); //当父节点小于子节点 就交换
             k = j;
         }
     }
 
     public boolean less(Comparable[] a, int left, int right) {
-        left--;
-        right--;
-        return a[left].compareTo(a[right]) < 0;
+        return a[left-1].compareTo(a[right-1]) < 0;
     }
 
     public void exch(Comparable[] a, int i, int j) {
-        i--;
-        j--;
-        Comparable temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+        Comparable temp = a[i-1];
+        a[i-1] = a[j-1];
+        a[j-1] = temp;
     }
 
 }

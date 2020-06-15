@@ -33,5 +33,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="library" name="groovy-3.0.4" level="application" />
   </component>
 </module>
