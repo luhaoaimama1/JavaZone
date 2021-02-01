@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,11 +25,22 @@ public class GsonUtils {
         try {
             return gson.fromJson(str, t);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
 
     }
 
+    public static void main(String[] args) {
+        List list=new ArrayList();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        String s = GsonUtils.toJson(list);
+        String[] strings = GsonUtils.fromJson(s, String[].class);
+        Arrays.asList(strings);
+        System.out.println(strings);
+    }
     /**
      * 可以使用
      * List<Person> ps = ArraysZ.asList(gson.fromJson(str, Person[].class));
@@ -44,7 +56,6 @@ public class GsonUtils {
         } catch (Exception e) {
             return null;
         }
-
     }
 
     /**

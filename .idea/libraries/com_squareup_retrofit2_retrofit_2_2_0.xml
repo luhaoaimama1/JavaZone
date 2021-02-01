@@ -8,8 +8,9 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ideaLibSources/retrofit-2.2.0-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.ideaLibSources/okhttp-3.6.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/retrofit2/retrofit/2.2.0/retrofit-2.2.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.6.0/okhttp-3.6.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/1.11.0/okio-1.11.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

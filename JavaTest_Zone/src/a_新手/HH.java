@@ -11,6 +11,7 @@ public class HH {
     long a=3;
 
     public static void main(String[] args) {
+        System.out.println(((String)null));
 //        List<Integer> a=new ArrayList<>();
 //        a.add(a.size(),0);
 //        a.add(a.size(),1);
