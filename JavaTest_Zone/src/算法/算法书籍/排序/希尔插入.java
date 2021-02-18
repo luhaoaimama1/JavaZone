@@ -14,7 +14,7 @@ public class 希尔插入 {
         while (h >= 1) {
             for (int i = h; i < arrays.length; i++) {
                 //插入的元素 与之前的元素做对比 如果之前的大 那么交换 然后--， 直到比他小位置
-                for (int j = i; j >= h && CompareUtils.less(arrays[j], arrays[j - h]); j--) {
+                for (int j = i; j >= h && CompareUtils.less(arrays[j], arrays[j - h]); j-=h) {
                     CompareUtils.exch(arrays, j, j - h);
                 }
             }
