@@ -1,0 +1,2439 @@
+
+#4073524 java.lang.OutOfMemoryError
+pthread_create (1040KB stack) failed: Try again
+
+com.kuaiyin.player.v2.widget.redpacket.RedPacket.r(SourceFile:3)
+
+发生次数
+
+266
+
+影响设备数
+
+253
+
+状态变更
+所有上报时间
+上报 ID	版本	异常上报时间	设备	系统版本
+# 9034	5.05.05	2021-11-01 16:35:37 589	tel-an00a	Android 10,level 29
+异常进程#线程
+
+com.kuaiyin.player#main(1)
+
+用户 ID
+
+3c66847075a0bbb0
+
+发生时间
+
+2021-11-01 16:34:25
+
+上报时间
+
+2021-11-01 16:35:37
+
+应用包名
+
+com.kuaiyin.player
+
+应用版本
+
+5.05.05
+
+使用时长
+
+10 分 6 秒
+
+前后台状态
+
+后台
+
+设备机型
+
+TEL-AN00a
+系统版本
+
+Android 10,level 29
+
+ROM
+
+HuaWei/EMOTION
+
+CPU架构
+
+armeabi
+
+出错堆栈跟踪数据跟踪日志符号表
+#1 main
+
+java.lang.OutOfMemoryError
+
+pthread_create (1040KB stack) failed: Try again
+
+解析原始
+1
+java.lang.Thread.nativeCreate(Native Method)
+2
+java.lang.Thread.start(Thread.java:893)
+3
+java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:975)
+4
+java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1382)
+5
+android.os.AsyncTask.executeOnExecutor(AsyncTask.java:753)
+6
+h.b0.a.d.l$a.run(SourceFile:2)
+7
+h.b0.a.d.l.i(SourceFile:2)
+8
+h.b0.a.d.l.apply(SourceFile:1)
+9
+h.q.d.f0.p.u.a0$a.c(SourceFile:9)
+10
+com.kuaiyin.player.v2.widget.redpacket.RedPacket.r(SourceFile:3)
+11
+com.kuaiyin.player.v2.widget.redpacket.RedPacket$g.b(SourceFile:2)
+12
+h.q.d.f0.p.u.c0.d.k(SourceFile:14)
+13
+com.kuaiyin.player.v2.widget.redpacket.RedPacket$f.onTick(SourceFile:1)
+14
+android.os.CountDownTimer$1.handleMessage(CountDownTimer.java:130)
+15
+android.os.Handler.dispatchMessage(Handler.java:110)
+16
+android.os.Looper.loop(Looper.java:219)
+17
+android.app.ActivityThread.main(ActivityThread.java:8668)
+18
+java.lang.reflect.Method.invoke(Native Method)
+19
+com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:513)
+20
+com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1109)
+#207 ReferenceQueueDaemon
+
+java.lang.Object.wait(Native Method)
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.lang.Object.wait(Object.java:568)
+4
+java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:215)
+5
+java.lang.Daemons$Daemon.run(Daemons.java:137)
+6
+java.lang.Thread.run(Thread.java:929)
+#208 FinalizerDaemon
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:190)
+4
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:211)
+5
+java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:271)
+6
+java.lang.Daemons$Daemon.run(Daemons.java:137)
+7
+java.lang.Thread.run(Thread.java:929)
+#209 FinalizerWatchdogDaemon
+
+1
+java.lang.Thread.sleep(Native Method)
+2
+java.lang.Thread.sleep(Thread.java:443)
+3
+java.lang.Thread.sleep(Thread.java:359)
+4
+java.lang.Daemons$FinalizerWatchdogDaemon.sleepForMillis(Daemons.java:383)
+5
+java.lang.Daemons$FinalizerWatchdogDaemon.waitForFinalization(Daemons.java:411)
+6
+java.lang.Daemons$FinalizerWatchdogDaemon.runInternal(Daemons.java:323)
+7
+java.lang.Daemons$Daemon.run(Daemons.java:137)
+8
+java.lang.Thread.run(Thread.java:929)
+#220 tt_pangle_thread_pl_init1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+
+
+
+#223 pool-2-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#229 queued-work-looper
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#232 pool-2-thread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#235 OkHttp ConnectionPool
+
+1
+java.lang.Object.wait(Native Method)
+2
+com.android.okhttp.ConnectionPool$1.run(ConnectionPool.java:106)
+3
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+4
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+5
+java.lang.Thread.run(Thread.java:929)
+
+
+
+#242 pool-7-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#244 tt_pangle_thread_init
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#247 pluginFKHandlerThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#248 ksad-reportHandlerThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+#251 myThreadPool thread:0
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:387)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#255 ksad-report-3-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#263 pool-9-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#267 ExecutorManager ad work#3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:459)
+4
+java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+5
+java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#268 ExecutorManager ad work#4
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:459)
+4
+java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+5
+java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+
+
+
+#271 ExecutorManager ad work#7
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:459)
+4
+java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+5
+java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+
+
+
+#278 Okio Watchdog
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.lang.Object.wait(Object.java:568)
+4
+com.android.okhttp.okio.AsyncTimeout.awaitTimeout(AsyncTimeout.java:313)
+5
+com.android.okhttp.okio.AsyncTimeout.access$000(AsyncTimeout.java:42)
+6
+com.android.okhttp.okio.AsyncTimeout$Watchdog.run(AsyncTimeout.java:288)
+#280 ksad-diskAndHttp5-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+#281 pool-6-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#283 work_thread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#285 NetWorkSender
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#286 FileObserver
+
+1
+android.os.FileObserver$ObserverThread.observe(Native Method)
+2
+android.os.FileObserver$ObserverThread.run(FileObserver.java:113)
+#291 ConnectivityThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+
+
+#295 ksad-diskAndHttp5-thread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#321 ksad-commonHandlerThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#333 mdl_log_handler
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+com.ss.mediakit.medialoader.AVMDLDataLoader$1.run(SourceFile:4)
+#334 Okio Watchdog
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+okio.AsyncTimeout.awaitTimeout(SourceFile:3)
+4
+okio.AsyncTimeout$Watchdog.run(SourceFile:2)
+#337 Thread-16
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+com.ss.ttvideoengine.TTNetWorkListener$MyThread.run(SourceFile:4)
+#347 mdl_log_handler
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+com.bykv.vk.component.ttvideo.mediakit.medialoader.AVMDLDataLoader$1.run(Unknown Source:21)
+#353 ZIDThreadPoolExecutor1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#358 glide-active-resources
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:190)
+4
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:211)
+5
+com.bumptech.glide.load.engine.ActiveResources.cleanReferenceQueue(SourceFile:2)
+6
+com.bumptech.glide.load.engine.ActiveResources$2.run(SourceFile:1)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+com.bumptech.glide.load.engine.ActiveResources$1$1.run(SourceFile:2)
+10
+java.lang.Thread.run(Thread.java:929)
+#363 glide-disk-cache-thread-0
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#369 arch_disk_io_0
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#371 OkHttp api.kaixinyf.cn
+
+1
+com.android.org.conscrypt.NativeCrypto.SSL_read(Native Method)
+2
+com.android.org.conscrypt.NativeSsl.read(NativeSsl.java:411)
+3
+com.android.org.conscrypt.ConscryptFileDescriptorSocket$SSLInputStream.read(ConscryptFileDescriptorSocket.java:549)
+4
+okio.Okio$2.read(SourceFile:4)
+5
+okio.AsyncTimeout$2.read(SourceFile:2)
+6
+okio.RealBufferedSource.request(SourceFile:3)
+7
+okio.RealBufferedSource.require(SourceFile:1)
+8
+okhttp3.internal.http2.Http2Reader.nextFrame(SourceFile:1)
+9
+okhttp3.internal.http2.Http2Connection$ReaderRunnable.execute(SourceFile:3)
+10
+okhttp3.internal.NamedRunnable.run(SourceFile:3)
+11
+java.lang.Thread.run(Thread.java:929)
+#372 OkHttp ConnectionPool
+
+1
+java.lang.Object.wait(Native Method)
+2
+okhttp3.internal.connection.RealConnectionPool.a(SourceFile:4)
+3
+okhttp3.internal.connection.RealConnectionPool.b(Unknown Source:0)
+4
+p.g.c.a.run(Unknown Source:2)
+5
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+6
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+7
+java.lang.Thread.run(Thread.java:929)
+#374 OkHttp api.kaixinyf.cn Writer
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#384 glide-source-thread-0
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#388 BuglyThread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1127)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#390 arch_disk_io_1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#393 BuglyThread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1132)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#394 BuglyThread-3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1127)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#398 Bugly-ThreadMonitor0
+
+1
+java.lang.Thread.sleep(Native Method)
+2
+java.lang.Thread.sleep(Thread.java:443)
+3
+java.lang.Thread.sleep(Thread.java:359)
+4
+com.tencent.bugly.proguard.ab.run(SourceFile:7)
+#404 bd_tracker_w
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#406 arch_disk_io_2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#411 ZIDThreadPoolExecutor2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#413 glide-source-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#415 bd_tracker_w
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#417 arch_disk_io_3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#419 tt_pangle_thread__ttad_bk_batch_stats
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#420 tt_pangle_thread__ttad_bk
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#421 tt_pangle_thread__ttad_bk_stats
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#422 tt_pangle_thread__ttad_bk
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#424 bd_tracker_n
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#425 bd_tracker_n
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#427 default_npth_thread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#428 glide-source-thread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#444 glide-source-thread-3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#449 pool-16-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#451 ExecutorManager ad work#8
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:459)
+4
+java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+5
+java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#456 pool-15-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#457 TaskScheduler #1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#459 pool-18-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#461 TaskScheduler #1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#462 TaskScheduler #2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#464 TaskScheduler #3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1127)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#465 TaskScheduler #4
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#466 TaskScheduler #5
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#467 TaskScheduler #6
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#468 pool-17-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#471 TuringFdCore_64_105498_au
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#477 TaskScheduler #7
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#478 TaskScheduler #8
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#480 TaskScheduler #9
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#481 TaskScheduler #10
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#483 TaskScheduler #11
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#485 TaskScheduler #12
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#486 TaskScheduler #2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#489 GDT_VIDEO_CACHE
+
+1
+libcore.io.Linux.poll(Native Method)
+2
+libcore.io.ForwardingOs.poll(ForwardingOs.java:169)
+3
+libcore.io.BlockGuardOs.poll(BlockGuardOs.java:261)
+4
+libcore.io.ForwardingOs.poll(ForwardingOs.java:169)
+5
+android.system.Os.poll(Os.java:428)
+6
+libcore.io.IoBridge.poll(IoBridge.java:680)
+7
+java.net.PlainSocketImpl.socketAccept(PlainSocketImpl.java:194)
+8
+java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:451)
+9
+java.net.ServerSocket.implAccept(ServerSocket.java:547)
+10
+java.net.ServerSocket.accept(ServerSocket.java:515)
+11
+com.qq.e.comm.plugin.F.e.d(A:2)
+12
+com.qq.e.comm.plugin.F.e.a(A:1)
+13
+com.qq.e.comm.plugin.F.e$e.run(A:2)
+14
+java.lang.Thread.run(Thread.java:929)
+#493 gdt_stat_service
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#494 GDT_NET_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#495 GDT_NET_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#496 GDT_SINGLE_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#497 GDT_NET_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#498 GDT_SCHEDULER_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#510 GDT_NET_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#511 GDT_NET_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#514 Thread-64
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#547 ExecutorManager computation#1
+
+#548 UMThreadPoolExecutor1
+
+#551 CrashSDKNormalHandler
+
+
+#552 CrashSDKBkgdHandler
+
+
+#553 efs-base
+
+#554 newsp0
+
+#555 newsp1
+
+#556 newsp2
+
+#558 ANR HANDLER THREAD
+
+
+#562 ZIDThreadPoolExecutor3
+
+#567 pool-25-thread-1
+
+#568 SA.TaskQueueThread
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+com.sensorsdata.analytics.android.sdk.TrackTaskManager.takeTrackEventTask(SourceFile:2)
+6
+com.sensorsdata.analytics.android.sdk.TrackTaskManagerThread.run(SourceFile:2)
+7
+java.lang.Thread.run(Thread.java:929)
+#570 com.sensorsdata.analytics.android.sdk.AnalyticsMessages.Worker
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#571 pool-25-thread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#572 SENSORS_DATA_THREAD
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#573 pool-26-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#574 UMThreadPoolExecutor2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1127)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#576 UMThreadPoolExecutor3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#577 UMThreadPoolExecutor4
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#578 pool-27-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#581 push_client_thread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#587 AWCN Scheduler1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+4
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1132)
+5
+java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+6
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+7
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+8
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+9
+java.lang.Thread.run(Thread.java:929)
+#599 tt_pangle_thread__ttad_bk
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#600 tt_pangle_thread__ttad_bk
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#602 pool-28-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#608 GDT_DOWNLOAD_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#611 pool-29-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#613 TaskScheduler #13
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#614 GDT_DOWNLOAD_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#617 OkHttp ConnectionPool
+
+1
+java.lang.Object.wait(Native Method)
+2
+okhttp3.internal.connection.RealConnectionPool.a(SourceFile:4)
+3
+okhttp3.internal.connection.RealConnectionPool.b(Unknown Source:0)
+4
+p.g.c.a.run(Unknown Source:2)
+5
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+6
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+7
+java.lang.Thread.run(Thread.java:929)
+#618 GDT_DOWNLOAD_THREAD
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#620 SL-NetWorkSender
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#622 DownloaderNotifyThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#624 RSMessageThread
+
+1
+android.renderscript.RenderScript.nContextPeekMessage(Native Method)
+2
+android.renderscript.RenderScript$MessageThread.run(RenderScript.java:1295)
+#629 TRTCCloudApi
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#633 Thread-109
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+com.tencent.rtmp.sharp.jni.TraeAudioManager$TraeAudioManagerLooper.run(SourceFile:9)
+#640 UIFrames ExecutorManager computation#1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#642 TaskScheduler #14
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#643 TaskScheduler #15
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#644 TaskScheduler #16
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#645 TaskScheduler #17
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#646 pool-31-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#649 HuaweiApiManager
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#662 Chrome_ProcessLauncherThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#666 pool-32-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#667 pool-31-thread-2
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#668 pool-31-thread-3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+#672 CleanupReference
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:190)
+4
+java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:211)
+5
+Za.run(chromium-TrichromeWebView.apk-stable-432409333:2)
+#675 magnifier pixel copy result handler
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+#677 glide-animation-thread-0
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+#682 FaceRecognizeManagerImpl
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+
+#683 glide-animation-thread-1
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:548)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(SourceFile:6)
+
+
+#684 pool-2-thread-3
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+
+
+#685 pool-2-thread-4
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+
+
+#686 wp-tp
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+
+#699 VizCompositorThread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+
+#702 SA.DeepLinkRequest
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+
+#703 JavaBridge
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+#733 AsyncTask #6
+
+
+#736 default_npth_thread
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+h.e.a.e0.r$e.onLooperPrepared(Unknown Source:37)
+5
+android.os.HandlerThread.run(HandlerThread.java:66)
+
+
+#738 DPBus
+
+1
+android.os.MessageQueue.nativePollOnce(Native Method)
+2
+android.os.MessageQueue.next(MessageQueue.java:363)
+3
+android.os.Looper.loop(Looper.java:176)
+4
+android.os.HandlerThread.run(HandlerThread.java:67)
+
+
+#739 NPTH-AnrMonitor
+
+1
+com.apm.insight.nativecrash.NativeImpl.doStartAnrMonitor(Native Method)
+2
+com.apm.insight.nativecrash.NativeImpl.E(Unknown Source:7)
+3
+com.apm.insight.nativecrash.NativeImpl.D(Unknown Source:0)
+4
+com.apm.insight.nativecrash.NativeImpl$a.run(Unknown Source:0)
+5
+java.lang.Thread.run(Thread.java:929)
+
+
+#740 dpsdk-default-thread-3-thread-1
+
+#742 dpsdk-default-thread-3-thread-2
+
+#745 dpsdk-default-thread-3-thread-3
+
+#747 AppConfigRefreshThread
+
+1
+sun.misc.Unsafe.park(Native Method)
+2
+java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+3
+java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+4
+java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+5
+java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+6
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+7
+java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+8
+java.lang.Thread.run(Thread.java:929)
+9
+com.bytedance.sdk.dp.proguard.d.d$a$1.run(Unknown Source:5)
+#757 dpsdk-default-thread-3-thread-4
+
+#758 Timer-0
+
+1
+java.lang.Object.wait(Native Method)
+2
+java.lang.Object.wait(Object.java:442)
+3
+java.util.TimerThread.mainLoop(Timer.java:559)
+4
+java.util.TimerThread.run(Timer.java:512)
+#760 AudioPortEventHandler
+
+#764 DPSdk-img-Stats
+
+#765 DPSdk-img-Dispatcher
+
+#767 DPSdk-img-Idle
+
+#768 DPSdk-img-Idle
+
+#769 DPSdk-img-Idle
+
+
+#772 vclould.engine.download.tasks
+
+#775 DPSdk-img-Idle
+
+#780 video_decod
+
+#795 pool-39-thread-1

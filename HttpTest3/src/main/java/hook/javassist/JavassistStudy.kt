@@ -7,6 +7,12 @@ import java.io.File
 
 
 //copy from:https://www.cnblogs.com/rickiyang/p/11336268.html
+/**
+ * 证明了：
+ * 1.生成的类 生成的对象。对象反射得到的方法都是生成类中包含的。
+ * 2.关于某个现有的类。插入方法和 某个方法内外插入代码 会如何
+ *
+ */
 object JavassistStudy {
     val folderPath = "HttpTest3/ignoreFolder"
     val classPackage = "hook.javassist"
@@ -14,13 +20,48 @@ object JavassistStudy {
 
     @JvmStatic
     fun main(args: Array<String>) {
+//        verify1()
+        verify2()
+    }
+
+    /**
+     * 问题:javassist.CannotCompileException: by java.lang.LinkageError: loader (instance of  sun/misc/Launcher$AppClassLoader): attempted  duplicate class definition for name
+     * https://stackoverflow.com/questions/40105981/changing-a-class-with-javassist-java-reflexion
+     */
+    private fun verify2() {
+        NowClas()
+        val cp = ClassPool(true)
+//        val clas=cp[NowClas::class.java.name]
+        val clas=cp["hook.javassist.NowClas"]
+//        clas.name="NowClasJavaS"
+        clas.defrost()
+        val getName = clas.getDeclaredMethod("printName")
+        getName.insertBefore("System.out.println(\"getName之前搞事情\");")
+        getName.insertAfter("System.out.println(\"getName 之后搞事情\");")
+        clas.toClass()
+//        val person = clas.toClass().newInstance()
+//        (person as NowClas).printName()
+//        NowClas().printName()
+
+        // 调用 personFly 方法
+        // 调用 personFly 方法clas
+//        val personFlyMethod= person.javaClass.getMethod("printName")
+//        personFlyMethod.invoke(person)
+//        clas.toClass().newInstance()
+//        val nowClas=clas.toClass().newInstance() as NowClas
+        val nowClas = NowClas()
+        nowClas.printName()
+    }
+
+    private fun verify1() {
         createClass(ClassName)
         val path = File(folderPath, classPackage.replace(".", File.separator))
+        //设置优先加载路径
         val diskClassLoader = DiskClassLoaderTest.DiskClassLoader(path.canonicalPath)
-
+        //加载路径中的class NewJavassist
         val loadClass = diskClassLoader.loadClass("${classPackage}.${ClassName}")
         val newInstance = loadClass.newInstance()
-        println("getName:" + Reflect.on(newInstance).call("getName"))
+        println("getName===>:" + Reflect.on(newInstance).call("getName"))
 
 
         val ClassName2 = "${ClassName}2"
@@ -56,6 +97,17 @@ object JavassistStudy {
         person.javaClass.getMethod("getName").invoke(person)
         //调用 joinFriend 方法
         person.javaClass.getMethod("joinFriend").invoke(person)
+
+        //看一下 插入的方法这个类的对象有吗
+        println("person对象有 joinFriend方法么:${containMethod(person, "joinFriend")}")
+    }
+
+    private fun containMethod(person: Any, s: String):Boolean {
+        val methods = person::class.java.methods
+        for (method in methods) {
+            if(method.name.contains(s)) return true
+        }
+        return false
     }
 
 
@@ -95,5 +147,7 @@ object JavassistStudy {
 
         //这里会将这个创建的类对象编译为.class文件
         newClass.writeFile(folderPath);
+
+//        println("类字符串==》" + String(newClass.toBytecode()))
     }
 }

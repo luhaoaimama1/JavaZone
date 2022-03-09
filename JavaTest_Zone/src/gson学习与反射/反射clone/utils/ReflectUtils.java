@@ -138,4 +138,32 @@ public class ReflectUtils {
 		return false;
 	}
 
+
+
+	private Class getWarpCls(Class defineCls) {
+		Class defineClsWarp = defineCls;
+		if (defineCls.isPrimitive()) { //如果是基本类型
+			if (defineCls == byte.class) {
+				defineClsWarp = Byte.class;
+			} else if (defineCls == short.class) {
+				defineClsWarp = Short.class;
+			} else if (defineCls == int.class) {
+				defineClsWarp = Integer.class;
+			} else if (defineCls == long.class) {
+				defineClsWarp = Long.class;
+			} else if (defineCls == float.class) {
+				defineClsWarp = Float.class;
+			} else if (defineCls == double.class) {
+				defineClsWarp = Double.class;
+			} else if (defineCls == char.class) {
+				defineClsWarp = Character.class;
+			} else if (defineCls == boolean.class) {
+				defineClsWarp = Boolean.class;
+			} else {
+				//ignore
+			}
+		}
+		return defineClsWarp;
+	}
+
 }

@@ -19,10 +19,14 @@ fun main(args: Array<String>) {
 //    read(folderPath)
 //
 //    //复制
-//    readWrite(file)
+    readWrite(file)
 
-//    编解码
-    val content="haha,我觉得还是不破尚是男一号！"
+//    en2decode()
+}
+
+private fun en2decode() {
+    //    编解码
+    val content = "haha,我觉得还是不破尚是男一号！"
     val charset = Charset.forName("utf-8")
     val toByteArray = content.toByteArray(charset)
     val bs = ByteString.of(*toByteArray)
@@ -49,6 +53,9 @@ fun main(args: Array<String>) {
     // 因为结果用的是String  而md5则返回的是bytes hex直接返回字符串，不然就要用string(charset)相当于省略了chaset
     //url用MD5这样更安全 所有人都无法根据值查看你浏览的网站
     val cacheKey = ByteString.encodeUtf8("url".toString()).md5().hex();
+    val str2 = "channel=13863&openid=5017570&time=1617967481&nick=一朵小红花噢噢噢&avatar=http://static1.kaixinyf.cn/img/lza5e8ed0642c09c784159427.png&sex=1&phone=b567fb71db0f446b8b2ed5395a48e16d"
+    val cacheKey2 = ByteString.encodeUtf8(str2).md5().hex();
+    println("hex cacheKey2==>:${cacheKey2}")
 }
 
 private fun readWrite(file: File) {
@@ -78,7 +85,7 @@ private fun readWrite(file: File) {
 }
 
 //最基本的写用法
-private fun write(folderPath: String) {
+fun write(folderPath: String) {
     val sink = Okio.sink(File("$folderPath/1.txt"))
     val buffer = Okio.buffer(sink)//根据流那种 zhuang'shi
     buffer.writeString("www", Charset.forName("UTF-8"))

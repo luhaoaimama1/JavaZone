@@ -33,13 +33,17 @@ class DiskClassLoaderTest {
 
         override fun findClass(name: String): Class<*> {
             val fileName = getFileName(name)
-            val file = File(libPath, fileName);
+            val file = File(libPath, fileName)
 
-            val sink = Okio.source(file)
-            val buffer = Okio.buffer(sink)
-            val readByteArray = buffer.readByteArray()
-            val defineClass = defineClass(name, readByteArray, 0, readByteArray.size)
-            return defineClass
+            return try {
+                val sink = Okio.source(file)
+                val buffer = Okio.buffer(sink)
+                val readByteArray = buffer.readByteArray()
+                defineClass(name, readByteArray, 0, readByteArray.size)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                super.findClass(name)
+            }
         }
 
         fun getFileName(name: String): String {

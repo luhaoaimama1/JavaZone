@@ -5,6 +5,7 @@ import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;   
 import java.lang.reflect.Field;   
 
+//https://blog.csdn.net/guang09080908/article/details/45641681
 public class PhantomTest {
 	public static boolean isRun = true;
 
@@ -33,6 +34,7 @@ public class PhantomTest {
 //		}.start();
 		PhantomReference<String> abcWeakRef = new PhantomReference<String>(abc,
 				referenceQueue);
+		System.out.println("pip："+(referenceQueue.poll()==abcWeakRef));
 		abc = null;
 		System.gc();
 		Thread.currentThread().sleep(3000);

@@ -13,23 +13,26 @@ import java.util.Queue;
 public class Test2 {
 
     public static void main(String[] args) {
+        System.out.println(1/2);
+        System.out.println(2/2);
+
 //        15477449678633568000
 //        9223372036854775807
-        BigDecimal big =new BigDecimal("15477449678633568000");
-
-        BigDecimal big2 =new BigDecimal( Long.MAX_VALUE+"");
-        if(big.compareTo(big2)>0){
-
-            System.out.println("big大");
-        }
-
-
-        ArrayList<Object> list = new ArrayList<>();
-        list.add("1");
-        list.add(1,"2");
-        for (Object o : list) {
-            System.out.println("->"+o);
-        }
+//        BigDecimal big =new BigDecimal("15477449678633568000");
+//
+//        BigDecimal big2 =new BigDecimal( Long.MAX_VALUE+"");
+//        if(big.compareTo(big2)>0){
+//
+//            System.out.println("big大");
+//        }
+//
+//
+//        ArrayList<Object> list = new ArrayList<>();
+//        list.add("1");
+//        list.add(1,"2");
+//        for (Object o : list) {
+//            System.out.println("->"+o);
+//        }
 //        System.out.println((int)(40*(12*1f/40)));
 
 //        System.out.println(Math.round(Math.random()));

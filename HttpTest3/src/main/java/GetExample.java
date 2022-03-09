@@ -20,7 +20,15 @@ public class GetExample {
     public static void main(String[] args) throws IOException {
         GetExample example = new GetExample();
 //    String response = example.run("https://raw.github.com/square/okhttp/master/README.md");
-        String response = example.run("https://www.baidu.com");
-        System.out.println(response);
+//        String response = example.run("https://www.baidu.com");
+//        System.out.println(response);
+
+
+        Request request = new Request.Builder()
+                .url("https://www.baidu.com")
+                .build();
+
+
+        System.out.println("test:"+   new OkHttpClient().newCall(request).execute().body().string());
     }
 }
